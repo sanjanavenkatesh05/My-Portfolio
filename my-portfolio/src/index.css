@@ -2608,7 +2608,7 @@ ul.star-list li::marker {
 .file-icon-img {
   width: 32px;
   height: 32px;
-  image-rendering: pixelated;
+  object-fit: contain;
   margin-bottom: 4px;
 }
 
@@ -2670,7 +2670,6 @@ ul.star-list li::marker {
   width: 36px;
   height: 36px;
   object-fit: contain;
-  image-rendering: pixelated;
 }
 
 .win95-header-text {

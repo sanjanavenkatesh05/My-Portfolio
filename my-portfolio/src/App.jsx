@@ -2,7 +2,159 @@ import { BrowserRouter as Router, Routes, Route, Link, NavLink, useNavigate } fr
 
 import { useState, useRef, useEffect, useMemo } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
+import resumeFile from './assets/Sanjana_venkatesh_resume (3).pdf';
 import './App.css';
+
+/* Native Pixel-Perfect Windows 98 SVG Icons (100% Offline & Reliable) */
+function Win98FolderIcon({ open = false, size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }}>
+      {open ? (
+        <>
+          <path d="M1 2 H6 L8 4 H14 V6 H2 V13 H1 Z" fill="#D49B00" />
+          <path d="M2 3 H5 L7 5 H13 V6 H2 Z" fill="#FFE87C" />
+          <path d="M0 6 H13 L15 14 H2 Z" fill="#FFE066" />
+          <path d="M2 6 L0 14 H14 L16 6 Z" stroke="#5A3E00" strokeWidth="0.8" />
+          <path d="M2 7 H14" stroke="#FFF3A8" strokeWidth="0.8" />
+        </>
+      ) : (
+        <>
+          <path d="M1 2 H6 L8 4 H14 V13 H1 Z" fill="#D49B00" stroke="#5A3E00" strokeWidth="0.8" />
+          <path d="M2 3 H5 L7 5 H13 V6 H2 Z" fill="#FFF2A0" />
+          <rect x="2" y="6" width="11" height="6" fill="#FFCC00" />
+          <line x1="2" y1="6" x2="13" y2="6" stroke="#FFE87C" strokeWidth="1" />
+          <rect x="2" y="6" width="11" height="6" fill="none" stroke="#8C6300" strokeWidth="0.8" />
+        </>
+      )}
+    </svg>
+  );
+}
+
+function Win98UpIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <path d="M1 3 H6 L8 5 H14 V13 H1 Z" fill="#D49B00" stroke="#5A3E00" strokeWidth="0.6" />
+      <rect x="2" y="6" width="11" height="6" fill="#FFD233" />
+      <circle cx="11" cy="5" r="4.5" fill="#008000" stroke="#004400" strokeWidth="0.5" />
+      <path d="M11 2.5 L8.5 5.5 H10 V7.5 H12 V5.5 H13.5 Z" fill="#FFFFFF" />
+    </svg>
+  );
+}
+
+function Win98HomeIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <rect x="2" y="2" width="12" height="9" fill="#D4D0C8" stroke="#000000" strokeWidth="0.8" />
+      <rect x="3.5" y="3.5" width="9" height="6" fill="#008080" />
+      <path d="M5 11 L4 14 H12 L11 11 Z" fill="#808080" stroke="#000000" strokeWidth="0.8" />
+      <rect x="3" y="14" width="10" height="1.5" fill="#C0C0C0" stroke="#000000" strokeWidth="0.6" />
+    </svg>
+  );
+}
+
+function Win98ComputerExplorerIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <rect x="1" y="2" width="10" height="8" fill="#C0C0C0" stroke="#000" strokeWidth="0.7" />
+      <rect x="2.5" y="3.5" width="7" height="5" fill="#000080" />
+      <rect x="6" y="6" width="9" height="8" fill="#FFE066" stroke="#8C6300" strokeWidth="0.7" />
+      <path d="M7 4 H10 L11 6 H14 Z" fill="#D49B00" />
+    </svg>
+  );
+}
+
+function Win98RefreshIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <path d="M13 8 A5 5 0 1 1 11.5 4.5" stroke="#000080" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M12 2 L12 5.5 H8.5" fill="#000080" />
+    </svg>
+  );
+}
+
+function Win98HelpBookIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <rect x="2" y="2" width="11" height="12" rx="1" fill="#800000" stroke="#000" strokeWidth="0.8" />
+      <rect x="4" y="3" width="8" height="10" fill="#FFFFCC" />
+      <text x="5" y="11" fontSize="9" fontWeight="bold" fill="#000080" fontFamily="sans-serif">?</text>
+    </svg>
+  );
+}
+
+function Win98DocIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <path d="M3 1 H10 L13 4 V15 H3 Z" fill="#FFFFFF" stroke="#000000" strokeWidth="0.8" />
+      <path d="M10 1 V4 H13 Z" fill="#C0C0C0" stroke="#000000" strokeWidth="0.8" />
+      <line x1="5" y1="6" x2="11" y2="6" stroke="#000080" strokeWidth="0.8" />
+      <line x1="5" y1="8.5" x2="11" y2="8.5" stroke="#808080" strokeWidth="0.8" />
+      <line x1="5" y1="11" x2="9" y2="11" stroke="#808080" strokeWidth="0.8" />
+    </svg>
+  );
+}
+
+function Win98EnvelopeIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <rect x="1" y="3" width="14" height="10" fill="#FFFFE0" stroke="#000" strokeWidth="0.8" />
+      <path d="M1 3 L8 9 L15 3" stroke="#000" strokeWidth="0.8" fill="none" />
+      <line x1="1" y1="13" x2="6" y2="8" stroke="#808080" strokeWidth="0.7" />
+      <line x1="15" y1="13" x2="10" y2="8" stroke="#808080" strokeWidth="0.7" />
+    </svg>
+  );
+}
+
+function Win98ConsoleIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <rect x="1" y="2" width="14" height="12" fill="#000000" stroke="#808080" strokeWidth="0.8" />
+      <path d="M3 5 L6 7.5 L3 10" stroke="#00FF00" strokeWidth="1.2" fill="none" />
+      <line x1="7" y1="10" x2="11" y2="10" stroke="#00FF00" strokeWidth="1.2" />
+    </svg>
+  );
+}
+
+function Win98CDIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <circle cx="8" cy="8" r="7" fill="#E0E0E0" stroke="#808080" strokeWidth="0.8" />
+      <circle cx="8" cy="8" r="5" fill="#D0D8E8" />
+      <circle cx="8" cy="8" r="2.5" fill="#C0C0C0" stroke="#808080" strokeWidth="0.6" />
+      <circle cx="8" cy="8" r="1" fill="#FFFFFF" />
+    </svg>
+  );
+}
+
+function Win98ImageIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <rect x="1" y="2" width="14" height="12" fill="#E8E8E8" stroke="#000" strokeWidth="0.8" />
+      <circle cx="5" cy="5.5" r="1.5" fill="#FFCC00" stroke="#806000" strokeWidth="0.5" />
+      <path d="M2 13 L6 8 L9 11 L12 6 L14 13 Z" fill="#008080" stroke="#004040" strokeWidth="0.6" />
+    </svg>
+  );
+}
+
+function Win98BriefcaseIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <rect x="2" y="5" width="12" height="9" fill="#B8860B" stroke="#5C4305" strokeWidth="0.8" />
+      <path d="M6 5 V3 H10 V5" stroke="#5C4305" strokeWidth="0.8" fill="none" />
+      <rect x="7" y="7" width="2" height="2" fill="#FFD700" stroke="#000" strokeWidth="0.5" />
+    </svg>
+  );
+}
+
+function Win98SearchIcon({ size = 16, className = "" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 16 16" fill="none" className={className} style={{ display: 'inline-block', verticalAlign: 'middle' }}>
+      <circle cx="6.5" cy="6.5" r="4" stroke="#000080" strokeWidth="1.5" fill="#FFFFFF" />
+      <line x1="9.5" y1="9.5" x2="14" y2="14" stroke="#800000" strokeWidth="2" strokeLinecap="round" />
+      <line x1="10" y1="10" x2="13.5" y2="13.5" stroke="#C0C0C0" strokeWidth="0.8" strokeLinecap="round" />
+    </svg>
+  );
+}
 
 function TerminalWidget() {
   const [commandIndex, setCommandIndex] = useState(0);
@@ -14,7 +166,7 @@ function TerminalWidget() {
     { cmd: "skills --core", res: "react • python • c++ • node.js • iot" },
     { cmd: "projects --ls", res: "4 modules [sentinel, bleepbloop, simuphysics, smartdesk]" },
     { cmd: "github --status", res: "connected // github.com/sanjanavenkatesh05" },
-    { cmd: "contact --ping", res: "cyber@pink.net [ready]" }
+    { cmd: "contact --ping", res: "venkateshsanjana705@gmail.com [ready]" }
   ], []);
 
 
@@ -52,11 +204,7 @@ function TerminalWidget() {
     <div className="win98-window terminal-window">
       <div className="win98-title-bar">
         <div className="win98-title-left">
-          <img
-            src="https://win98icons.alexmeub.com/icons/png/console_prompt-0.png"
-            alt=""
-            className="win98-title-img"
-          />
+          <Win98ConsoleIcon size={16} className="win98-title-img" />
           <span>COMMAND.COM</span>
         </div>
         <div className="win98-title-buttons">
@@ -132,8 +280,8 @@ function MusicPlayer() {
         </div>
       </div>
       <div className="music-player-controls">
-        <div className="music-logo">
-          <img src="https://win98icons.alexmeub.com/icons/png/cd_audio_cd_a-4.png" alt="CD" style={{ width: '16px', height: '16px' }} />
+        <div className="music-logo" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Win98CDIcon size={16} />
         </div>
         <div className="music-display" style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
           {isPlaying ? (
@@ -201,9 +349,13 @@ function Home() {
               <span className="logo-placeholder">cc</span>
               <a href="https://www.codechef.com/users/vsanjana_05" target="_blank" rel="noreferrer" className="win98-btn">CodeChef</a>
             </div>
+            <div className="link-item">
+              <span className="logo-placeholder">cv</span>
+              <a href={resumeFile} target="_blank" rel="noreferrer" download="Sanjana_Venkatesh_Resume.pdf" className="win98-btn" style={{ fontWeight: '600' }}>Resume.pdf</a>
+            </div>
           </div>
           <div className="win98-statusbar sidebar-statusbar">
-            <div className="statusbar-pane">5 SHORTCUTS</div>
+            <div className="statusbar-pane">6 SHORTCUTS</div>
             <div className="statusbar-pane"><span className="status-dot">●</span> 8080/TCP</div>
           </div>
         </div>
@@ -227,21 +379,21 @@ function Home() {
           <div className="win98-content open-source-content">
             <div className="repo-item">
               <span className="repo-title">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
+                <Win98FolderIcon size={14} className="tree-folder-img" />
                 hercycle-ai
               </span>
               <a href="https://github.com/khushi897920-lang/hercycle-ai" target="_blank" rel="noreferrer" className="repo-link">github.com/khushi897920-lang/hercycle-ai</a>
             </div>
             <div className="repo-item">
               <span className="repo-title">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
+                <Win98FolderIcon size={14} className="tree-folder-img" />
                 sentinel
               </span>
               <a href="https://github.com/anshul23102/sentinel" target="_blank" rel="noreferrer" className="repo-link">github.com/anshul23102/sentinel</a>
             </div>
             <div className="repo-item">
               <span className="repo-title">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
+                <Win98FolderIcon size={14} className="tree-folder-img" />
                 PasoChat
               </span>
               <a href="https://github.com/CodePlaygroundHub/PasoChat" target="_blank" rel="noreferrer" className="repo-link">github.com/CodePlaygroundHub/PasoChat</a>
@@ -290,11 +442,7 @@ function Home() {
               <div className="win98-window photo-viewer-window">
                 <div className="win98-title-bar">
                   <div className="win98-title-left">
-                    <img
-                      src="https://win98icons.alexmeub.com/icons/png/kodak_imaging_file-1.png"
-                      alt=""
-                      className="win98-title-img"
-                    />
+                    <Win98ImageIcon size={16} className="win98-title-img" />
                     <span>IMAGE_VIEWER.EXE - [me.jpg]</span>
                   </div>
                   <div className="win98-title-buttons">
@@ -621,11 +769,7 @@ function Projects() {
       <div className="win98-window outer-app-window">
         <div className="win98-title-bar">
           <div className="win98-title-left">
-            <img
-              src="https://win98icons.alexmeub.com/icons/png/briefcase-2.png"
-              alt=""
-              className="win98-title-img"
-            />
+            <Win98BriefcaseIcon size={16} className="win98-title-img" />
             <span>PROJECTS.EXE</span>
           </div>
           <div className="win98-title-buttons">
@@ -775,77 +919,77 @@ const techStackData = {
     name: "Languages",
     description: "Core programming languages for low-level systems, data pipelines, algorithms, and full-stack web applications.",
     items: [
-      { name: "C", file: "c.txt", size: "32 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "Low-level systems programming, embedded firmware, pointers, memory allocation, and custom microkernel foundations." },
-      { name: "C++", file: "cpp.txt", size: "48 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg", desc: "Object-oriented systems, physics problem simulators, performance-critical modules, and algorithmic problem-solving." },
-      { name: "Python", file: "python.txt", size: "64 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", desc: "Data processing, text embeddings retrieval pipelines, scientific simulation engines, and backend APIs with Django." },
-      { name: "JavaScript", file: "javascript.txt", size: "56 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg", desc: "Modern dynamic scripting for client-side interactivity, responsive React components, and asynchronous Node.js backends." },
-      { name: "Java", file: "java.txt", size: "72 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg", desc: "Object-oriented design patterns, enterprise microservices architectures with Spring Boot, and JVM application engineering." }
+      { name: "C", file: "c.txt", size: "32 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg", desc: "Low-level systems programming, embedded firmware, pointers, memory allocation, and custom microkernel foundations." },
+      { name: "C++", file: "cpp.txt", size: "48 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", desc: "Object-oriented systems, physics problem simulators, performance-critical modules, and algorithmic problem-solving." },
+      { name: "Python", file: "python.txt", size: "64 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", desc: "Data processing, text embeddings retrieval pipelines, scientific simulation engines, and backend APIs with Django." },
+      { name: "JavaScript", file: "javascript.txt", size: "56 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", desc: "Modern dynamic scripting for client-side interactivity, responsive React components, and asynchronous Node.js backends." },
+      { name: "Java", file: "java.txt", size: "72 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg", desc: "Object-oriented design patterns, enterprise microservices architectures with Spring Boot, and JVM application engineering." }
     ]
   },
   "Frontend & Graphics": {
     name: "Frontend & Graphics",
     description: "Interactive visual interfaces, WebGL rendering pipelines, physics simulations, and modern responsive styling.",
     items: [
-      { name: "React", file: "react.js", size: "88 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg", desc: "Modern component-based UI engineering with hooks, SPA routing, state management, and real-time WebSocket communication." },
-      { name: "TailwindCSS", file: "tailwind.css", size: "42 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg", desc: "Utility-first modern responsive CSS styling with custom theme palettes, flexbox grids, and fluid layouts." },
-      { name: "WebGL", file: "webgl.glsl", size: "60 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/opengl/opengl-original.svg", desc: "Low-level hardware-accelerated 2D and 3D graphics rendering directly inside browser canvas contexts with custom shaders." },
-      { name: "Canvas API", file: "canvas.js", size: "36 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg", desc: "Direct 2D bitmap pixel drawing, custom procedural animations, and interactive graphic rendering in HTML5 canvas." },
-      { name: "p5.js", file: "p5.js", size: "52 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/p5js/p5js-original.svg", desc: "Creative coding and algorithmic generative graphic sketches for interactive visual experimentation." },
-      { name: "Matter.js", file: "matter.js", size: "68 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg", desc: "2D rigid body physics simulation engine for interactive web physics experiments, collision detection, and particle mechanics." },
-      { name: "VPython", file: "vpython.py", size: "44 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", desc: "3D visual physics modeling and simulations for computational problem-solving and kinematic mechanics." },
-      { name: "VLGL", file: "vlgl.c", size: "38 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "Lightweight embedded graphics library rendering customized for small microcontroller display modules." }
+      { name: "React", file: "react.js", size: "88 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", desc: "Modern component-based UI engineering with hooks, SPA routing, state management, and real-time WebSocket communication." },
+      { name: "TailwindCSS", file: "tailwind.css", size: "42 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", desc: "Utility-first modern responsive CSS styling with custom theme palettes, flexbox grids, and fluid layouts." },
+      { name: "WebGL", file: "webgl.glsl", size: "60 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/opengl/opengl-original.svg", desc: "Low-level hardware-accelerated 2D and 3D graphics rendering directly inside browser canvas contexts with custom shaders." },
+      { name: "Canvas API", file: "canvas.js", size: "36 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg", desc: "Direct 2D bitmap pixel drawing, custom procedural animations, and interactive graphic rendering in HTML5 canvas." },
+      { name: "p5.js", file: "p5.js", size: "52 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/p5js/p5js-original.svg", desc: "Creative coding and algorithmic generative graphic sketches for interactive visual experimentation." },
+      { name: "Matter.js", file: "matter.js", size: "68 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", desc: "2D rigid body physics simulation engine for interactive web physics experiments, collision detection, and particle mechanics." },
+      { name: "VPython", file: "vpython.py", size: "44 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", desc: "3D visual physics modeling and simulations for computational problem-solving and kinematic mechanics." },
+      { name: "VLGL", file: "vlgl.c", size: "38 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg", desc: "Lightweight embedded graphics library rendering customized for small microcontroller display modules." }
     ]
   },
   "Backend": {
     name: "Backend",
     description: "Server-side architectures, RESTful APIs, real-time communication flows, and business logic.",
     items: [
-      { name: "Node.js", file: "node.js", size: "57 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg", desc: "Asynchronous event-driven JavaScript runtime built on Chrome's V8 engine. Handles high-concurrency real-time WebSocket servers." },
-      { name: "Express.js", file: "express.js", size: "35 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg", desc: "Fast, minimalist web framework for building Node.js REST APIs, routing pipelines, authentication middlewares, and services." },
-      { name: "Django", file: "django.py", size: "90 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-plain.svg", desc: "High-level Python web framework encouraging clean, rapid development with ORM, automated admin panels, and built-in security." },
-      { name: "Spring Boot", file: "spring.java", size: "110 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg", desc: "Enterprise production-ready Java framework for robust standalone microservices, dependency injection, and scalable backends." }
+      { name: "Node.js", file: "node.js", size: "57 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg", desc: "Asynchronous event-driven JavaScript runtime built on Chrome's V8 engine. Handles high-concurrency real-time WebSocket servers." },
+      { name: "Express.js", file: "express.js", size: "35 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg", desc: "Fast, minimalist web framework for building Node.js REST APIs, routing pipelines, authentication middlewares, and services." },
+      { name: "Django", file: "django.py", size: "90 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg", desc: "High-level Python web framework encouraging clean, rapid development with ORM, automated admin panels, and built-in security." },
+      { name: "Spring Boot", file: "spring.java", size: "110 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/spring/spring-original.svg", desc: "Enterprise production-ready Java framework for robust standalone microservices, dependency injection, and scalable backends." }
     ]
   },
   "Databases": {
     name: "Databases",
     description: "Relational and NoSQL persistent storage, schema optimization, and query performance.",
     items: [
-      { name: "PostgreSQL", file: "postgres.sql", size: "75 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg", desc: "Powerful open-source object-relational SQL database with advanced indexing, ACID compliance, and JSON capabilities." },
-      { name: "MySQL", file: "mysql.sql", size: "65 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg", desc: "High-performance ACID-compliant relational database management for transactional systems and structured relational schemas." },
-      { name: "MongoDB", file: "mongodb.json", size: "58 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg", desc: "Flexible document-oriented NoSQL database optimized for JSON-like schema designs, fast aggregations, and horizontal scaling." }
+      { name: "PostgreSQL", file: "postgres.sql", size: "75 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", desc: "Powerful open-source object-relational SQL database with advanced indexing, ACID compliance, and JSON capabilities." },
+      { name: "MySQL", file: "mysql.sql", size: "65 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg", desc: "High-performance ACID-compliant relational database management for transactional systems and structured relational schemas." },
+      { name: "MongoDB", file: "mongodb.json", size: "58 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg", desc: "Flexible document-oriented NoSQL database optimized for JSON-like schema designs, fast aggregations, and horizontal scaling." }
     ]
   },
   "Hardware & Embedded": {
     name: "Hardware & Embedded",
     description: "Microcontroller programming, hardware communication buses, IoT systems, and VLSI circuit concepts.",
     items: [
-      { name: "Raspberry Pi", file: "raspi.cfg", size: "45 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/raspberrypi/raspberrypi-original.svg", desc: "Single-board computer Linux environment used as local edge gateways, smart monitoring hubs, and sensor processing hubs." },
-      { name: "ESP32", file: "esp32.c", size: "62 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/embeddedc/embeddedc-original.svg", desc: "Dual-core Wi-Fi/Bluetooth SoC used for smart monitoring projects, MQTT telemetry pipelines, and low-power sensor nodes." },
-      { name: "MicroPython", file: "micropython.py", size: "40 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", desc: "Lean Python 3 implementation tailored to run directly on microcontrollers like Raspberry Pi Pico for rapid prototyping." },
-      { name: "SPI", file: "spi_driver.h", size: "24 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "Serial Peripheral Interface synchronous serial communication protocol for high-speed sensor and display communication." },
-      { name: "GPIO", file: "gpio_pins.h", size: "18 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "General-Purpose Input/Output pin control for sensor polling, hardware interrupts, relays, and digital telemetry." },
-      { name: "VLSI", file: "vlsi_chip.v", size: "85 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg", desc: "Very Large Scale Integration digital design concepts, silicon layouts, combinational/sequential logic, and hardware minors." },
-      { name: "Custom Microkernels", file: "kernel.asm", size: "95 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "Architecting minimal microkernels with low-level process scheduling, memory isolation, and lightweight IPC." }
+      { name: "Raspberry Pi", file: "raspi.cfg", size: "45 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg", desc: "Single-board computer Linux environment used as local edge gateways, smart monitoring hubs, and sensor processing hubs." },
+      { name: "ESP32", file: "esp32.c", size: "62 KB", logo: "https://cdn.simpleicons.org/espressif/E7352C", desc: "Dual-core Wi-Fi/Bluetooth SoC used for smart monitoring projects, MQTT telemetry pipelines, and low-power sensor nodes." },
+      { name: "MicroPython", file: "micropython.py", size: "40 KB", logo: "https://cdn.simpleicons.org/micropython/2B2728", desc: "Lean Python 3 implementation tailored to run directly on microcontrollers like Raspberry Pi Pico for rapid prototyping." },
+      { name: "SPI", file: "spi_driver.h", size: "24 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg", desc: "Serial Peripheral Interface synchronous serial communication protocol for high-speed sensor and display communication." },
+      { name: "GPIO", file: "gpio_pins.h", size: "18 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg", desc: "General-Purpose Input/Output pin control for sensor polling, hardware interrupts, relays, and digital telemetry." },
+      { name: "VLSI", file: "vlsi_chip.v", size: "85 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", desc: "Very Large Scale Integration digital design concepts, silicon layouts, combinational/sequential logic, and hardware minors." },
+      { name: "Custom Microkernels", file: "kernel.asm", size: "95 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg", desc: "Architecting minimal microkernels with low-level process scheduling, memory isolation, and lightweight IPC." }
     ]
   },
   "Tools & Deployment": {
     name: "Tools & Deployment",
     description: "Version control, containerization environments, and Linux developer toolchains.",
     items: [
-      { name: "Git", file: "git.exe", size: "42 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg", desc: "Distributed version control system for tracking source code changes, branch workflows, and commit history." },
-      { name: "GitHub", file: "github.com", size: "50 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg", desc: "Cloud collaboration platform for CI/CD workflows, open-source repositories, issue tracking, and automated releases." },
-      { name: "Docker", file: "dockerfile", size: "68 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg", desc: "Containerization platform to build, ship, and run distributed multi-service applications reliably across environments." },
-      { name: "Linux Workflows", file: "bash.sh", size: "38 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg", desc: "POSIX shell scripting, command-line utilities, service daemons, environment orchestration, and development workflows." }
+      { name: "Git", file: "git.exe", size: "42 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", desc: "Distributed version control system for tracking source code changes, branch workflows, and commit history." },
+      { name: "GitHub", file: "github.com", size: "50 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", desc: "Cloud collaboration platform for CI/CD workflows, open-source repositories, issue tracking, and automated releases." },
+      { name: "Docker", file: "dockerfile", size: "68 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", desc: "Containerization platform to build, ship, and run distributed multi-service applications reliably across environments." },
+      { name: "Linux Workflows", file: "bash.sh", size: "38 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg", desc: "POSIX shell scripting, command-line utilities, service daemons, environment orchestration, and development workflows." }
     ]
   },
   "Bonus Areas": {
     name: "Bonus Areas",
     description: "Advanced multidisciplinary engineering domains and emerging technologies.",
     items: [
-      { name: "IoT Architecture", file: "iot_arch.md", size: "54 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/embeddedc/embeddedc-original.svg", desc: "End-to-end device-to-cloud telemetry pipelines, MQTT message brokers, sensor networks, and edge intelligence." },
-      { name: "Web3 Concepts", file: "web3_protocol.sol", size: "65 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/solidity/solidity-original.svg", desc: "Decentralized protocols, smart contract architecture, recurring subscriptions, and cryptographic emergency kill-switches." },
-      { name: "Competitive Programming", file: "cp_algorithms.cpp", size: "80 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg", desc: "Data structures and algorithm optimization practiced across LeetCode and CodeChef for fast problem-solving." },
-      { name: "Text Embeddings", file: "embeddings_pipeline.py", size: "72 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", desc: "High-dimensional vector representations of text utilized for semantic similarity search and intelligent retrieval pipelines." }
+      { name: "IoT Architecture", file: "iot_arch.md", size: "54 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg", desc: "End-to-end device-to-cloud telemetry pipelines, MQTT message brokers, sensor networks, and edge intelligence." },
+      { name: "Web3 Concepts", file: "web3_protocol.sol", size: "65 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/solidity/solidity-original.svg", desc: "Decentralized protocols, smart contract architecture, recurring subscriptions, and cryptographic emergency kill-switches." },
+      { name: "Competitive Programming", file: "cp_algorithms.cpp", size: "80 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", desc: "Data structures and algorithm optimization practiced across LeetCode and CodeChef for fast problem-solving." },
+      { name: "Text Embeddings", file: "embeddings_pipeline.py", size: "72 KB", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", desc: "High-dimensional vector representations of text utilized for semantic similarity search and intelligent retrieval pipelines." }
     ]
   }
 };
@@ -902,11 +1046,7 @@ function TechStack() {
       <div className="win98-window outer-app-window">
         <div className="win98-title-bar">
           <div className="win98-title-left">
-            <img
-              src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png"
-              alt=""
-              className="win98-title-img"
-            />
+            <Win98ComputerExplorerIcon size={16} className="win98-title-img" />
             <span>TECH_STACK.EXE</span>
           </div>
           <div className="win98-title-buttons">
@@ -926,11 +1066,7 @@ function TechStack() {
           {/* Top Header */}
           <div className="techstack-header">
             <div className="techstack-title-row">
-              <img
-                src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png"
-                alt="Computer"
-                className="techstack-header-img"
-              />
+              <Win98ComputerExplorerIcon size={32} className="techstack-header-img" />
               <h1>Tech Stack</h1>
             </div>
             <p className="techstack-subtitle">Explore the technologies I work with</p>
@@ -944,11 +1080,7 @@ function TechStack() {
               <div className="win98-window techstack-main-window">
                 <div className="win98-title-bar">
                   <div className="win98-title-left">
-                    <img
-                      src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_small-4.png"
-                      alt=""
-                      className="win98-title-img"
-                    />
+                    <Win98FolderIcon open={true} size={16} className="win98-title-img" />
                     <span>EXPLORER.EXE - C:\TechStack\{activeCategory}</span>
                   </div>
                   <div className="win98-title-buttons">
@@ -993,15 +1125,15 @@ function TechStack() {
                     <span>Forward</span>
                   </button>
                   <button className="win98-tool-btn" onClick={handleUp} title="Up">
-                    <img src="https://win98icons.alexmeub.com/icons/png/directory_up-0.png" alt="" className="tool-img" />
+                    <Win98UpIcon size={16} className="tool-img" />
                     <span>Up</span>
                   </button>
                   <button className="win98-tool-btn" onClick={handleHome} title="Home">
-                    <img src="https://win98icons.alexmeub.com/icons/png/msagent_computer-0.png" alt="" className="tool-img" />
+                    <Win98HomeIcon size={16} className="tool-img" />
                     <span>Home</span>
                   </button>
                   <button className="win98-tool-btn" onClick={() => setSelectedItem(currentCategoryData.items[0])} title="Refresh">
-                    <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-4.png" alt="" className="tool-img" />
+                    <Win98RefreshIcon size={16} className="tool-img" />
                     <span>Refresh</span>
                   </button>
                 </div>
@@ -1010,7 +1142,7 @@ function TechStack() {
                 <div className="win98-address-bar-row">
                   <span className="address-label">Address</span>
                   <div className="address-input-box">
-                    <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" className="address-folder-img" />
+                    <Win98FolderIcon open={false} size={14} className="address-folder-img" />
                     <span className="address-path">C:\TechStack\{activeCategory}</span>
                   </div>
                 </div>
@@ -1026,7 +1158,7 @@ function TechStack() {
                     <div className="tree-body">
                       <div className="tree-root-item">
                         <span className="tree-box-marker">-</span>
-                        <img src="https://win98icons.alexmeub.com/icons/png/directory_desktop-4.png" alt="" className="tree-folder-img" />
+                        <Win98ComputerExplorerIcon size={14} className="tree-folder-img" />
                         <span className="tree-label-root">Tech Stack</span>
                       </div>
                       <div className="tree-children-list">
@@ -1039,11 +1171,9 @@ function TechStack() {
                               onClick={() => navigateToCategory(catKey)}
                             >
                               <span className="tree-expand-icon">{isSelected ? '▼' : '►'}</span>
-                              <img
-                                src={isSelected
-                                  ? "https://win98icons.alexmeub.com/icons/png/directory_open-4.png"
-                                  : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"}
-                                alt=""
+                              <Win98FolderIcon
+                                open={isSelected}
+                                size={14}
                                 className="tree-folder-img"
                               />
                               <span className="tree-label">{catKey}</span>
@@ -1065,11 +1195,9 @@ function TechStack() {
                             className={`folder-grid-item ${isActive ? 'active-folder' : ''}`}
                             onClick={() => navigateToCategory(catKey)}
                           >
-                            <img
-                              src={isActive
-                                ? "https://win98icons.alexmeub.com/icons/png/directory_open_cool-4.png"
-                                : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"}
-                              alt="Folder"
+                            <Win98FolderIcon
+                              open={isActive}
+                              size={34}
                               className="folder-icon-img"
                             />
                             <span className="folder-grid-label">{catKey}</span>
@@ -1091,15 +1219,15 @@ function TechStack() {
               {/* How to Explore Info Card */}
               <div className="how-to-explore-card">
                 <div className="how-to-header">
-                  <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-0.png" alt="" className="how-to-img" />
+                  <Win98HelpBookIcon size={18} className="how-to-img" />
                   <strong>How to explore</strong>
                 </div>
                 <div className="how-to-item">
-                  <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" className="how-to-bullet-img" />
+                  <Win98FolderIcon open={false} size={16} className="how-to-bullet-img" />
                   <span>Click folders to switch categories</span>
                 </div>
                 <div className="how-to-item">
-                  <img src="https://win98icons.alexmeub.com/icons/png/notepad_file-2.png" alt="" className="how-to-bullet-img" />
+                  <Win98DocIcon size={16} className="how-to-bullet-img" />
                   <span>Click items to view details</span>
                 </div>
               </div>
@@ -1111,7 +1239,7 @@ function TechStack() {
               <div className="win98-window folder-files-window">
                 <div className="win98-title-bar">
                   <div className="win98-title-left">
-                    <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_small-4.png" alt="" className="win98-title-img" />
+                    <Win98FolderIcon open={true} size={16} className="win98-title-img" />
                     <span>{activeCategory}</span>
                   </div>
                   <div className="win98-title-buttons">
@@ -1132,9 +1260,12 @@ function TechStack() {
                           onClick={() => setSelectedItem(item)}
                         >
                           <img
-                            src="https://win98icons.alexmeub.com/icons/png/notepad_file-2.png"
-                            alt="File"
-                            className="file-icon-img"
+                            src={item.logo}
+                            alt={item.name}
+                            className="file-icon-img tech-grid-icon-img"
+                            onError={(e) => {
+                              e.target.src = "https://win98icons.alexmeub.com/icons/png/notepad_file-2.png";
+                            }}
                           />
                           <span className="file-grid-label">{item.file}</span>
                         </div>
@@ -1149,7 +1280,7 @@ function TechStack() {
                 <div className="win98-window file-preview-window">
                   <div className="win98-title-bar">
                     <div className="win98-title-left">
-                      <img src="https://win98icons.alexmeub.com/icons/png/application_hourglass-0.png" alt="" className="win98-title-img" />
+                      <Win98HelpBookIcon size={16} className="win98-title-img" />
                       <span>Properties - {selectedItem.file}</span>
                     </div>
                     <div className="win98-title-buttons">
@@ -1174,7 +1305,7 @@ function TechStack() {
                             alt={selectedItem.name}
                             className="win95-tech-logo"
                             onError={(e) => {
-                              e.target.src = "https://win98icons.alexmeub.com/icons/png/application_hourglass-0.png";
+                              e.target.src = "https://win98icons.alexmeub.com/icons/png/chm-2.png";
                             }}
                           />
                         </div>
@@ -1219,7 +1350,7 @@ function Contact() {
       </div>
       <div className="win98-content">
         <h2>Hit me up!</h2>
-        <p>Email me at <a href="mailto:cyber@pink.net">cyber@pink.net</a><span className="retro-cursor"></span></p>
+        <p>Email me at <a href="mailto:venkateshsanjana705@gmail.com">venkateshsanjana705@gmail.com</a><span className="retro-cursor"></span></p>
       </div>
     </div>
 
@@ -1369,23 +1500,42 @@ const searchDatabase = [
   },
   {
     id: "link-resume",
-    title: "Download Resume",
+    title: "Download Resume (PDF)",
     category: "FILE",
-    downloadUrl: "/resume.pdf",
-    desc: "Download official PDF resume",
-    tags: ["resume", "cv", "pdf", "download"],
-    icon: "https://win98icons.alexmeub.com/icons/png/notepad-0.png"
+    downloadUrl: resumeFile,
+    desc: "Official PDF Resume • Sanjana Venkatesh",
+    tags: ["resume", "cv", "pdf", "download", "sanjana", "experience", "education"]
   },
   {
     id: "page-contact",
     title: "Contact Sanjana",
     category: "PAGE",
     route: "/contact",
-    desc: "Send a message or get in touch",
-    tags: ["contact", "email", "message", "reach"],
-    icon: "https://win98icons.alexmeub.com/icons/png/message_envelope_open-0.png"
+    desc: "venkateshsanjana705@gmail.com",
+    tags: ["contact", "email", "message", "reach", "venkateshsanjana705@gmail.com", "gmail"]
   }
 ];
+
+function renderSearchIcon(item) {
+  switch (item.category) {
+    case "PROJECT":
+      return <Win98ConsoleIcon size={16} className="search-item-icon" />;
+    case "TECH":
+      return <Win98HelpBookIcon size={16} className="search-item-icon" />;
+    case "EXP":
+      return <Win98BriefcaseIcon size={16} className="search-item-icon" />;
+    case "ABOUT":
+      return <Win98DocIcon size={16} className="search-item-icon" />;
+    case "LINK":
+      return <Win98FolderIcon size={16} className="search-item-icon" />;
+    case "FILE":
+      return <Win98DocIcon size={16} className="search-item-icon" />;
+    case "PAGE":
+      return <Win98EnvelopeIcon size={16} className="search-item-icon" />;
+    default:
+      return <Win98DocIcon size={16} className="search-item-icon" />;
+  }
+}
 
 function RetroSearchBar() {
   const [query, setQuery] = useState("");
@@ -1458,11 +1608,7 @@ function RetroSearchBar() {
   return (
     <div className="search-bar-container" ref={containerRef}>
       <div className="search-bar">
-        <img
-          src="https://win98icons.alexmeub.com/icons/png/search_file-0.png"
-          alt=""
-          className="search-icon-img"
-        />
+        <Win98SearchIcon size={16} className="search-icon-img" />
         <input
           type="text"
           className="search-input"
@@ -1497,11 +1643,7 @@ function RetroSearchBar() {
         <div className="retro-search-dropdown">
           <div className="search-dropdown-titlebar">
             <div className="search-dropdown-title-left">
-              <img
-                src="https://win98icons.alexmeub.com/icons/png/search_file-0.png"
-                alt=""
-                className="search-dropdown-icon"
-              />
+              <Win98SearchIcon size={14} className="search-dropdown-icon" />
               <span>FIND_FILES: &quot;{query}&quot;</span>
             </div>
             <span className="search-dropdown-count">{results.length} found</span>
@@ -1516,7 +1658,7 @@ function RetroSearchBar() {
                   onClick={() => handleSelect(item)}
                   onMouseEnter={() => setSelectedIndex(idx)}
                 >
-                  <img src={item.icon} alt="" className="search-item-icon" />
+                  {renderSearchIcon(item)}
                   <div className="search-item-info">
                     <div className="search-item-top">
                       <span className="search-item-title">{item.title}</span>
@@ -1560,23 +1702,23 @@ function App() {
 
 
             <NavLink to="/" end className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
-              <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" alt="" className="win98-nav-icon" />
+              <Win98ComputerExplorerIcon size={16} className="win98-nav-icon" />
               <span>Home</span>
             </NavLink>
             <NavLink to="/projects" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
-              <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_cool-4.png" alt="" className="win98-nav-icon" />
+              <Win98FolderIcon open={true} size={16} className="win98-nav-icon" />
               <span>My Projects</span>
             </NavLink>
             <NavLink to="/techstack" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
-              <img src="https://win98icons.alexmeub.com/icons/png/chm-2.png" alt="" className="win98-nav-icon" />
+              <Win98HelpBookIcon size={16} className="win98-nav-icon" />
               <span>My Techstack</span>
             </NavLink>
-            <a href="/resume.pdf" download className="win98-btn">
-              <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="" className="win98-nav-icon" />
+            <a href={resumeFile} target="_blank" rel="noreferrer" download="Sanjana_Venkatesh_Resume.pdf" className="win98-btn">
+              <Win98DocIcon size={16} className="win98-nav-icon" />
               <span>Resume</span>
             </a>
             <NavLink to="/contact" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
-              <img src="https://win98icons.alexmeub.com/icons/png/message_envelope_open-0.png" alt="" className="win98-nav-icon" />
+              <Win98EnvelopeIcon size={16} className="win98-nav-icon" />
               <span>Contact</span>
             </NavLink>
           </nav>
