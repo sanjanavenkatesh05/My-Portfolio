@@ -296,3 +296,65 @@ a:hover {
   border-right-color: #fff;
   border-bottom-color: #fff;
 }
+
+/* Inner MySpace Layout */
+.inner-myspace-layout {
+  display: flex;
+  gap: 15px;
+  position: relative; /* For error overlay */
+  padding: 10px;
+}
+
+.inner-left-col {
+  flex: 0 0 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inner-right-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.myspace-header-title {
+  background: #ff33ff;
+  color: #000;
+  padding: 2px 5px;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+  margin-bottom: 5px;
+}
+
+.myspace-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  text-align: center;
+}
+
+.myspace-me-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.myspace-pic {
+  border: 2px inset #ff33ff;
+  width: 100%;
+  height: auto;
+  max-width: 200px;
+  margin-bottom: 5px;
+}
+
+.error-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 2px 2px 0px #000;
+  min-width: 250px;
+}

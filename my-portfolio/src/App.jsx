@@ -110,10 +110,56 @@ function Home() {
           <div className="win98-title-bar">
             <span>HOME.EXE</span>
           </div>
+          <div className="win98-content inner-myspace-layout">
+            {/* Inner Left Column */}
+            <div className="inner-left-col">
+              {/* Me Window */}
+              <div className="win98-window">
+                <div className="myspace-header-title">me</div>
+                <div className="win98-content myspace-me-info">
+                  <img src="https://placehold.co/200x200/magenta/white?text=Profile+Pic" alt="me" className="myspace-pic" />
+                  <span>name: amber</span>
+                  <span>13/female</span>
+                  <span>last login: 04/03/2010</span>
+                </div>
+              </div>
 
+
+
+              {/* Education Window */}
+              <div className="win98-window">
+                <div className="myspace-header-title">education</div>
+                <div className="win98-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Inner Right Column */}
+            <div className="inner-right-col">
+              {/* About Me Window */}
+              <div className="win98-window">
+                <div className="myspace-header-title">about me :&lt;</div>
+                <div className="win98-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+              </div>
+
+
+              {/* Experience Window */}
+              <div className="win98-window">
+                <div className="myspace-header-title">experience</div>
+                <div className="win98-content">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
+
   );
 }
 
