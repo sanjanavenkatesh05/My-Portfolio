@@ -1,10 +1,20 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
 
 function MusicPlayer() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    // Attempt to autoplay on mount; handle browser autoplay policy rejections
+    if (audioRef.current) {
+      audioRef.current.play().catch(error => {
+        console.log("Autoplay prevented by browser:", error);
+        setIsPlaying(false);
+      });
+    }
+  }, []);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -18,7 +28,7 @@ function MusicPlayer() {
   return (
     <div className="music-player-window">
       <div className="music-player-title">
-        <span>WINAMP_CYBER.EXE</span>
+        <span>MY_MUSIC.EXE</span>
         <div className="win98-title-buttons">
           <button className="win98-title-btn">
             <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
@@ -32,13 +42,17 @@ function MusicPlayer() {
         <div className="music-logo">
           🎵
         </div>
-        <div className="music-display">
-          {isPlaying ? "▶ PLAYING: Takeshi Abo" : "■ STOPPED"}
+        <div className="music-display" style={{ padding: '0 5px', display: 'flex', alignItems: 'center' }}>
+          {isPlaying ? (
+            <marquee scrollamount="4">▶ PLAYING: Takeshi Abo - LEASE</marquee>
+          ) : (
+            "■ STOPPED"
+          )}
         </div>
         <button className="music-btn" onClick={togglePlay}>
           {isPlaying ? '⏸' : '▶'}
         </button>
-        <audio ref={audioRef} src={songFile} loop />
+        <audio ref={audioRef} src={songFile} autoPlay loop onPlay={() => setIsPlaying(true)} onPause={() => setIsPlaying(false)} />
       </div>
     </div>
   );
@@ -87,17 +101,15 @@ function Home() {
         </div>
       </div>
 
-      <MusicPlayer />
+
 
       {/* Main Content */}
-      <div className="win98-window main-content-window">
-        <div className="win98-title-bar">
-          <span>HOME.EXE</span>
-        </div>
-        <div className="win98-content">
-          <h1>Welcome to my cyber space</h1>
-          <p>This is my Y2K MySpace-inspired portfolio. Navigate using the buttons above.</p>
-          <img src="https://media.giphy.com/media/l41lSLto3wzRoG9O0/giphy.gif" alt="retro computer" width="300" style={{ border: '2px solid #ff33ff' }} />
+      <div className="right-column">
+        <MusicPlayer />
+        <div className="win98-window main-content-window">
+          <div className="win98-title-bar">
+            <span>HOME.EXE</span>
+          </div>
 
         </div>
       </div>

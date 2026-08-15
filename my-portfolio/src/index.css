@@ -232,8 +232,14 @@ a:hover {
   margin: 0;
 }
 
-.main-content-window {
+.right-column {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-content-window {
   margin: 0;
 }
 
