@@ -494,7 +494,7 @@ function Home() {
                 <div className="myspace-header-title">about me :&lt;</div>
                 <div className="win98-content about-me-content">
                   <p>
-                    Hi, I&apos;m <strong>Sanjana</strong> — a 3rd-year <strong>Computer Science Engineering</strong> student minoring in <strong>VLSI</strong> at RNS Institute of Technology.
+                    Hi, I&apos;m <strong>Sanjana</strong> — a senior studying  <strong>Computer Science Engineering</strong> and minoring in <strong>VLSI</strong> at RNS Institute of Technology.
                   </p>
                   <p>
                     I enjoy building across the full stack — from scalable web and backend applications all the way down to low-level hardware systems.
