@@ -1,4 +1,48 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { useState, useRef } from 'react';
+import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
+
+function MusicPlayer() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const togglePlay = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <div className="music-player-window">
+      <div className="music-player-title">
+        <span>WINAMP_CYBER.EXE</span>
+        <div className="win98-title-buttons">
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+          </button>
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+          </button>
+        </div>
+      </div>
+      <div className="music-player-controls">
+        <div className="music-logo">
+          🎵
+        </div>
+        <div className="music-display">
+          {isPlaying ? "▶ PLAYING: Takeshi Abo" : "■ STOPPED"}
+        </div>
+        <button className="music-btn" onClick={togglePlay}>
+          {isPlaying ? '⏸' : '▶'}
+        </button>
+        <audio ref={audioRef} src={songFile} loop />
+      </div>
+    </div>
+  );
+}
 
 function Home() {
   return (
@@ -9,13 +53,13 @@ function Home() {
           <span>QUICK_LINKS.EXE</span>
           <div className="win98-title-buttons">
             <button className="win98-title-btn">
-              <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black"/></svg>
+              <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
             </button>
             <button className="win98-title-btn">
-              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black"/></svg>
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
             </button>
             <button className="win98-title-btn">
-              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black"/></svg>
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
             </button>
           </div>
         </div>
@@ -43,6 +87,8 @@ function Home() {
         </div>
       </div>
 
+      <MusicPlayer />
+
       {/* Main Content */}
       <div className="win98-window main-content-window">
         <div className="win98-title-bar">
@@ -52,6 +98,7 @@ function Home() {
           <h1>Welcome to my cyber space</h1>
           <p>This is my Y2K MySpace-inspired portfolio. Navigate using the buttons above.</p>
           <img src="https://media.giphy.com/media/l41lSLto3wzRoG9O0/giphy.gif" alt="retro computer" width="300" style={{ border: '2px solid #ff33ff' }} />
+
         </div>
       </div>
     </div>
@@ -65,7 +112,7 @@ function Contact() {
         <span>CONTACT.WRI</span>
         <div className="win98-title-buttons">
           <button className="win98-title-btn">
-            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black"/></svg>
+            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
           </button>
         </div>
       </div>

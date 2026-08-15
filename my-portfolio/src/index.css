@@ -150,6 +150,77 @@ a:hover {
   color: #ffffff;
 }
 
+.music-player-window {
+  margin-top: 20px;
+  background-color: #ff33ff;
+  border-top: 2px solid #ffccff;
+  border-left: 2px solid #ffccff;
+  border-right: 2px solid #990099;
+  border-bottom: 2px solid #990099;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.music-player-title {
+  background: #000;
+  color: #ff33ff;
+  padding: 3px 5px;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.music-player-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px;
+  background-color: #ff66ff;
+  border: 1px solid #990099;
+  margin-top: 5px;
+}
+
+.music-btn {
+  background-color: #ff33ff;
+  color: #000;
+  border-top: 2px solid #ffccff;
+  border-left: 2px solid #ffccff;
+  border-right: 2px solid #990099;
+  border-bottom: 2px solid #990099;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.music-btn:active {
+  border-top: 2px solid #990099;
+  border-left: 2px solid #990099;
+  border-right: 2px solid #ffccff;
+  border-bottom: 2px solid #ffccff;
+}
+
+.music-logo {
+  font-size: 20px;
+}
+
+.music-display {
+  background: #000;
+  color: #00ff00;
+  font-family: monospace;
+  padding: 5px 10px;
+  flex: 1;
+  border: 2px inset #ff33ff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .home-layout {
   display: flex;
   gap: 20px;
