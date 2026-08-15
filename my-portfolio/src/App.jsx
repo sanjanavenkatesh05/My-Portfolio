@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink, useNavigate } from 'react-router-dom';
 
 import { useState, useRef, useEffect, useMemo } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
@@ -343,8 +343,19 @@ function Home() {
               {/* About Me Window */}
               <div className="win98-window">
                 <div className="myspace-header-title">about me :&lt;</div>
-                <div className="win98-content">
-                  <p>Hi, I am Sanjana! I am a third year Computer Science Engineering student minoring in VLSI at RNS Institute of Technology. I love building things across the entire stack, from web applications all the way down to low level hardware systems.</p>
+                <div className="win98-content about-me-content">
+                  <p>
+                    Hi, I&apos;m <strong>Sanjana</strong> — a 3rd-year <strong>Computer Science Engineering</strong> student minoring in <strong>VLSI</strong> at RNS Institute of Technology.
+                  </p>
+                  <p>
+                    I enjoy building across the full stack — from scalable web and backend applications all the way down to low-level hardware systems.
+                  </p>
+                  <div className="about-focus-tags">
+                    <span className="edu-label">Focus:</span>
+                    <span className="tech-pill-badge">Backend Engineering</span>
+                    <span className="tech-pill-badge">AI Systems</span>
+                    <span className="tech-pill-badge">Distributed Systems</span>
+                  </div>
                 </div>
               </div>
 
@@ -352,35 +363,45 @@ function Home() {
               {/* Experience Window */}
               <div className="win98-window">
                 <div className="myspace-header-title">experience</div>
-                <div className="win98-content exp-content">
+                <div className="win98-content exp-compact-content">
 
-                  <div className="exp-entry">
-                    <p className="exp-company"> IEEE TechXcelerate</p>
-                    <div className="exp-meta">
-                      <span className="edu-label">Role</span><span>Software Developer Intern</span>
+                  {/* Experience 01 */}
+                  <div className="exp-compact-item">
+                    <div className="exp-compact-topline">
+                      <div className="exp-compact-title-group">
+                        <span className="exp-compact-org">IEEE TechXcelerate</span>
+                        <span className="exp-compact-divider">•</span>
+                        <span className="exp-compact-role">Software Developer Intern</span>
+                      </div>
+                      <div className="exp-compact-meta-right">
+                        <span className="exp-type-badge">INTERNSHIP</span>
+                        <span className="exp-compact-duration">June – October 2025</span>
+                      </div>
                     </div>
-                    <div className="exp-meta">
-                      <span className="edu-label">Duration</span><span>June – October 2025</span>
-                    </div>
-                    <ul className="star-list exp-list">
-                      <li>Focused on collaborative software development.</li>
-                      <li>Engineered a custom physics problem simulator.</li>
-                      <li>Built and integrated a retrieval pipeline utilizing text embeddings.</li>
+                    <ul className="star-list exp-compact-list">
+                      <li>Engineered a custom physics problem simulator through collaborative software development.</li>
+                      <li>Built and integrated an automated retrieval pipeline utilizing text embeddings.</li>
                     </ul>
                   </div>
 
-                  <div className="exp-entry">
-                    <p className="exp-company"> Samsung Innovation Campus</p>
-                    <div className="exp-meta">
-                      <span className="edu-label">Role</span><span>IoT Intern</span>
+                  <div className="exp-retro-divider"></div>
+
+                  {/* Experience 02 */}
+                  <div className="exp-compact-item">
+                    <div className="exp-compact-topline">
+                      <div className="exp-compact-title-group">
+                        <span className="exp-compact-org">Samsung Innovation Campus</span>
+                        <span className="exp-compact-divider">•</span>
+                        <span className="exp-compact-role">IoT Intern</span>
+                      </div>
+                      <div className="exp-compact-meta-right">
+                        <span className="exp-type-badge">INTERNSHIP</span>
+                        <span className="exp-compact-duration">Sept 2025 – Jul 2026</span>
+                      </div>
                     </div>
-                    <div className="exp-meta">
-                      <span className="edu-label">Duration</span><span>Sept 2025 – Jul 2026</span>
-                    </div>
-                    <ul className="star-list exp-list">
-                      <li>Selected from a pool of over 800 applicants.</li>
-                      <li>Led a team of four to design and build a complete end-to-end IoT system.</li>
-                      <li>Developed a smart monitoring project running on a Raspberry Pi Pico.</li>
+                    <ul className="star-list exp-compact-list">
+                      <li>Selected from over 800 applicants; led a team of 4 to build an end-to-end IoT system.</li>
+                      <li>Developed an autonomous smart monitoring system running on a Raspberry Pi Pico.</li>
                     </ul>
                   </div>
 
@@ -1205,6 +1226,324 @@ function Contact() {
   );
 }
 
+const searchDatabase = [
+  // Projects
+  {
+    id: "proj-sentinel",
+    title: "Sentinel Bootloader Simulation",
+    category: "PROJECT",
+    route: "/projects",
+    desc: "x86 assembly & C BIOS bootloader matrix simulator",
+    tags: ["assembly", "c", "x86", "bootloader", "qemu", "os", "sentinel"],
+    icon: "https://win98icons.alexmeub.com/icons/png/console_prompt-0.png"
+  },
+  {
+    id: "proj-bleepbloop",
+    title: "BleepBloop Real-Time Chat",
+    category: "PROJECT",
+    route: "/projects",
+    desc: "Spring Boot + React + WebSockets (STOMP) instant messaging",
+    tags: ["spring boot", "react", "websockets", "stomp", "postgresql", "chat", "bleepbloop"],
+    icon: "https://win98icons.alexmeub.com/icons/png/network_cool_two_pcs-0.png"
+  },
+  {
+    id: "proj-simuphysics",
+    title: "SimuPhysics AI Simulator",
+    category: "PROJECT",
+    route: "/projects",
+    desc: "AI prompt-to-simulation engine using Node.js & Matter.js",
+    tags: ["matter.js", "gemini", "ai", "node.js", "physics", "simulation", "simuphysics"],
+    icon: "https://win98icons.alexmeub.com/icons/png/paint_file-2.png"
+  },
+  {
+    id: "proj-smartdesk",
+    title: "SmartDesk IoT Workstation",
+    category: "PROJECT",
+    route: "/projects",
+    desc: "ESP32 C++ TFT dashboard with LeetCode GraphQL & weather",
+    tags: ["esp32", "c++", "iot", "graphql", "tft", "leetcode", "smartdesk"],
+    icon: "https://win98icons.alexmeub.com/icons/png/modem-5.png"
+  },
+  // Tech Stack
+  {
+    id: "tech-cpp",
+    title: "C++ (Systems & Embedded)",
+    category: "TECH",
+    route: "/techstack",
+    desc: "Low-level system architecture & ESP32 firmware",
+    tags: ["c++", "cpp", "systems", "embedded", "firmware"],
+    icon: "https://win98icons.alexmeub.com/icons/png/chm-2.png"
+  },
+  {
+    id: "tech-python",
+    title: "Python (AI & Scripts)",
+    category: "TECH",
+    route: "/techstack",
+    desc: "Data processing, embeddings & backend automation",
+    tags: ["python", "ai", "ml", "embeddings", "scripts"],
+    icon: "https://win98icons.alexmeub.com/icons/png/chm-2.png"
+  },
+  {
+    id: "tech-react",
+    title: "React & JavaScript",
+    category: "TECH",
+    route: "/techstack",
+    desc: "Modern reactive frontends & SPAs",
+    tags: ["react", "javascript", "frontend", "web", "jsx"],
+    icon: "https://win98icons.alexmeub.com/icons/png/chm-2.png"
+  },
+  {
+    id: "tech-springboot",
+    title: "Spring Boot & Java",
+    category: "TECH",
+    route: "/techstack",
+    desc: "Robust enterprise REST APIs & WebSocket servers",
+    tags: ["spring boot", "java", "backend", "api", "jpa"],
+    icon: "https://win98icons.alexmeub.com/icons/png/chm-2.png"
+  },
+  {
+    id: "tech-vlsi",
+    title: "VLSI & Hardware Design",
+    category: "TECH",
+    route: "/techstack",
+    desc: "Digital circuit design & microcontroller integration",
+    tags: ["vlsi", "hardware", "circuits", "embedded"],
+    icon: "https://win98icons.alexmeub.com/icons/png/chm-2.png"
+  },
+  // Experience
+  {
+    id: "exp-techxcelerate",
+    title: "IEEE TechXcelerate Intern",
+    category: "EXP",
+    route: "/",
+    desc: "Software Developer Intern • Physics simulator & embeddings",
+    tags: ["ieee", "internship", "experience", "work", "techxcelerate"],
+    icon: "https://win98icons.alexmeub.com/icons/png/briefcase-2.png"
+  },
+  {
+    id: "exp-samsung",
+    title: "Samsung Innovation Campus",
+    category: "EXP",
+    route: "/",
+    desc: "IoT Intern • Raspberry Pi Pico monitoring system",
+    tags: ["samsung", "iot", "internship", "experience", "raspberry pi pico"],
+    icon: "https://win98icons.alexmeub.com/icons/png/briefcase-2.png"
+  },
+  // Education & About
+  {
+    id: "edu-rnsit",
+    title: "Education - RNSIT Bengaluru",
+    category: "ABOUT",
+    route: "/",
+    desc: "Computer Science Engineering (2023 - 2027), Minor in VLSI",
+    tags: ["education", "rnsit", "college", "btech", "degree", "undergrad", "about"],
+    icon: "https://win98icons.alexmeub.com/icons/png/certificate-0.png"
+  },
+  // Contact & Socials
+  {
+    id: "link-github",
+    title: "GitHub Profile",
+    category: "LINK",
+    externalUrl: "https://github.com/sanjanavenkatesh05",
+    desc: "Browse repositories, open-source code & commits",
+    tags: ["github", "code", "git", "repos", "projects"],
+    icon: "https://win98icons.alexmeub.com/icons/png/url1-2.png"
+  },
+  {
+    id: "link-linkedin",
+    title: "LinkedIn Profile",
+    category: "LINK",
+    externalUrl: "https://www.linkedin.com/in/sanjana-venkatesh-899251212/",
+    desc: "Professional networking & background",
+    tags: ["linkedin", "social", "network", "connect"],
+    icon: "https://win98icons.alexmeub.com/icons/png/url1-2.png"
+  },
+  {
+    id: "link-leetcode",
+    title: "LeetCode Profile",
+    category: "LINK",
+    externalUrl: "https://leetcode.com/u/sanjanavenkatesh05/",
+    desc: "Data structures & algorithms problem solving",
+    tags: ["leetcode", "dsa", "algorithms", "coding"],
+    icon: "https://win98icons.alexmeub.com/icons/png/url1-2.png"
+  },
+  {
+    id: "link-resume",
+    title: "Download Resume",
+    category: "FILE",
+    downloadUrl: "/resume.pdf",
+    desc: "Download official PDF resume",
+    tags: ["resume", "cv", "pdf", "download"],
+    icon: "https://win98icons.alexmeub.com/icons/png/notepad-0.png"
+  },
+  {
+    id: "page-contact",
+    title: "Contact Sanjana",
+    category: "PAGE",
+    route: "/contact",
+    desc: "Send a message or get in touch",
+    tags: ["contact", "email", "message", "reach"],
+    icon: "https://win98icons.alexmeub.com/icons/png/message_envelope_open-0.png"
+  }
+];
+
+function RetroSearchBar() {
+  const [query, setQuery] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const navigate = useNavigate();
+  const containerRef = useRef(null);
+
+  const results = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    return searchDatabase.filter(item => {
+      const matchTitle = item.title.toLowerCase().includes(q);
+      const matchCategory = item.category.toLowerCase().includes(q);
+      const matchDesc = item.desc.toLowerCase().includes(q);
+      const matchTags = item.tags.some(tag => tag.toLowerCase().includes(q));
+      return matchTitle || matchCategory || matchDesc || matchTags;
+    });
+  }, [query]);
+
+  const handleSelect = (item) => {
+    if (item.externalUrl) {
+      window.open(item.externalUrl, '_blank', 'noopener,noreferrer');
+    } else if (item.downloadUrl) {
+      const link = document.createElement('a');
+      link.href = item.downloadUrl;
+      link.download = "Sanjana_Venkatesh_Resume.pdf";
+      link.click();
+    } else if (item.route) {
+      navigate(item.route);
+    }
+    setIsOpen(false);
+    setQuery("");
+  };
+
+  const handleKeyDown = (e) => {
+    if (!isOpen || results.length === 0) {
+      if (e.key === "Enter" && results.length > 0) {
+        handleSelect(results[0]);
+      }
+      return;
+    }
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev + 1) % results.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((prev) => (prev - 1 + results.length) % results.length);
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (results[selectedIndex]) {
+        handleSelect(results[selectedIndex]);
+      }
+    } else if (e.key === "Escape") {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="search-bar-container" ref={containerRef}>
+      <div className="search-bar">
+        <img
+          src="https://win98icons.alexmeub.com/icons/png/search_file-0.png"
+          alt=""
+          className="search-icon-img"
+        />
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Find: C++, IoT, Projects..."
+          value={query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+            setIsOpen(true);
+            setSelectedIndex(0);
+          }}
+          onFocus={() => {
+            if (query.trim().length > 0) setIsOpen(true);
+          }}
+          onKeyDown={handleKeyDown}
+        />
+        {query && (
+          <button
+            type="button"
+            className="search-clear-btn"
+            onClick={() => {
+              setQuery("");
+              setIsOpen(false);
+            }}
+            title="Clear"
+          >
+            ✕
+          </button>
+        )}
+      </div>
+
+      {isOpen && query.trim().length > 0 && (
+        <div className="retro-search-dropdown">
+          <div className="search-dropdown-titlebar">
+            <div className="search-dropdown-title-left">
+              <img
+                src="https://win98icons.alexmeub.com/icons/png/search_file-0.png"
+                alt=""
+                className="search-dropdown-icon"
+              />
+              <span>FIND_FILES: &quot;{query}&quot;</span>
+            </div>
+            <span className="search-dropdown-count">{results.length} found</span>
+          </div>
+
+          <div className="search-results-list">
+            {results.length > 0 ? (
+              results.map((item, idx) => (
+                <div
+                  key={item.id}
+                  className={`search-result-item ${idx === selectedIndex ? 'selected' : ''}`}
+                  onClick={() => handleSelect(item)}
+                  onMouseEnter={() => setSelectedIndex(idx)}
+                >
+                  <img src={item.icon} alt="" className="search-item-icon" />
+                  <div className="search-item-info">
+                    <div className="search-item-top">
+                      <span className="search-item-title">{item.title}</span>
+                      <span className="search-item-badge">[{item.category}]</span>
+                    </div>
+                    <span className="search-item-desc">{item.desc}</span>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <div className="search-empty-state">
+                <span>0 matching system records found for &quot;{query}&quot;</span>
+              </div>
+            )}
+          </div>
+
+          <div className="search-dropdown-footer">
+            <span>[↑/↓] Navigate</span>
+            <span>[ENTER] Open</span>
+            <span>[ESC] Close</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
@@ -1215,9 +1554,7 @@ function App() {
             <span className="pixel-heart">♥</span>
           </div>
 
-          <div className="search-bar">
-            <input type="text" className="search-input" placeholder="Search the web..." />
-          </div>
+          <RetroSearchBar />
 
           <nav className="nav-buttons">
 
