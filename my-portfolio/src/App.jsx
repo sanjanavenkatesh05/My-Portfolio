@@ -8,9 +8,15 @@ function Home() {
         <div className="win98-title-bar">
           <span>QUICK_LINKS.EXE</span>
           <div className="win98-title-buttons">
-            <button className="win98-title-btn">_</button>
-            <button className="win98-title-btn">[]</button>
-            <button className="win98-title-btn">X</button>
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black"/></svg>
+            </button>
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black"/></svg>
+            </button>
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black"/></svg>
+            </button>
           </div>
         </div>
         <div className="win98-content quick-links-content">
@@ -57,7 +63,11 @@ function Contact() {
     <div className="win98-window">
       <div className="win98-title-bar">
         <span>CONTACT.WRI</span>
-        <span>X</span>
+        <div className="win98-title-buttons">
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black"/></svg>
+          </button>
+        </div>
       </div>
       <div className="win98-content">
         <h2>Hit me up!</h2>
@@ -83,9 +93,18 @@ function App() {
           </div>
 
           <nav className="nav-buttons">
-            <Link to="/" className="win98-btn">Home</Link>
-            <a href="/resume.pdf" download className="win98-btn">Resume</a>
-            <Link to="/contact" className="win98-btn">Contact</Link>
+            <Link to="/" className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" alt="Home" style={{ width: '16px', marginRight: '5px' }} />
+              Home
+            </Link>
+            <a href="/resume.pdf" download className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="Resume" style={{ width: '16px', marginRight: '5px' }} />
+              Resume
+            </a>
+            <Link to="/contact" className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="https://win98icons.alexmeub.com/icons/png/message_envelope_open-0.png" alt="Contact" style={{ width: '16px', marginRight: '5px' }} />
+              Contact
+            </Link>
           </nav>
         </header>
 
