@@ -147,6 +147,7 @@ p:last-child {
 
 /* Header / Toolbar Container */
 .header-container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -157,6 +158,10 @@ p:last-child {
   border-right: 2px solid #5a0033;
   border-bottom: 2px solid #5a0033;
   box-shadow: 2px 2px 0px #000, 0 0 16px rgba(255, 51, 204, 0.22);
+}
+
+.mobile-hamburger-btn {
+  display: none !important;
 }
 
 
@@ -487,8 +492,8 @@ p:last-child {
 .nav-buttons {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 6px;
+  flex-wrap: nowrap;
 }
 
 .win98-nav-icon {
@@ -2815,20 +2820,21 @@ ul.star-list li::marker {
 
   /* === HEADER / TOOLBAR === */
   .header-container {
-    flex-wrap: wrap;
-    gap: 6px;
-    padding: 6px 8px;
+    flex-wrap: nowrap;
+    gap: 8px;
+    padding: 6px 10px;
   }
 
   .logo-container {
     font-size: 1rem;
     gap: 6px;
+    flex-shrink: 0;
   }
 
   .search-bar-container {
-    order: 3;
-    width: 100%;
-    margin: 4px 0 0 0;
+    flex: 1;
+    margin: 0 4px;
+    min-width: 0;
   }
 
   .search-bar {
@@ -2839,19 +2845,66 @@ ul.star-list li::marker {
     display: none;
   }
 
-  /* Nav buttons: horizontal scroll strip */
-  .nav-buttons {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    gap: 6px;
-    padding-bottom: 4px;
-    scrollbar-width: none;
+  /* Hamburger Menu Button */
+  .mobile-hamburger-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-left: auto;
   }
 
-  .nav-buttons::-webkit-scrollbar {
+  .hamburger-icon {
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  /* Hidden nav by default on mobile */
+  .nav-buttons {
     display: none;
   }
+
+  /* Win98 Dropdown Menu Overlay when Hamburger is Toggled */
+  .nav-buttons.mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 6px;
+    left: 6px;
+    z-index: 9999;
+    background: #0d0018;
+    border-top: 2px solid var(--border-pink-light);
+    border-left: 2px solid var(--border-pink-light);
+    border-right: 2px solid #5a0033;
+    border-bottom: 2px solid #5a0033;
+    box-shadow: 2px 2px 0px #000, 0 8px 24px rgba(0, 0, 0, 0.95);
+    padding: 8px;
+    gap: 6px;
+    animation: menuSlideDown 0.15s ease-out;
+  }
+
+  .nav-buttons.mobile-open .win98-btn {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 8px 12px;
+    font-size: 13px;
+    box-sizing: border-box;
+  }
+
+@keyframes menuSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
   .win98-btn {
     font-size: 11.5px;

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link, NavLink, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 
 import { useState, useRef, useEffect, useMemo } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
@@ -1744,6 +1744,54 @@ function ResumeViewerModal({ isOpen, onClose }) {
   );
 }
 
+function HeaderNav({ onOpenResume }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  // Auto-close mobile menu when route changes
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
+  return (
+    <>
+      {/* Mobile Hamburger Toggle Button */}
+      <button
+        className={`win98-btn mobile-hamburger-btn ${menuOpen ? 'active' : ''}`}
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle navigation menu"
+      >
+        <span className="hamburger-icon">☰</span>
+        <span>{menuOpen ? 'Close' : 'Menu'}</span>
+      </button>
+
+      {/* Navigation Buttons (Horizontal on Desktop, Dropdown on Mobile) */}
+      <nav className={`nav-buttons ${menuOpen ? 'mobile-open' : ''}`}>
+        <NavLink to="/" end className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+          <Win98ComputerExplorerIcon size={16} className="win98-nav-icon" />
+          <span>Home</span>
+        </NavLink>
+        <NavLink to="/projects" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+          <Win98FolderIcon open={true} size={16} className="win98-nav-icon" />
+          <span>My Projects</span>
+        </NavLink>
+        <NavLink to="/techstack" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+          <Win98HelpBookIcon size={16} className="win98-nav-icon" />
+          <span>My Techstack</span>
+        </NavLink>
+        <button onClick={() => { onOpenResume(); setMenuOpen(false); }} className="win98-btn" style={{ cursor: 'pointer' }}>
+          <Win98DocIcon size={16} className="win98-nav-icon" />
+          <span>Resume</span>
+        </button>
+        <NavLink to="/contact" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`} onClick={() => setMenuOpen(false)}>
+          <Win98EnvelopeIcon size={16} className="win98-nav-icon" />
+          <span>Contact</span>
+        </NavLink>
+      </nav>
+    </>
+  );
+}
+
 function App() {
   const [showResume, setShowResume] = useState(false);
 
@@ -1764,30 +1812,7 @@ function App() {
 
           <RetroSearchBar />
 
-          <nav className="nav-buttons">
-
-
-            <NavLink to="/" end className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
-              <Win98ComputerExplorerIcon size={16} className="win98-nav-icon" />
-              <span>Home</span>
-            </NavLink>
-            <NavLink to="/projects" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
-              <Win98FolderIcon open={true} size={16} className="win98-nav-icon" />
-              <span>My Projects</span>
-            </NavLink>
-            <NavLink to="/techstack" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
-              <Win98HelpBookIcon size={16} className="win98-nav-icon" />
-              <span>My Techstack</span>
-            </NavLink>
-            <button onClick={() => setShowResume(true)} className="win98-btn" style={{ cursor: 'pointer' }}>
-              <Win98DocIcon size={16} className="win98-nav-icon" />
-              <span>Resume</span>
-            </button>
-            <NavLink to="/contact" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
-              <Win98EnvelopeIcon size={16} className="win98-nav-icon" />
-              <span>Contact</span>
-            </NavLink>
-          </nav>
+          <HeaderNav onOpenResume={() => setShowResume(true)} />
         </header>
 
 
