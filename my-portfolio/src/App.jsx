@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useState, useRef, useEffect } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
+import './App.css';
 
 function MusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(true);
@@ -61,42 +62,77 @@ function MusicPlayer() {
 function Home() {
   return (
     <div className="home-layout">
-      {/* Quick Links Sidebar */}
-      <div className="win98-window quick-links-sidebar">
-        <div className="win98-title-bar">
-          <span>QUICK_LINKS.EXE</span>
-          <div className="win98-title-buttons">
-            <button className="win98-title-btn">
-              <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
-            </button>
-            <button className="win98-title-btn">
-              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
-            </button>
-            <button className="win98-title-btn">
-              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
-            </button>
+      {/* Left Column Sidebar */}
+      <div className="left-column">
+        {/* Quick Links Sidebar */}
+        <div className="win98-window quick-links-sidebar">
+          <div className="win98-title-bar">
+            <span>QUICK_LINKS.EXE</span>
+            <div className="win98-title-buttons">
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+              </button>
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+              </button>
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+              </button>
+            </div>
+          </div>
+          <div className="win98-content quick-links-content">
+            <div className="link-item">
+              <span className="logo-placeholder">in</span>
+              <a href="#" className="win98-btn">LinkedIn</a>
+            </div>
+            <div className="link-item">
+              <span className="logo-placeholder">{'<>'}</span>
+              <a href="#" className="win98-btn">GitHub</a>
+            </div>
+            <div className="link-item">
+              <span className="logo-placeholder">ig</span>
+              <a href="#" className="win98-btn">Instagram</a>
+            </div>
+            <div className="link-item">
+              <span className="logo-placeholder">lc</span>
+              <a href="#" className="win98-btn">LeetCode</a>
+            </div>
+            <div className="link-item">
+              <span className="logo-placeholder">cc</span>
+              <a href="#" className="win98-btn">CodeChef</a>
+            </div>
           </div>
         </div>
-        <div className="win98-content quick-links-content">
-          <div className="link-item">
-            <span className="logo-placeholder">in</span>
-            <a href="#" className="win98-btn">LinkedIn</a>
+
+        {/* Open Source Window */}
+        <div className="win98-window open-source-window">
+          <div className="win98-title-bar">
+            <span>OPEN_SOURCE.EXE</span>
+            <div className="win98-title-buttons">
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+              </button>
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+              </button>
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+              </button>
+            </div>
           </div>
-          <div className="link-item">
-            <span className="logo-placeholder">{'<>'}</span>
-            <a href="#" className="win98-btn">GitHub</a>
-          </div>
-          <div className="link-item">
-            <span className="logo-placeholder">ig</span>
-            <a href="#" className="win98-btn">Instagram</a>
-          </div>
-          <div className="link-item">
-            <span className="logo-placeholder">lc</span>
-            <a href="#" className="win98-btn">LeetCode</a>
-          </div>
-          <div className="link-item">
-            <span className="logo-placeholder">cc</span>
-            <a href="#" className="win98-btn">CodeChef</a>
+          <div className="win98-content open-source-content">
+            <div className="repo-item">
+              <span className="repo-title">📁 physics-sim-engine</span>
+              <a href="https://github.com/placeholder/physics-sim-engine" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/physics-sim</a>
+            </div>
+            <div className="repo-item">
+              <span className="repo-title">📁 decentralized-sub-manager</span>
+              <a href="https://github.com/placeholder/decentralized-sub-manager" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/sub-manager</a>
+            </div>
+            <div className="repo-item">
+              <span className="repo-title">📁 pico-smart-monitor</span>
+              <a href="https://github.com/placeholder/pico-smart-monitor" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/pico-monitor</a>
+            </div>
           </div>
         </div>
       </div>
@@ -114,25 +150,29 @@ function Home() {
             {/* Inner Left Column */}
             <div className="inner-left-col">
               {/* Me Window */}
+              <span className="myspace-header-title" style={{ fontFamily: '"Brush Script MT", "Lucida Handwriting", cursive', fontSize: '5em', textDecoration: 'underline', color: '#ff33ff', backgroundColor: 'transparent' }}> About me </span>
               <div className="win98-window">
-                <div className="myspace-header-title">me</div>
-                <div className="win98-content myspace-me-info">
-                  <img src="https://placehold.co/200x200/magenta/white?text=Profile+Pic" alt="me" className="myspace-pic" />
-                  <span>name: amber</span>
-                  <span>13/female</span>
-                  <span>last login: 04/03/2010</span>
+                <div className="myspace-header-title">me.jpg</div>
+                <div className="win98-content myspace-me-info" style={{ padding: 0 }}>
+                  <img src="./src/assets/digicamfx-original-2026-08-15T10-55-28.jpg" alt="me" className="myspace-pic" />
                 </div>
               </div>
+
 
 
 
               {/* Education Window */}
               <div className="win98-window">
                 <div className="myspace-header-title">education</div>
-                <div className="win98-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+                <div className="win98-content edu-content">
+                  <p className="edu-college">RNS Institute of Technology, Bengaluru (2023 - 2027)</p>
+
+                  <div className="edu-row"><span className="edu-label">Degree</span><span>Bachelor of Engineering in Computer Science</span></div>
+                  <div className="edu-row"><span className="edu-label">Minor</span><span>VLSI</span></div>
+                  <div className="edu-row"><span className="edu-label">Status</span><span>Undergraduate Student</span></div>
                 </div>
               </div>
+
             </div>
 
             {/* Inner Right Column */}
@@ -141,7 +181,7 @@ function Home() {
               <div className="win98-window">
                 <div className="myspace-header-title">about me :&lt;</div>
                 <div className="win98-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  <p>Hi, I am Sanjana! I am a third year Computer Science Engineering student minoring in VLSI at RNS Institute of Technology. I love building things across the entire stack, from web applications all the way down to low level hardware systems.</p>
                 </div>
               </div>
 
@@ -149,8 +189,38 @@ function Home() {
               {/* Experience Window */}
               <div className="win98-window">
                 <div className="myspace-header-title">experience</div>
-                <div className="win98-content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+                <div className="win98-content exp-content">
+
+                  <div className="exp-entry">
+                    <p className="exp-company"> IEEE TechXcelerate</p>
+                    <div className="exp-meta">
+                      <span className="edu-label">Role</span><span>Software Developer Intern</span>
+                    </div>
+                    <div className="exp-meta">
+                      <span className="edu-label">Duration</span><span>June – October 2025</span>
+                    </div>
+                    <ul className="star-list exp-list">
+                      <li>Focused on collaborative software development.</li>
+                      <li>Engineered a custom physics problem simulator.</li>
+                      <li>Built and integrated a retrieval pipeline utilizing text embeddings.</li>
+                    </ul>
+                  </div>
+
+                  <div className="exp-entry">
+                    <p className="exp-company"> Samsung Innovation Campus</p>
+                    <div className="exp-meta">
+                      <span className="edu-label">Role</span><span>IoT Intern</span>
+                    </div>
+                    <div className="exp-meta">
+                      <span className="edu-label">Duration</span><span>Sept 2025 – Jul 2026</span>
+                    </div>
+                    <ul className="star-list exp-list">
+                      <li>Selected from a pool of over 800 applicants.</li>
+                      <li>Led a team of four to design and build a complete end-to-end IoT system.</li>
+                      <li>Developed a smart monitoring project running on a Raspberry Pi Pico.</li>
+                    </ul>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -190,7 +260,6 @@ function App() {
         <header className="header-container">
           <div className="logo-container">
             <span className="pixel-heart">♥</span>
-            <span>MYSPACE_PORTFOLIO</span>
           </div>
 
           <div className="search-bar">
