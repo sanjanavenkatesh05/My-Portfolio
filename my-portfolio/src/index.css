@@ -2723,3 +2723,604 @@ ul.star-list li::marker {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* =========================================
+   RESPONSIVE: TABLET (max-width: 768px)
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* === GLOBAL === */
+  .page-container {
+    padding: 10px 8px;
+  }
+
+  .win98-window {
+    margin: 10px 4px;
+  }
+
+  /* === HEADER / TOOLBAR === */
+  .header-container {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px 8px;
+  }
+
+  .logo-container {
+    font-size: 1rem;
+    gap: 6px;
+  }
+
+  .search-bar-container {
+    order: 3;
+    width: 100%;
+    margin: 4px 0 0 0;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .header-telemetry-badge {
+    display: none;
+  }
+
+  /* Nav buttons: horizontal scroll strip */
+  .nav-buttons {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 6px;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+
+  .nav-buttons::-webkit-scrollbar {
+    display: none;
+  }
+
+  .win98-btn {
+    font-size: 11.5px;
+    padding: 5px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* === HOME LAYOUT: Stack columns vertically === */
+  .home-layout {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .left-column {
+    flex: 1 1 auto;
+    width: 100%;
+    order: 2;
+    gap: 16px;
+  }
+
+  .right-column {
+    flex: 1 1 auto;
+    width: 100%;
+    order: 1;
+    gap: 16px;
+  }
+
+  /* === MYSPACE INNER LAYOUT: Stack columns === */
+  .inner-myspace-layout {
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px 10px;
+  }
+
+  .inner-left-col {
+    flex: 1 1 auto;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .inner-right-col {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  .myspace-header-title {
+    font-size: 2.2em !important;
+  }
+
+  /* Main content window */
+  .main-content-window,
+  .outer-app-window {
+    margin: 0;
+  }
+
+  .win98-content {
+    padding: 14px 12px;
+    min-height: 120px;
+  }
+
+  /* === PHOTO VIEWER === */
+  .photo-frame-recess {
+    max-height: 260px;
+  }
+
+  .myspace-pic {
+    max-height: 260px;
+  }
+
+  /* === CONTACT GRID: Stack to single column === */
+  .myspace-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* === EDUCATION ROWS === */
+  .edu-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .edu-label {
+    min-width: unset;
+  }
+
+  /* === EXPERIENCE === */
+  .exp-compact-topline {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .exp-compact-meta-right {
+    margin-left: 0;
+  }
+
+  /* === PROJECTS SHOWCASE === */
+  .projects-showcase-layout {
+    flex-direction: column;
+    gap: 16px;
+    padding: 10px 0;
+  }
+
+  .project-main-window {
+    flex: 1 1 auto;
+    max-width: 100%;
+    width: 100%;
+    transform: none;
+  }
+
+  .project-side-window {
+    flex: 1 1 auto;
+    max-width: 100%;
+    width: 100%;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .tech-side-window {
+    margin-right: 0 !important;
+  }
+
+  .tech-side-window .project-side-content {
+    padding: 16px 14px;
+  }
+
+  .details-side-window {
+    margin-left: 0 !important;
+  }
+
+  .details-side-window .project-side-content {
+    padding: 16px 14px;
+  }
+
+  .project-display-card {
+    aspect-ratio: 4 / 3;
+    padding: 18px;
+  }
+
+  .card-center-title {
+    font-size: 1.6rem;
+    letter-spacing: 1.5px;
+  }
+
+  /* Carousel controls: bigger tap targets */
+  .win98-carousel-nav-btn {
+    width: 48px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .carousel-indicator-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* === TECH STACK EXPLORER === */
+  .techstack-page {
+    padding: 8px 4px 30px 4px;
+  }
+
+  .techstack-title-row h1 {
+    font-size: 1.6rem;
+  }
+
+  .techstack-desktop-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Explorer split: stack tree above grid */
+  .explorer-split-container {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .explorer-tree-view {
+    flex: 0 0 auto;
+    border-right: none;
+    border-bottom: 2px solid #808080;
+    max-height: 180px;
+    overflow-y: auto;
+  }
+
+  .explorer-grid-view {
+    padding: 12px 8px;
+  }
+
+  .folders-grid {
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 12px 8px;
+  }
+
+  /* File details grid */
+  .files-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 12px 8px;
+  }
+
+  /* Win98 toolbar: scroll horizontally */
+  .win98-toolbar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+
+  .win98-tool-btn {
+    min-width: 40px;
+    padding: 3px 6px;
+    flex-shrink: 0;
+  }
+
+  /* Address bar */
+  .win98-address-bar-row {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .address-input-box {
+    min-width: 0;
+  }
+
+  /* How to explore card */
+  .how-to-explore-card {
+    padding: 10px 12px;
+  }
+
+  /* Status bar */
+  .win98-statusbar {
+    flex-wrap: wrap;
+  }
+
+  .statusbar-pane {
+    min-width: 0;
+    font-size: 10px;
+  }
+
+  /* Music player */
+  .music-player-controls {
+    gap: 8px;
+    padding: 6px 8px;
+  }
+
+  /* Search dropdown */
+  .retro-search-dropdown {
+    width: calc(100vw - 24px);
+    max-width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Visualizers in project cards */
+  .anim-visualizer-container {
+    height: 150px;
+  }
+
+  /* Win95 preview */
+  .win95-preview-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE: PHONE (max-width: 480px)
+   ========================================= */
+@media (max-width: 480px) {
+
+  body {
+    font-size: 14px;
+    line-height: 1.55;
+    background-size: 24px 24px;
+  }
+
+  /* === GLOBAL === */
+  .page-container {
+    padding: 6px 4px;
+  }
+
+  .win98-window {
+    margin: 6px 2px;
+    padding: 1px;
+  }
+
+  /* === HEADER === */
+  .header-container {
+    padding: 4px 6px;
+  }
+
+  .logo-container {
+    font-size: 0.9rem;
+  }
+
+  .pixel-heart {
+    font-size: 18px;
+  }
+
+  /* Nav buttons: compact */
+  .win98-btn {
+    font-size: 10.5px;
+    padding: 4px 8px;
+  }
+
+  /* === HOME CONTENT === */
+  .inner-myspace-layout {
+    padding: 8px 6px;
+    gap: 12px;
+  }
+
+  .myspace-header-title {
+    font-size: 1.7em !important;
+  }
+
+  .win98-content {
+    padding: 10px 8px;
+    min-height: 80px;
+  }
+
+  .win98-title-bar {
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+
+  /* Photo */
+  .photo-frame-recess {
+    max-height: 220px;
+  }
+
+  .myspace-pic {
+    max-height: 220px;
+  }
+
+  .photo-meta-bar {
+    font-size: 9.5px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  /* About focus tags */
+  .about-focus-tags {
+    gap: 6px;
+  }
+
+  /* === EXPERIENCE === */
+  .exp-compact-content {
+    padding: 8px 10px !important;
+  }
+
+  .exp-compact-org {
+    font-size: 0.92rem;
+  }
+
+  .exp-compact-list {
+    font-size: 0.85rem;
+    padding-left: 12px;
+  }
+
+  /* === SIDEBAR WINDOWS === */
+  .quick-links-sidebar > .win98-content,
+  .open-source-window > .win98-content {
+    padding: 10px 8px;
+  }
+
+  .link-item {
+    gap: 8px;
+  }
+
+  .logo-placeholder {
+    width: 26px;
+    height: 26px;
+    font-size: 10px;
+  }
+
+  /* Terminal */
+  .terminal-log {
+    font-size: 10px;
+  }
+
+  /* Music player */
+  .music-player-controls {
+    gap: 6px;
+    padding: 4px 6px;
+    flex-wrap: wrap;
+  }
+
+  .music-display {
+    font-size: 10.5px;
+    min-width: 0;
+  }
+
+  .music-btn {
+    padding: 3px 6px;
+  }
+
+  /* === PROJECTS === */
+  .projects-page-container {
+    padding: 6px 4px;
+    gap: 16px;
+  }
+
+  .project-display-card {
+    aspect-ratio: 3 / 2;
+    padding: 14px;
+  }
+
+  .card-center-title {
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+  }
+
+  .card-subtitle-text {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+
+  .view-project-btn {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .project-title-name {
+    font-size: 1.3rem;
+  }
+
+  .project-desc-text {
+    font-size: 0.9rem;
+  }
+
+  .tech-pill-badge {
+    font-size: 0.78rem;
+    padding: 4px 8px;
+  }
+
+  .projects-carousel-controls {
+    gap: 10px;
+  }
+
+  .win98-carousel-nav-btn {
+    width: 44px;
+    height: 40px;
+  }
+
+  /* Visualizers */
+  .anim-visualizer-container {
+    height: 130px;
+    padding: 6px 8px;
+  }
+
+  /* === TECH STACK === */
+  .techstack-title-row h1 {
+    font-size: 1.3rem;
+  }
+
+  .techstack-subtitle {
+    font-size: 0.85rem;
+  }
+
+  .techstack-header-icon {
+    font-size: 1.6rem;
+  }
+
+  .explorer-tree-view {
+    max-height: 140px;
+  }
+
+  .folders-grid {
+    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+    gap: 10px 6px;
+  }
+
+  .files-grid {
+    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+    gap: 10px 6px;
+  }
+
+  .folder-icon-img,
+  .file-icon-img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .folder-grid-label,
+  .file-grid-label {
+    font-size: 10px;
+  }
+
+  .how-to-explore-card {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .how-to-item {
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  /* File preview */
+  .file-preview-body {
+    padding: 10px;
+    min-height: 150px;
+  }
+
+  .win95-icon-recess {
+    width: 40px;
+    height: 40px;
+  }
+
+  .win95-tech-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .win95-tech-title {
+    font-size: 1.1rem;
+  }
+
+  /* === EDUCATION === */
+  .edu-college {
+    font-size: 1rem;
+  }
+
+  .edu-row {
+    font-size: 0.88rem;
+  }
+
+  /* === ERROR OVERLAY === */
+  .error-overlay {
+    min-width: 200px;
+    max-width: calc(100vw - 40px);
+  }
+
+  /* === TITLE BUTTONS: Bigger tap targets === */
+  .win98-title-btn {
+    width: 20px;
+    height: 18px;
+  }
+
+  /* Search result items: comfortable tap */
+  .search-result-item {
+    padding: 8px 10px;
+  }
+}
