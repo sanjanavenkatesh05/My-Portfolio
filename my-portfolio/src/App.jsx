@@ -303,115 +303,140 @@ function Projects() {
 
   return (
     <div className="projects-page-container">
-      <div className="projects-showcase-layout">
-        {/* Left Window: Tech Stack (Peeking from behind) */}
-        <div className="win98-window project-side-window tech-side-window">
-          <div className="win98-title-bar">
-            <span>TECH_STACK.EXE</span>
-            <div className="win98-title-buttons">
-              <button className="win98-title-btn">
-                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
-              </button>
+      <div className="win98-window outer-app-window">
+        <div className="win98-title-bar">
+          <div className="win98-title-left">
+            <img 
+              src="https://win98icons.alexmeub.com/icons/png/briefcase-2.png" 
+              alt="" 
+              className="win98-title-img" 
+            />
+            <span>PROJECTS.EXE</span>
+          </div>
+          <div className="win98-title-buttons">
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+            </button>
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+            </button>
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+            </button>
+          </div>
+        </div>
+        <div className="win98-content outer-app-content">
+          <div className="projects-showcase-layout">
+            {/* Left Window: Tech Stack (Peeking from behind) */}
+            <div className="win98-window project-side-window tech-side-window">
+              <div className="win98-title-bar">
+                <span>TECH_STACK.EXE</span>
+                <div className="win98-title-buttons">
+                  <button className="win98-title-btn">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                  </button>
+                </div>
+              </div>
+              <div className="win98-content project-side-content">
+                <span className="project-side-tag">TECH STACK</span>
+                <h3 className="project-side-heading">Technologies</h3>
+                <div className="tech-badge-container">
+                  {currentProject.tech.map((t) => (
+                    <span key={t} className="tech-pill-badge">{t}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Middle Big Window: Clickable Project Card (Foreground) */}
+            <div className="win98-window project-main-window">
+              <div className="win98-title-bar">
+                <span>PROJECT_VIEWER.EXE [{currentProject.id} / 04]</span>
+                <div className="win98-title-buttons">
+                  <button className="win98-title-btn">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+                  </button>
+                  <button className="win98-title-btn">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+                  </button>
+                  <button className="win98-title-btn">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                  </button>
+                </div>
+              </div>
+              <div className="win98-content project-main-content">
+                <a
+                  href={currentProject.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="project-display-card"
+                  title={`Open ${currentProject.name} (External Link)`}
+                >
+                  <div className="view-project-btn">
+                    VIEW PROJECT ↗
+                  </div>
+
+                  <div className="card-wireframe-bg">
+                    <svg viewBox="0 0 400 400" className="wireframe-svg">
+                      <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(255, 51, 255, 0.2)" strokeWidth="1.5" />
+                      <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(255, 51, 255, 0.15)" strokeWidth="1" strokeDasharray="5 5" />
+                      <polygon points="200,30 370,200 200,370 30,200" fill="none" stroke="rgba(255, 51, 255, 0.3)" strokeWidth="1.5" />
+                      <polygon points="200,60 340,200 200,340 60,200" fill="none" stroke="rgba(255, 51, 255, 0.15)" strokeWidth="1" />
+                    </svg>
+                  </div>
+
+                  <div className="card-center-title" style={{ color: currentProject.color }}>
+                    {currentProject.displayTitle}
+                  </div>
+
+                  <div className="card-bottom-info">
+                    <span className="card-subtitle-text">{currentProject.subtitle}</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* Right Window: Description & Details (Peeking from behind) */}
+            <div className="win98-window project-side-window details-side-window">
+              <div className="win98-title-bar">
+                <span>DETAILS.TXT</span>
+                <div className="win98-title-buttons">
+                  <button className="win98-title-btn">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                  </button>
+                </div>
+              </div>
+              <div className="win98-content project-side-content">
+                <div className="project-counter">{currentProject.id} / 04</div>
+                <h2 className="project-title-name">{currentProject.name}</h2>
+                <p className="project-desc-text">{currentProject.description}</p>
+                <div className="project-category-tag">
+                  <span className="edu-label">Type:</span> {currentProject.category}
+                </div>
+              </div>
             </div>
           </div>
-          <div className="win98-content project-side-content">
-            <span className="project-side-tag">TECH STACK</span>
-            <h3 className="project-side-heading">Technologies</h3>
-            <div className="tech-badge-container">
-              {currentProject.tech.map((t) => (
-                <span key={t} className="tech-pill-badge">{t}</span>
+
+          {/* Circular Loop Navigation Controls */}
+          <div className="projects-carousel-controls">
+            <button className="win98-carousel-nav-btn" onClick={handlePrev} title="Previous Project">
+              ←
+            </button>
+            <div className="carousel-indicators">
+              {projectsData.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`carousel-indicator-dot ${idx === currentIndex ? 'active' : ''}`}
+                  onClick={() => setCurrentIndex(idx)}
+                  title={`Go to project ${idx + 1}`}
+                />
               ))}
             </div>
+            <button className="win98-carousel-nav-btn" onClick={handleNext} title="Next Project">
+              →
+            </button>
           </div>
         </div>
-
-        {/* Middle Big Window: Clickable Project Card (Foreground) */}
-        <div className="win98-window project-main-window">
-          <div className="win98-title-bar">
-            <span>PROJECT_VIEWER.EXE [{currentProject.id} / 04]</span>
-            <div className="win98-title-buttons">
-              <button className="win98-title-btn">
-                <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
-              </button>
-              <button className="win98-title-btn">
-                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
-              </button>
-              <button className="win98-title-btn">
-                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
-              </button>
-            </div>
-          </div>
-          <div className="win98-content project-main-content">
-            <a
-              href={currentProject.link}
-              target="_blank"
-              rel="noreferrer"
-              className="project-display-card"
-              title={`Open ${currentProject.name} (External Link)`}
-            >
-              <div className="view-project-btn">
-                VIEW PROJECT ↗
-              </div>
-
-              <div className="card-wireframe-bg">
-                <svg viewBox="0 0 400 400" className="wireframe-svg">
-                  <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(255, 51, 255, 0.2)" strokeWidth="1.5" />
-                  <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(255, 51, 255, 0.15)" strokeWidth="1" strokeDasharray="5 5" />
-                  <polygon points="200,30 370,200 200,370 30,200" fill="none" stroke="rgba(255, 51, 255, 0.3)" strokeWidth="1.5" />
-                  <polygon points="200,60 340,200 200,340 60,200" fill="none" stroke="rgba(255, 51, 255, 0.15)" strokeWidth="1" />
-                </svg>
-              </div>
-
-              <div className="card-center-title" style={{ color: currentProject.color }}>
-                {currentProject.displayTitle}
-              </div>
-
-              <div className="card-bottom-info">
-                <span className="card-subtitle-text">{currentProject.subtitle}</span>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        {/* Right Window: Description & Details (Peeking from behind) */}
-        <div className="win98-window project-side-window details-side-window">
-          <div className="win98-title-bar">
-            <span>DETAILS.TXT</span>
-            <div className="win98-title-buttons">
-              <button className="win98-title-btn">
-                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
-              </button>
-            </div>
-          </div>
-          <div className="win98-content project-side-content">
-            <div className="project-counter">{currentProject.id} / 04</div>
-            <h2 className="project-title-name">{currentProject.name}</h2>
-            <p className="project-desc-text">{currentProject.description}</p>
-            <div className="project-category-tag">
-              <span className="edu-label">Type:</span> {currentProject.category}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Circular Loop Navigation Controls */}
-      <div className="projects-carousel-controls">
-        <button className="win98-carousel-nav-btn" onClick={handlePrev} title="Previous Project">
-          ←
-        </button>
-        <div className="carousel-indicators">
-          {projectsData.map((_, idx) => (
-            <button
-              key={idx}
-              className={`carousel-indicator-dot ${idx === currentIndex ? 'active' : ''}`}
-              onClick={() => setCurrentIndex(idx)}
-              title={`Go to project ${idx + 1}`}
-            />
-          ))}
-        </div>
-        <button className="win98-carousel-nav-btn" onClick={handleNext} title="Next Project">
-          →
-        </button>
       </div>
     </div>
   );
@@ -546,130 +571,244 @@ function TechStack() {
 
   return (
     <div className="techstack-page">
-      {/* Top Header */}
-      <div className="techstack-header">
-        <div className="techstack-title-row">
-          <img 
-            src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" 
-            alt="Computer" 
-            className="techstack-header-img" 
-          />
-          <h1>Tech Stack</h1>
+      <div className="win98-window outer-app-window">
+        <div className="win98-title-bar">
+          <div className="win98-title-left">
+            <img 
+              src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" 
+              alt="" 
+              className="win98-title-img" 
+            />
+            <span>TECH_STACK.EXE</span>
+          </div>
+          <div className="win98-title-buttons">
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+            </button>
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+            </button>
+            <button className="win98-title-btn">
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+            </button>
+          </div>
         </div>
-        <p className="techstack-subtitle">Explore the technologies I work with</p>
-      </div>
 
-      {/* Main 2-Column Explorer Grid */}
-      <div className="techstack-desktop-grid">
-        {/* Left Column: Explorer + How to Explore Card */}
-        <div className="techstack-left-col">
-          {/* Main Tech Stack Explorer Window */}
-          <div className="win98-window techstack-main-window">
-            <div className="win98-title-bar">
-              <div className="win98-title-left">
-                <img 
-                  src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" 
-                  alt="" 
-                  className="win98-title-img" 
-                />
-                <span>Tech Stack</span>
-              </div>
-              <div className="win98-title-buttons">
-                <button className="win98-title-btn">
-                  <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
-                </button>
-                <button className="win98-title-btn">
-                  <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
-                </button>
-                <button className="win98-title-btn">
-                  <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
-                </button>
-              </div>
+        <div className="win98-content outer-app-content">
+          {/* Top Header */}
+          <div className="techstack-header">
+            <div className="techstack-title-row">
+              <img 
+                src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" 
+                alt="Computer" 
+                className="techstack-header-img" 
+              />
+              <h1>Tech Stack</h1>
             </div>
+            <p className="techstack-subtitle">Explore the technologies I work with</p>
+          </div>
 
-            {/* Menu Bar */}
-            <div className="win98-menubar">
-              <span>File</span>
-              <span>Edit</span>
-              <span>View</span>
-              <span>Help</span>
-            </div>
-
-            {/* Toolbar Controls */}
-            <div className="win98-toolbar">
-              <button 
-                className={`win98-tool-btn ${historyIndex === 0 ? 'disabled' : ''}`}
-                onClick={handleBack}
-                disabled={historyIndex === 0}
-                title="Back"
-              >
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="black"><path d="M11 2 L4 8 L11 14 V2 Z" /></svg>
-                <span>Back</span>
-              </button>
-              <button 
-                className={`win98-tool-btn ${historyIndex >= history.length - 1 ? 'disabled' : ''}`}
-                onClick={handleForward}
-                disabled={historyIndex >= history.length - 1}
-                title="Forward"
-              >
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="black"><path d="M5 2 L12 8 L5 14 V2 Z" /></svg>
-                <span>Forward</span>
-              </button>
-              <button className="win98-tool-btn" onClick={handleUp} title="Up">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_up-0.png" alt="" className="tool-img" />
-                <span>Up</span>
-              </button>
-              <button className="win98-tool-btn" onClick={handleHome} title="Home">
-                <img src="https://win98icons.alexmeub.com/icons/png/msagent_computer-0.png" alt="" className="tool-img" />
-                <span>Home</span>
-              </button>
-              <button className="win98-tool-btn" onClick={() => setSelectedItem(currentCategoryData.items[0])} title="Refresh">
-                <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-4.png" alt="" className="tool-img" />
-                <span>Refresh</span>
-              </button>
-            </div>
-
-            {/* Address Bar */}
-            <div className="win98-address-bar-row">
-              <span className="address-label">Address</span>
-              <div className="address-input-box">
-                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" className="address-folder-img" />
-                <span className="address-path">C:\TechStack\{activeCategory}</span>
-              </div>
-            </div>
-
-            {/* Explorer Split Content Pane */}
-            <div className="explorer-split-container">
-              {/* Folders Tree View */}
-              <div className="explorer-tree-view">
-                <div className="tree-header">
-                  <span>Folders</span>
-                  <span className="tree-close-x">✕</span>
-                </div>
-                <div className="tree-body">
-                  <div className="tree-root-item">
-                    <span className="tree-box-marker">-</span>
-                    <img src="https://win98icons.alexmeub.com/icons/png/directory_desktop-4.png" alt="" className="tree-folder-img" />
-                    <span className="tree-label-root">Tech Stack</span>
+          {/* Main 2-Column Explorer Grid */}
+          <div className="techstack-desktop-grid">
+            {/* Left Column: Explorer + How to Explore Card */}
+            <div className="techstack-left-col">
+              {/* Main Tech Stack Explorer Window */}
+              <div className="win98-window techstack-main-window">
+                <div className="win98-title-bar">
+                  <div className="win98-title-left">
+                    <img 
+                      src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_small-4.png" 
+                      alt="" 
+                      className="win98-title-img" 
+                    />
+                    <span>EXPLORER.EXE - C:\TechStack\{activeCategory}</span>
                   </div>
-                  <div className="tree-children-list">
-                    {categoryKeys.map((catKey) => {
-                      const isSelected = catKey === activeCategory;
+                  <div className="win98-title-buttons">
+                    <button className="win98-title-btn">
+                      <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+                    </button>
+                    <button className="win98-title-btn">
+                      <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+                    </button>
+                    <button className="win98-title-btn">
+                      <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                    </button>
+                  </div>
+                </div>
+
+                {/* Menu Bar */}
+                <div className="win98-menubar">
+                  <span>File</span>
+                  <span>Edit</span>
+                  <span>View</span>
+                  <span>Help</span>
+                </div>
+
+                {/* Toolbar Controls */}
+                <div className="win98-toolbar">
+                  <button 
+                    className={`win98-tool-btn ${historyIndex === 0 ? 'disabled' : ''}`}
+                    onClick={handleBack}
+                    disabled={historyIndex === 0}
+                    title="Back"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="black"><path d="M11 2 L4 8 L11 14 V2 Z" /></svg>
+                    <span>Back</span>
+                  </button>
+                  <button 
+                    className={`win98-tool-btn ${historyIndex >= history.length - 1 ? 'disabled' : ''}`}
+                    onClick={handleForward}
+                    disabled={historyIndex >= history.length - 1}
+                    title="Forward"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="black"><path d="M5 2 L12 8 L5 14 V2 Z" /></svg>
+                    <span>Forward</span>
+                  </button>
+                  <button className="win98-tool-btn" onClick={handleUp} title="Up">
+                    <img src="https://win98icons.alexmeub.com/icons/png/directory_up-0.png" alt="" className="tool-img" />
+                    <span>Up</span>
+                  </button>
+                  <button className="win98-tool-btn" onClick={handleHome} title="Home">
+                    <img src="https://win98icons.alexmeub.com/icons/png/msagent_computer-0.png" alt="" className="tool-img" />
+                    <span>Home</span>
+                  </button>
+                  <button className="win98-tool-btn" onClick={() => setSelectedItem(currentCategoryData.items[0])} title="Refresh">
+                    <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-4.png" alt="" className="tool-img" />
+                    <span>Refresh</span>
+                  </button>
+                </div>
+
+                {/* Address Bar */}
+                <div className="win98-address-bar-row">
+                  <span className="address-label">Address</span>
+                  <div className="address-input-box">
+                    <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" className="address-folder-img" />
+                    <span className="address-path">C:\TechStack\{activeCategory}</span>
+                  </div>
+                </div>
+
+                {/* Explorer Split Content Pane */}
+                <div className="explorer-split-container">
+                  {/* Folders Tree View */}
+                  <div className="explorer-tree-view">
+                    <div className="tree-header">
+                      <span>Folders</span>
+                      <span className="tree-close-x">✕</span>
+                    </div>
+                    <div className="tree-body">
+                      <div className="tree-root-item">
+                        <span className="tree-box-marker">-</span>
+                        <img src="https://win98icons.alexmeub.com/icons/png/directory_desktop-4.png" alt="" className="tree-folder-img" />
+                        <span className="tree-label-root">Tech Stack</span>
+                      </div>
+                      <div className="tree-children-list">
+                        {categoryKeys.map((catKey) => {
+                          const isSelected = catKey === activeCategory;
+                          return (
+                            <div 
+                              key={catKey} 
+                              className={`tree-child-item ${isSelected ? 'selected' : ''}`}
+                              onClick={() => navigateToCategory(catKey)}
+                            >
+                              <span className="tree-expand-icon">{isSelected ? '▼' : '►'}</span>
+                              <img 
+                                src={isSelected 
+                                  ? "https://win98icons.alexmeub.com/icons/png/directory_open-4.png" 
+                                  : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"} 
+                                alt="" 
+                                className="tree-folder-img" 
+                              />
+                              <span className="tree-label">{catKey}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Folders Big Icon Grid */}
+                  <div className="explorer-grid-view">
+                    <div className="folders-grid">
+                      {categoryKeys.map((catKey) => {
+                        const isActive = catKey === activeCategory;
+                        return (
+                          <div 
+                            key={catKey}
+                            className={`folder-grid-item ${isActive ? 'active-folder' : ''}`}
+                            onClick={() => navigateToCategory(catKey)}
+                          >
+                            <img 
+                              src={isActive 
+                                ? "https://win98icons.alexmeub.com/icons/png/directory_open_cool-4.png" 
+                                : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"} 
+                              alt="Folder" 
+                              className="folder-icon-img" 
+                            />
+                            <span className="folder-grid-label">{catKey}</span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Explorer Status Bar */}
+                <div className="win98-statusbar">
+                  <div className="statusbar-pane">{categoryKeys.length} categories</div>
+                  <div className="statusbar-pane">{currentCategoryData.items.length} items</div>
+                  <div className="statusbar-pane">My Computer</div>
+                </div>
+              </div>
+
+              {/* How to Explore Info Card */}
+              <div className="how-to-explore-card">
+                <div className="how-to-header">
+                  <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-0.png" alt="" className="how-to-img" />
+                  <strong>How to explore</strong>
+                </div>
+                <div className="how-to-item">
+                  <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" className="how-to-bullet-img" />
+                  <span>Click folders to switch categories</span>
+                </div>
+                <div className="how-to-item">
+                  <img src="https://win98icons.alexmeub.com/icons/png/notepad_file-2.png" alt="" className="how-to-bullet-img" />
+                  <span>Click items to view details</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Files Grid + Tech Item Details Preview */}
+            <div className="techstack-right-col">
+              {/* Category Files Grid Window */}
+              <div className="win98-window folder-files-window">
+                <div className="win98-title-bar">
+                  <div className="win98-title-left">
+                    <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_small-4.png" alt="" className="win98-title-img" />
+                    <span>{activeCategory}</span>
+                  </div>
+                  <div className="win98-title-buttons">
+                    <button className="win98-title-btn">
+                      <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div className="folder-files-content">
+                  <div className="files-grid">
+                    {currentCategoryData.items.map((item) => {
+                      const isSelected = selectedItem && selectedItem.name === item.name;
                       return (
-                        <div
-                          key={catKey}
-                          className={`tree-child-item ${isSelected ? 'selected' : ''}`}
-                          onClick={() => navigateToCategory(catKey)}
+                        <div 
+                          key={item.name}
+                          className={`file-grid-item ${isSelected ? 'selected-file' : ''}`}
+                          onClick={() => setSelectedItem(item)}
                         >
-                          <span className="tree-box-marker">{isSelected ? '-' : '+'}</span>
                           <img 
-                            src={isSelected 
-                              ? "https://win98icons.alexmeub.com/icons/png/directory_open-4.png" 
-                              : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"} 
-                            alt="" 
-                            className="tree-folder-img" 
+                            src="https://win98icons.alexmeub.com/icons/png/notepad_file-2.png" 
+                            alt="File" 
+                            className="file-icon-img" 
                           />
-                          <span className="tree-label">{catKey}</span>
+                          <span className="file-grid-label">{item.file}</span>
                         </div>
                       );
                     })}
@@ -677,183 +816,62 @@ function TechStack() {
                 </div>
               </div>
 
-              {/* Folders Grid View */}
-              <div className="explorer-grid-view">
-                <div className="folders-grid">
-                  {categoryKeys.map((catKey) => {
-                    const isSelected = catKey === activeCategory;
-                    return (
-                      <div
-                        key={catKey}
-                        className={`folder-grid-item ${isSelected ? 'active-folder' : ''}`}
-                        onClick={() => navigateToCategory(catKey)}
-                      >
-                        <img 
-                          src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" 
-                          alt="Folder" 
-                          className="folder-icon-img" 
-                        />
-                        <span className="folder-grid-label">{catKey}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-
-            {/* Status Bar */}
-            <div className="win98-statusbar">
-              <div className="statusbar-pane">{categoryKeys.length} object(s)</div>
-            </div>
-          </div>
-
-          {/* How to Explore Info Card */}
-          <div className="how-to-explore-card">
-            <div className="how-to-header">
-              <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-0.png" alt="Help" className="how-to-img" />
-              <strong>How to explore</strong>
-            </div>
-            <div className="how-to-item">
-              <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" className="how-to-bullet-img" />
-              <span>Click on any folder to view technologies inside.</span>
-            </div>
-            <div className="how-to-item">
-              <img src="https://win98icons.alexmeub.com/icons/png/notepad_file-0.png" alt="" className="how-to-bullet-img" />
-              <span>Click on any file to see more about the technology.</span>
-            </div>
-            <div className="how-to-item">
-              <img src="https://win98icons.alexmeub.com/icons/png/computer-0.png" alt="" className="how-to-bullet-img" />
-              <span>Use the navigation buttons to go back or up.</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: Active Folder Contents Window + Detail Preview Window */}
-        <div className="techstack-right-col">
-          {/* Top Right: Folder Contents Window */}
-          <div className="win98-window folder-contents-window">
-            <div className="win98-title-bar">
-              <div className="win98-title-left">
-                <img 
-                  src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_cool-4.png" 
-                  alt="" 
-                  className="win98-title-img" 
-                />
-                <span>{activeCategory}</span>
-              </div>
-              <div className="win98-title-buttons">
-                <button className="win98-title-btn">
-                  <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
-                </button>
-                <button className="win98-title-btn">
-                  <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
-                </button>
-                <button className="win98-title-btn">
-                  <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
-                </button>
-              </div>
-            </div>
-
-            <div className="win98-menubar">
-              <span>File</span>
-              <span>Edit</span>
-              <span>View</span>
-              <span>Help</span>
-            </div>
-
-            <div className="folder-files-content">
-              <div className="files-grid">
-                {currentCategoryData.items.map((item) => {
-                  const isFileSelected = selectedItem && selectedItem.name === item.name;
-                  return (
-                    <div
-                      key={item.name}
-                      className={`file-grid-item ${isFileSelected ? 'selected-file' : ''}`}
-                      onClick={() => setSelectedItem(item)}
-                      title={`Click to view ${item.name}`}
-                    >
-                      <img 
-                        src="https://win98icons.alexmeub.com/icons/png/notepad_file-0.png" 
-                        alt="File" 
-                        className="file-icon-img" 
-                      />
-                      <span className="file-grid-label">{item.file}</span>
+              {/* Selected File Details / Preview Dialog (Win95 Retro Properties Style) */}
+              {selectedItem && (
+                <div className="win98-window file-preview-window">
+                  <div className="win98-title-bar">
+                    <div className="win98-title-left">
+                      <img src="https://win98icons.alexmeub.com/icons/png/application_hourglass-0.png" alt="" className="win98-title-img" />
+                      <span>Properties - {selectedItem.file}</span>
                     </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="win98-statusbar">
-              <div className="statusbar-pane">{currentCategoryData.items.length} object(s)</div>
-            </div>
-          </div>
-
-          {/* Bottom Right: File Details / Preview Window in Win95 Component Properties Style */}
-          {selectedItem && (
-            <div className="win98-window file-details-window">
-              <div className="win98-title-bar">
-                <div className="win98-title-left">
-                  <img 
-                    src="https://win98icons.alexmeub.com/icons/png/notepad_file-0.png" 
-                    alt="" 
-                    className="win98-title-img" 
-                  />
-                  <span>{selectedItem.file}</span>
-                </div>
-                <div className="win98-title-buttons">
-                  <button className="win98-title-btn">
-                    <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
-                  </button>
-                  <button className="win98-title-btn">
-                    <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
-                  </button>
-                  <button className="win98-title-btn">
-                    <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
-                  </button>
-                </div>
-              </div>
-
-              <div className="win98-menubar">
-                <span>File</span>
-                <span>Edit</span>
-                <span>View</span>
-                <span>Help</span>
-              </div>
-
-              <div className="file-preview-body">
-                <div className="win95-preview-card">
-                  <div className="win95-preview-header">
-                    <div className="win95-icon-recess">
-                      <img 
-                        src={selectedItem.logo} 
-                        alt={selectedItem.name} 
-                        className="win95-tech-logo"
-                        onError={(e) => {
-                          e.target.src = "https://win98icons.alexmeub.com/icons/png/application_hourglass-0.png";
-                        }}
-                      />
-                    </div>
-                    <div className="win95-header-text">
-                      <h2 className="win95-tech-title">{selectedItem.name}</h2>
-                      <span className="win95-tech-file">Filename: {selectedItem.file} &bull; Size: {selectedItem.size}</span>
+                    <div className="win98-title-buttons">
+                      <button className="win98-title-btn">
+                        <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                      </button>
                     </div>
                   </div>
 
-                  <fieldset className="win95-fieldset">
-                    <legend className="win95-legend">Component Details</legend>
-                    <p className="win95-tech-desc">{selectedItem.desc}</p>
-                  </fieldset>
-                </div>
-              </div>
+                  <div className="win98-menubar">
+                    <span>File</span>
+                    <span>View</span>
+                    <span>Help</span>
+                  </div>
 
-              <div className="win98-statusbar tech-detail-statusbar">
-                <div className="statusbar-pane">Type: Technology</div>
-                <div className="statusbar-pane">Size: {selectedItem.size}</div>
-                <div className="statusbar-pane">Date Modified: Today</div>
-              </div>
+                  <div className="file-preview-body">
+                    <div className="win95-preview-card">
+                      <div className="win95-preview-header">
+                        <div className="win95-icon-recess">
+                          <img 
+                            src={selectedItem.logo} 
+                            alt={selectedItem.name} 
+                            className="win95-tech-logo"
+                            onError={(e) => {
+                              e.target.src = "https://win98icons.alexmeub.com/icons/png/application_hourglass-0.png";
+                            }}
+                          />
+                        </div>
+                        <div className="win95-header-text">
+                          <h2 className="win95-tech-title">{selectedItem.name}</h2>
+                          <span className="win95-tech-file">Filename: {selectedItem.file} &bull; Size: {selectedItem.size}</span>
+                        </div>
+                      </div>
+
+                      <fieldset className="win95-fieldset">
+                        <legend className="win95-legend">Component Details</legend>
+                        <p className="win95-tech-desc">{selectedItem.desc}</p>
+                      </fieldset>
+                    </div>
+                  </div>
+
+                  <div className="win98-statusbar tech-detail-statusbar">
+                    <div className="statusbar-pane">Type: Technology</div>
+                    <div className="statusbar-pane">Size: {selectedItem.size}</div>
+                    <div className="statusbar-pane">Date Modified: Today</div>
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </div>

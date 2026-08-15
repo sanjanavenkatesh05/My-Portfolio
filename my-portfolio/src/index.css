@@ -514,6 +514,18 @@ ul.star-list li::marker {
    Projects Showcase Layout & Peeking Display
    ========================================= */
 
+.outer-app-window {
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.outer-app-content {
+  padding: 16px;
+  background-color: #000000;
+  box-sizing: border-box;
+}
+
 .projects-page-container {
   display: flex;
   flex-direction: column;
