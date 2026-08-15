@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link, NavLink, useNavigate } fr
 import { useState, useRef, useEffect, useMemo } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
 import resumeFile from './assets/Sanjana_venkatesh_resume (3).pdf';
+import profilePhoto from './assets/digicamfx-original-2026-08-15T10-55-28.jpg';
 import './App.css';
 
 /* Native Pixel-Perfect Windows 98 SVG Icons (100% Offline & Reliable) */
@@ -459,7 +460,7 @@ function Home() {
                 </div>
                 <div className="win98-content photo-viewer-content">
                   <div className="photo-frame-recess">
-                    <img src="./src/assets/digicamfx-original-2026-08-15T10-55-28.jpg" alt="me" className="myspace-pic" />
+                    <img src={profilePhoto} alt="Sanjana Venkatesh" className="myspace-pic" />
                   </div>
                   <div className="photo-meta-bar">
                     <span className="photo-meta-left">JPEG Image (100% Zoom)</span>
