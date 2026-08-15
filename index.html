@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 98 Dummy Desktop</title>
+    <link rel="stylesheet" href="https://unpkg.com/98.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #008080; /* Windows 98 standard teal background */
+            font-family: 'Pixelated MS Sans Serif', Arial;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            cursor: url('https://win98icons.alexmeub.com/icons/png/arrow.png'), auto;
+        }
+
+        .desktop {
+            flex-grow: 1;
+            position: relative;
+            padding: 10px;
+        }
+
+        /* Desktop Icons */
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70px;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+            font-size: 11px;
+            text-shadow: 1px 1px 0 #000;
+        }
+        
+        .icon:hover {
+            cursor: url('https://win98icons.alexmeub.com/icons/png/hand.png'), pointer;
+        }
+
+        .icon img {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 5px;
+        }
+
+        .icon span {
+            padding: 2px 4px;
+        }
+
+        .icon:active span, .icon.selected span {
+            background-color: #000080;
+            border: 1px dotted #fff;
+            text-shadow: none;
+        }
+
+        /* Taskbar */
+        .taskbar {
+            height: 28px;
+            background-color: #c0c0c0;
+            border-top: 1px solid #dfdfdf;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+
+        .start-button {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            padding: 2px 5px;
+            margin-right: 10px;
+            height: 22px;
+        }
+
+        .start-button img {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        .taskbar-divider {
+            width: 2px;
+            height: 20px;
+            background-color: #808080;
+            border-right: 1px solid #fff;
+            margin: 0 5px;
+        }
+
+        .system-tray {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            border: 1px solid #808080;
+            border-right-color: #fff;
+            border-bottom-color: #fff;
+            padding: 2px 5px;
+            height: 22px;
+            box-sizing: border-box;
+        }
+        
+        .system-tray img {
+            width: 16px;
+            height: 16px;
+            margin-right: 5px;
+        }
+
+        .time {
+            font-size: 11px;
+        }
+
+        /* Window */
+        .window {
+            position: absolute;
+            top: 50px;
+            left: 150px;
+            width: 300px;
+            display: none;
+        }
+
+        .window.active {
+            display: block;
+        }
+        
+        a, button, input[type="submit"], input[type="button"], input[type="reset"] {
+            cursor: url('https://win98icons.alexmeub.com/icons/png/arrow.png'), auto !important;
+        }
+        
+        button:hover {
+            cursor: url('https://win98icons.alexmeub.com/icons/png/arrow.png'), auto !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="desktop" id="desktop">
+        <div class="icon" tabindex="0" onclick="toggleSelection(this)" ondblclick="openWindow('my-computer')">
+            <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" alt="My Computer">
+            <span>My Computer</span>
+        </div>
+        <div class="icon" tabindex="0" onclick="toggleSelection(this)">
+            <img src="https://win98icons.alexmeub.com/icons/png/network_normal_two_pcs-4.png" alt="Network Neighborhood">
+            <span>Network Neighborhood</span>
+        </div>
+        <div class="icon" tabindex="0" onclick="toggleSelection(this)">
+            <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-4.png" alt="Recycle Bin">
+            <span>Recycle Bin</span>
+        </div>
+        <div class="icon" tabindex="0" onclick="toggleSelection(this)" ondblclick="openWindow('notepad')">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-2.png" alt="Notepad">
+            <span>notes.txt</span>
+        </div>
+
+        <!-- My Computer Window -->
+        <div class="window active" id="my-computer" style="top: 100px; left: 200px; width: 400px;">
+            <div class="title-bar">
+                <div class="title-bar-text">
+                    <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" style="width: 14px; vertical-align: middle; margin-right: 3px;">
+                    My Computer
+                </div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closeWindow('my-computer')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="display: flex; gap: 20px; padding: 15px;">
+                <div style="text-align: center;">
+                    <img src="https://win98icons.alexmeub.com/icons/png/floppy_drive_3_5-3.png" alt="3.5 Floppy">
+                    <div style="margin-top: 5px;">3½ Floppy (A:)</div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://win98icons.alexmeub.com/icons/png/hard_drive-3.png" alt="Local Disk">
+                    <div style="margin-top: 5px;">Local Disk (C:)</div>
+                </div>
+                <div style="text-align: center;">
+                    <img src="https://win98icons.alexmeub.com/icons/png/cd_drive-4.png" alt="CD-ROM">
+                    <div style="margin-top: 5px;">CD-ROM (D:)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notepad Window -->
+        <div class="window" id="notepad" style="top: 250px; left: 300px; width: 350px;">
+            <div class="title-bar">
+                <div class="title-bar-text">notes.txt - Notepad</div>
+                <div class="title-bar-controls">
+                    <button aria-label="Minimize"></button>
+                    <button aria-label="Maximize"></button>
+                    <button aria-label="Close" onclick="closeWindow('notepad')"></button>
+                </div>
+            </div>
+            <div class="window-body" style="margin: 0;">
+                <ul class="tree-view" style="border: none; margin: 0; padding: 0;">
+                    <li>File</li>
+                    <li>Edit</li>
+                    <li>Search</li>
+                    <li>Help</li>
+                </ul>
+                <textarea style="width: 100%; height: 150px; box-sizing: border-box; resize: none; border: 1px solid #808080; border-top-color: #fff; border-left-color: #fff; padding: 2px;">This is a dummy Windows 98 desktop created for you.</textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="taskbar">
+        <button class="start-button">
+            <img src="https://win98icons.alexmeub.com/icons/png/windows-4.png" alt="Start">
+            Start
+        </button>
+        <div class="taskbar-divider"></div>
+        
+        <button class="active" style="font-weight: bold; margin-right: 4px;" onclick="toggleWindow('my-computer', this)">
+             <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer-4.png" style="width: 16px; vertical-align: middle; margin-right: 3px;">
+            My Computer
+        </button>
+        
+        <button id="taskbar-notepad" style="display: none; margin-right: 4px;" onclick="toggleWindow('notepad', this)">
+            <img src="https://win98icons.alexmeub.com/icons/png/notepad-2.png" style="width: 16px; vertical-align: middle; margin-right: 3px;">
+            notes.txt - Notepad
+        </button>
+
+        <div class="system-tray">
+            <img src="https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-2.png" alt="Volume">
+            <span class="time" id="clock">12:00 PM</span>
+        </div>
+    </div>
+
+    <script>
+        // Update Clock
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('clock').textContent = hours + ':' + minutes + ' ' + ampm;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Icon Selection
+        function toggleSelection(element) {
+            document.querySelectorAll('.icon').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+        }
+
+        // Deselect when clicking on desktop
+        document.getElementById('desktop').addEventListener('click', function(e) {
+            if (e.target === this) {
+                document.querySelectorAll('.icon').forEach(el => el.classList.remove('selected'));
+            }
+        });
+
+        // Window Management
+        function openWindow(id) {
+            const win = document.getElementById(id);
+            win.classList.add('active');
+            
+            if(id === 'notepad') {
+                document.getElementById('taskbar-notepad').style.display = 'inline-flex';
+                document.getElementById('taskbar-notepad').classList.add('active');
+            }
+        }
+
+        function closeWindow(id) {
+            document.getElementById(id).classList.remove('active');
+            
+            if(id === 'notepad') {
+                document.getElementById('taskbar-notepad').style.display = 'none';
+                document.getElementById('taskbar-notepad').classList.remove('active');
+            }
+        }
+        
+        function toggleWindow(id, btn) {
+            const win = document.getElementById(id);
+            if (win.classList.contains('active')) {
+                win.classList.remove('active');
+                btn.classList.remove('active');
+            } else {
+                win.classList.add('active');
+                btn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
