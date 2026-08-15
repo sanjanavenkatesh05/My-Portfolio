@@ -3002,18 +3002,50 @@ ul.star-list li::marker {
     margin-left: 0;
   }
 
-  /* === PROJECTS SHOWCASE === */
+  /* === PROJECTS SHOWCASE (MOBILE BREATHABLE LAYOUT) === */
   .projects-showcase-layout {
     flex-direction: column;
-    gap: 16px;
-    padding: 10px 0;
+    gap: 22px;
+    padding: 12px 4px 24px 4px;
   }
 
   .project-main-window {
+    order: 1;
     flex: 1 1 auto;
     max-width: 100%;
     width: 100%;
     transform: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 51, 204, 0.25);
+  }
+
+  .details-side-window {
+    order: 2;
+    margin-left: 0 !important;
+    flex: 1 1 auto;
+    max-width: 100%;
+    width: 100%;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .details-side-window .project-side-content {
+    padding: 18px 16px;
+  }
+
+  .tech-side-window {
+    order: 3;
+    margin-right: 0 !important;
+    flex: 1 1 auto;
+    max-width: 100%;
+    width: 100%;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  .tech-side-window .project-side-content {
+    padding: 18px 16px;
   }
 
   .project-side-window {
@@ -3025,35 +3057,64 @@ ul.star-list li::marker {
     filter: none;
   }
 
-  .tech-side-window {
-    margin-right: 0 !important;
-  }
-
-  .tech-side-window .project-side-content {
-    padding: 16px 14px;
-  }
-
-  .details-side-window {
-    margin-left: 0 !important;
-  }
-
-  .details-side-window .project-side-content {
-    padding: 16px 14px;
+  .project-main-content {
+    padding: 12px 10px;
   }
 
   .project-display-card {
-    aspect-ratio: 4 / 3;
-    padding: 18px;
+    aspect-ratio: auto;
+    min-height: unset;
+    padding: 16px 12px;
+    gap: 12px;
+    max-width: 100%;
   }
 
   .card-center-title {
-    font-size: 1.6rem;
-    letter-spacing: 1.5px;
+    font-size: 1.45rem;
+    letter-spacing: 1px;
+    text-align: center;
+    word-break: break-word;
   }
 
-  /* Carousel controls: bigger tap targets */
+  .card-subtitle-text {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+  }
+
+  .anim-visualizer-container {
+    height: 145px;
+    padding: 8px 10px;
+  }
+
+  .project-title-name {
+    font-size: 1.45rem;
+    margin-bottom: 10px;
+  }
+
+  .project-desc-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .tech-badge-container {
+    gap: 6px;
+  }
+
+  .tech-pill-badge {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+  }
+
+  /* Carousel controls: spacious tap targets */
+  .projects-carousel-controls {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    gap: 20px;
+  }
+
   .win98-carousel-nav-btn {
-    width: 48px;
+    width: 50px;
     height: 44px;
     font-size: 18px;
   }
@@ -3061,6 +3122,17 @@ ul.star-list li::marker {
   .carousel-indicator-dot {
     width: 14px;
     height: 14px;
+  }
+
+  .projects-statusbar {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .projects-statusbar .statusbar-pane {
+    flex: 1 1 auto;
+    font-size: 10px;
+    padding: 3px 6px;
   }
 
   /* === TECH STACK EXPLORER === */
