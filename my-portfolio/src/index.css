@@ -13,6 +13,10 @@ body {
   background-position: 0 0, 10px 10px;
 }
 
+
+
+
+
 /* Windows 98 Style Cyber Pink Box */
 .win98-window {
   background-color: #110022;
@@ -26,7 +30,7 @@ body {
 }
 
 .win98-title-bar {
-  background: linear-gradient(90deg, #ff00ff, #4d004d);
+  background: #c0176b;
   color: white;
   padding: 3px 5px;
   font-weight: bold;
@@ -36,6 +40,14 @@ body {
   font-size: 14px;
   letter-spacing: 1px;
 }
+
+/* Outer .exe window title bars — solid dark pink */
+.outer-app-window > .win98-title-bar,
+.main-content-window > .win98-title-bar {
+  background: #6b003a;
+}
+
+
 
 .win98-content {
   padding: 15px;
@@ -377,6 +389,8 @@ a:hover {
   padding: 10px;
 }
 
+
+
 .inner-left-col {
   flex: 1;
   display: flex;
@@ -392,13 +406,14 @@ a:hover {
 }
 
 .myspace-header-title {
-  background: #ff33ff;
+  background: #f472b6;
   color: #000;
   padding: 2px 5px;
   font-weight: bold;
   border-bottom: 2px solid #000;
   margin-bottom: 5px;
 }
+
 
 .myspace-contact-grid {
   display: grid;
@@ -641,7 +656,7 @@ ul.star-list li::marker {
   letter-spacing: 3px;
   text-transform: uppercase;
   z-index: 2;
-  text-shadow: 0 0 20px currentColor, 2px 2px 0px rgba(0,0,0,0.8);
+  text-shadow: 0 0 20px currentColor, 2px 2px 0px rgba(0, 0, 0, 0.8);
   margin: auto 0;
   transition: transform 0.2s ease;
 }
@@ -663,7 +678,7 @@ ul.star-list li::marker {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: 
+  background:
     radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.15) 35%, transparent 65%),
     linear-gradient(180deg, rgba(255, 102, 255, 0.5) 0%, rgba(217, 22, 217, 0.35) 50%, rgba(102, 0, 102, 0.6) 100%);
   border: 1.5px solid rgba(255, 255, 255, 0.8);
@@ -673,7 +688,7 @@ ul.star-list li::marker {
   color: #ffffff;
   font-size: 15px;
   font-weight: bold;
-  box-shadow: 
+  box-shadow:
     0 0 14px rgba(255, 51, 255, 0.6),
     inset 0 1.5px 3px rgba(255, 255, 255, 0.85),
     0 4px 10px rgba(0, 0, 0, 0.5);
@@ -684,10 +699,10 @@ ul.star-list li::marker {
 
 .project-display-card:hover .card-arrow-circle {
   transform: translateY(4px) scale(1.1);
-  background: 
+  background:
     radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.3) 35%, transparent 65%),
     linear-gradient(180deg, rgba(255, 128, 255, 0.85) 0%, rgba(255, 51, 255, 0.65) 50%, rgba(128, 0, 128, 0.9) 100%);
-  box-shadow: 
+  box-shadow:
     0 0 20px rgba(255, 51, 255, 0.95),
     inset 0 2px 4px rgba(255, 255, 255, 0.95),
     0 6px 14px rgba(0, 0, 0, 0.6);
@@ -790,7 +805,7 @@ ul.star-list li::marker {
   padding: 6px 14px;
   font-size: 0.85rem;
   font-weight: 500;
-  box-shadow: inset 1px 1px 0 #ff99ff, 1px 1px 3px rgba(0,0,0,0.5);
+  box-shadow: inset 1px 1px 0 #ff99ff, 1px 1px 3px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
 }
 
@@ -843,7 +858,7 @@ ul.star-list li::marker {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: 
+  background:
     radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.2) 30%, transparent 60%),
     linear-gradient(180deg, #ff66ff 0%, #d916d9 45%, #b300b3 50%, #660066 100%);
   border: 2px solid rgba(255, 255, 255, 0.85);
@@ -854,7 +869,7 @@ ul.star-list li::marker {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 
+  box-shadow:
     0 0 18px rgba(255, 51, 255, 0.7),
     inset 0 2px 4px rgba(255, 255, 255, 0.9),
     inset 0 -3px 6px rgba(80, 0, 80, 0.85),
@@ -880,10 +895,10 @@ ul.star-list li::marker {
 
 .win98-carousel-nav-btn:hover {
   transform: scale(1.14);
-  background: 
+  background:
     radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.3) 30%, transparent 60%),
     linear-gradient(180deg, #ff99ff 0%, #ff33ff 45%, #e600e6 50%, #990099 100%);
-  box-shadow: 
+  box-shadow:
     0 0 28px rgba(255, 51, 255, 0.95),
     inset 0 2px 6px rgba(255, 255, 255, 1),
     inset 0 -3px 8px rgba(80, 0, 80, 0.9),
@@ -893,7 +908,7 @@ ul.star-list li::marker {
 
 .win98-carousel-nav-btn:active {
   transform: scale(0.95);
-  box-shadow: 
+  box-shadow:
     0 0 12px rgba(255, 51, 255, 0.6),
     inset 0 3px 8px rgba(0, 0, 0, 0.8),
     0 4px 10px rgba(0, 0, 0, 0.5);
@@ -919,11 +934,11 @@ ul.star-list li::marker {
 
 .carousel-indicator-dot.active {
   width: 32px;
-  background: 
+  background:
     radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.9) 0%, transparent 60%),
     linear-gradient(180deg, #ff66ff 0%, #d916d9 50%, #800080 100%);
   border-color: #ffffff;
-  box-shadow: 
+  box-shadow:
     0 0 14px rgba(255, 51, 255, 0.95),
     inset 0 1px 3px rgba(255, 255, 255, 0.9),
     0 3px 8px rgba(0, 0, 0, 0.6);
@@ -934,6 +949,7 @@ ul.star-list li::marker {
     flex-direction: column;
     gap: 20px;
   }
+
   .tech-side-window,
   .details-side-window {
     margin: 0 !important;
@@ -944,10 +960,12 @@ ul.star-list li::marker {
     opacity: 1;
     filter: none;
   }
+
   .tech-side-window .project-side-content,
   .details-side-window .project-side-content {
     padding: 20px 16px;
   }
+
   .project-main-window {
     flex: 1 1 auto;
     width: 100%;
@@ -1287,7 +1305,7 @@ ul.star-list li::marker {
   font-size: 38px;
   line-height: 1;
   margin-bottom: 6px;
-  filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.15));
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
 }
 
 .folder-grid-label {
@@ -1407,7 +1425,7 @@ ul.star-list li::marker {
   font-size: 36px;
   line-height: 1;
   margin-bottom: 6px;
-  filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.15));
+  filter: drop-shadow(1px 2px 2px rgba(0, 0, 0, 0.15));
 }
 
 .file-grid-label {

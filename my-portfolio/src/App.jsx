@@ -154,8 +154,20 @@ function Home() {
         <div className="win98-window main-content-window">
           <div className="win98-title-bar">
             <span>HOME.EXE</span>
+            <div className="win98-title-buttons">
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+              </button>
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+              </button>
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+              </button>
+            </div>
           </div>
           <div className="win98-content inner-myspace-layout">
+
             {/* Inner Left Column */}
             <div className="inner-left-col">
               {/* Me Window */}
