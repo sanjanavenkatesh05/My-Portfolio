@@ -233,6 +233,209 @@ function Home() {
   );
 }
 
+const projectsData = [
+  {
+    id: "01",
+    name: "PasoChat",
+    displayTitle: "PASO",
+    subtitle: "REAL-TIME COMMUNICATION",
+    category: "Full Stack & WebSockets",
+    tech: ["Node.js", "Express", "MongoDB", "WebSockets", "JavaScript"],
+    description: "A real-time chat platform focused on backend engineering, communication flows, persistent conversations, and scalable server-side architecture.",
+    link: "https://github.com/placeholder/pasochat",
+    color: "#3b82f6"
+  },
+  {
+    id: "02",
+    name: "PhysicsSim",
+    displayTitle: "PHYSICS",
+    subtitle: "SIMULATION & EMBEDDINGS",
+    category: "Simulation & AI Pipeline",
+    tech: ["Python", "Django", "NumPy", "Text Embeddings", "React"],
+    description: "A custom physics problem simulator engineered with automated retrieval pipelines utilizing text embeddings for intelligent step-by-step solutions.",
+    link: "https://github.com/placeholder/physics-sim",
+    color: "#ff33ff"
+  },
+  {
+    id: "03",
+    name: "PicoSmartMonitor",
+    displayTitle: "PICO.IOT",
+    subtitle: "EMBEDDED HARDWARE SYSTEM",
+    category: "Embedded & Microcontrollers",
+    tech: ["C/C++", "MicroPython", "Raspberry Pi Pico", "MQTT", "Sensors"],
+    description: "An end-to-end IoT smart monitoring system built on Raspberry Pi Pico microcontroller with real-time telemetry, sensor polling, and cloud alerting.",
+    link: "https://github.com/placeholder/pico-monitor",
+    color: "#00ffcc"
+  },
+  {
+    id: "04",
+    name: "SubManager",
+    displayTitle: "SUB.WEB3",
+    subtitle: "DECENTRALIZED PROTOCOL",
+    category: "Web3 & Smart Contracts",
+    tech: ["Solidity", "Ethers.js", "React", "PostgreSQL", "Tailwind"],
+    description: "A decentralized subscription manager designed with autonomous recurring payments and a cryptographic emergency kill-switch for automated security.",
+    link: "https://github.com/placeholder/sub-manager",
+    color: "#ffcc00"
+  }
+];
+
+function Projects() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const currentProject = projectsData[currentIndex];
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? projectsData.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === projectsData.length - 1 ? 0 : prev + 1));
+  };
+
+  return (
+    <div className="projects-page-container">
+      <div className="projects-showcase-layout">
+        {/* Left Window: Tech Stack */}
+        <div className="win98-window project-side-window">
+          <div className="win98-title-bar">
+            <span>TECH_STACK.EXE</span>
+            <div className="win98-title-buttons">
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+              </button>
+            </div>
+          </div>
+          <div className="win98-content project-side-content">
+            <span className="project-side-tag">TECH STACK</span>
+            <h3 className="project-side-heading">Technologies</h3>
+            <div className="tech-badge-container">
+              {currentProject.tech.map((t) => (
+                <span key={t} className="tech-pill-badge">{t}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Middle Big Window: Clickable Project Card */}
+        <div className="win98-window project-main-window">
+          <div className="win98-title-bar">
+            <span>PROJECT_VIEWER.EXE [{currentProject.id} / 04]</span>
+            <div className="win98-title-buttons">
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+              </button>
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+              </button>
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+              </button>
+            </div>
+          </div>
+          <div className="win98-content project-main-content">
+            <a
+              href={currentProject.link}
+              target="_blank"
+              rel="noreferrer"
+              className="project-display-card"
+              title={`Open ${currentProject.name} (External Link)`}
+            >
+              <div className="view-project-btn">
+                VIEW PROJECT ↗
+              </div>
+
+              <div className="card-wireframe-bg">
+                <svg viewBox="0 0 400 400" className="wireframe-svg">
+                  <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(255, 51, 255, 0.2)" strokeWidth="1.5" />
+                  <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(255, 51, 255, 0.15)" strokeWidth="1" strokeDasharray="5 5" />
+                  <polygon points="200,30 370,200 200,370 30,200" fill="none" stroke="rgba(255, 51, 255, 0.3)" strokeWidth="1.5" />
+                  <polygon points="200,60 340,200 200,340 60,200" fill="none" stroke="rgba(255, 51, 255, 0.15)" strokeWidth="1" />
+                </svg>
+              </div>
+
+              <div className="card-center-title" style={{ color: currentProject.color }}>
+                {currentProject.displayTitle}
+              </div>
+
+              <div className="card-bottom-info">
+                <div className="card-arrow-circle">
+                  <span>↓</span>
+                </div>
+                <span className="card-subtitle-text">{currentProject.subtitle}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        {/* Right Window: Description & Details */}
+        <div className="win98-window project-side-window">
+          <div className="win98-title-bar">
+            <span>DETAILS.TXT</span>
+            <div className="win98-title-buttons">
+              <button className="win98-title-btn">
+                <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+              </button>
+            </div>
+          </div>
+          <div className="win98-content project-side-content">
+            <div className="project-counter">{currentProject.id} / 04</div>
+            <h2 className="project-title-name">{currentProject.name}</h2>
+            <p className="project-desc-text">{currentProject.description}</p>
+            <div className="project-category-tag">
+              <span className="edu-label">Type:</span> {currentProject.category}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Circular Loop Navigation Controls */}
+      <div className="projects-carousel-controls">
+        <button className="win98-carousel-nav-btn" onClick={handlePrev} title="Previous Project">
+          ←
+        </button>
+        <div className="carousel-indicators">
+          {projectsData.map((_, idx) => (
+            <button
+              key={idx}
+              className={`carousel-indicator-dot ${idx === currentIndex ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(idx)}
+              title={`Go to project ${idx + 1}`}
+            />
+          ))}
+        </div>
+        <button className="win98-carousel-nav-btn" onClick={handleNext} title="Next Project">
+          →
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function TechStack() {
+  return (
+    <div className="win98-window">
+      <div className="win98-title-bar">
+        <span>TECH_STACK.EXE</span>
+        <div className="win98-title-buttons">
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+          </button>
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+          </button>
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+          </button>
+        </div>
+      </div>
+      <div className="win98-content">
+        <h2>My Tech Stack</h2>
+        <p>Tech stack coming soon...</p>
+      </div>
+    </div>
+  );
+}
+
 function Contact() {
   return (
     <div className="win98-window">
@@ -271,6 +474,14 @@ function App() {
               <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" alt="Home" style={{ width: '16px', marginRight: '5px' }} />
               Home
             </Link>
+            <Link to="/projects" className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_cool-4.png" alt="Projects" style={{ width: '16px', marginRight: '5px' }} />
+              My Projects
+            </Link>
+            <Link to="/techstack" className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
+              <img src="https://win98icons.alexmeub.com/icons/png/chm-2.png" alt="Tech Stack" style={{ width: '16px', marginRight: '5px' }} />
+              My Techstack
+            </Link>
             <a href="/resume.pdf" download className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
               <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="Resume" style={{ width: '16px', marginRight: '5px' }} />
               Resume
@@ -286,6 +497,8 @@ function App() {
         <main style={{ marginTop: '20px' }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/techstack" element={<TechStack />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
