@@ -352,7 +352,7 @@ function Home() {
             </div>
             <div className="link-item">
               <span className="logo-placeholder">cv</span>
-              <a href={resumeFile} target="_blank" rel="noreferrer" download="Sanjana_Venkatesh_Resume.pdf" className="win98-btn" style={{ fontWeight: '600' }}>Resume.pdf</a>
+              <button onClick={() => window.__openResumeModal && window.__openResumeModal()} className="win98-btn" style={{ fontWeight: '600', cursor: 'pointer' }}>Resume.pdf</button>
             </div>
           </div>
           <div className="win98-statusbar sidebar-statusbar">
@@ -1501,7 +1501,7 @@ const searchDatabase = [
   },
   {
     id: "link-resume",
-    title: "Download Resume (PDF)",
+    title: "View Resume (PDF)",
     category: "FILE",
     downloadUrl: resumeFile,
     desc: "Official PDF Resume • Sanjana Venkatesh",
@@ -1561,10 +1561,7 @@ function RetroSearchBar() {
     if (item.externalUrl) {
       window.open(item.externalUrl, '_blank', 'noopener,noreferrer');
     } else if (item.downloadUrl) {
-      const link = document.createElement('a');
-      link.href = item.downloadUrl;
-      link.download = "Sanjana_Venkatesh_Resume.pdf";
-      link.click();
+      window.__openResumeModal && window.__openResumeModal();
     } else if (item.route) {
       navigate(item.route);
     }
@@ -1687,7 +1684,75 @@ function RetroSearchBar() {
   );
 }
 
+/* ==============================
+   Resume Viewer Win98 Modal
+   ============================== */
+function ResumeViewerModal({ isOpen, onClose }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = resumeFile;
+    link.download = 'Sanjana_Venkatesh_Resume.pdf';
+    link.click();
+  };
+
+  return (
+    <div className="resume-modal-overlay" onClick={onClose}>
+      <div className="resume-modal-window win98-window" onClick={(e) => e.stopPropagation()}>
+        {/* Title Bar */}
+        <div className="win98-title-bar" style={{ background: 'linear-gradient(90deg, #660033, #cc0066, #660033)' }}>
+          <div className="win98-title-left">
+            <Win98DocIcon size={16} className="win98-title-img" />
+            <span>RESUME_VIEWER.EXE - [Sanjana_Venkatesh_Resume.pdf]</span>
+          </div>
+          <div className="win98-title-buttons">
+            <button className="win98-title-btn" onClick={onClose} title="Close">
+              <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+            </button>
+          </div>
+        </div>
+
+        {/* PDF Embed */}
+        <div className="resume-modal-body">
+          <iframe
+            src={resumeFile}
+            title="Resume PDF Viewer"
+            className="resume-pdf-frame"
+          />
+        </div>
+
+        {/* Status Bar */}
+        <div className="win98-statusbar" style={{ marginTop: 0 }}>
+          <div className="statusbar-pane" style={{ flex: 2 }}>
+            <span className="status-dot">●</span> Sanjana_Venkatesh_Resume.pdf
+          </div>
+          <div className="statusbar-pane">PDF DOCUMENT</div>
+          <div className="statusbar-pane">READY</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function App() {
+  const [showResume, setShowResume] = useState(false);
+
+  // Expose globally so child components can trigger it
+  useEffect(() => {
+    window.__openResumeModal = () => setShowResume(true);
+    return () => { delete window.__openResumeModal; };
+  }, []);
+
   return (
     <Router>
       <div className="page-container">
@@ -1714,10 +1779,10 @@ function App() {
               <Win98HelpBookIcon size={16} className="win98-nav-icon" />
               <span>My Techstack</span>
             </NavLink>
-            <a href={resumeFile} target="_blank" rel="noreferrer" download="Sanjana_Venkatesh_Resume.pdf" className="win98-btn">
+            <button onClick={() => setShowResume(true)} className="win98-btn" style={{ cursor: 'pointer' }}>
               <Win98DocIcon size={16} className="win98-nav-icon" />
               <span>Resume</span>
-            </a>
+            </button>
             <NavLink to="/contact" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
               <Win98EnvelopeIcon size={16} className="win98-nav-icon" />
               <span>Contact</span>
@@ -1735,6 +1800,9 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+
+        {/* Resume Viewer Modal */}
+        <ResumeViewerModal isOpen={showResume} onClose={() => setShowResume(false)} />
       </div>
     </Router>
   );
