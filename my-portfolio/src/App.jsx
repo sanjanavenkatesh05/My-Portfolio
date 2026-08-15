@@ -41,7 +41,7 @@ function MusicPlayer() {
       </div>
       <div className="music-player-controls">
         <div className="music-logo">
-          🎵
+          <img src="https://win98icons.alexmeub.com/icons/png/cd_audio_cd_a-4.png" alt="CD" style={{ width: '16px', height: '16px' }} />
         </div>
         <div className="music-display" style={{ padding: '0 5px', display: 'flex', alignItems: 'center' }}>
           {isPlaying ? (
@@ -122,15 +122,24 @@ function Home() {
           </div>
           <div className="win98-content open-source-content">
             <div className="repo-item">
-              <span className="repo-title">📁 physics-sim-engine</span>
+              <span className="repo-title">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
+                physics-sim-engine
+              </span>
               <a href="https://github.com/placeholder/physics-sim-engine" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/physics-sim</a>
             </div>
             <div className="repo-item">
-              <span className="repo-title">📁 decentralized-sub-manager</span>
+              <span className="repo-title">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
+                decentralized-sub-manager
+              </span>
               <a href="https://github.com/placeholder/decentralized-sub-manager" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/sub-manager</a>
             </div>
             <div className="repo-item">
-              <span className="repo-title">📁 pico-smart-monitor</span>
+              <span className="repo-title">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
+                pico-smart-monitor
+              </span>
               <a href="https://github.com/placeholder/pico-smart-monitor" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/pico-monitor</a>
             </div>
           </div>
@@ -295,8 +304,8 @@ function Projects() {
   return (
     <div className="projects-page-container">
       <div className="projects-showcase-layout">
-        {/* Left Window: Tech Stack */}
-        <div className="win98-window project-side-window">
+        {/* Left Window: Tech Stack (Peeking from behind) */}
+        <div className="win98-window project-side-window tech-side-window">
           <div className="win98-title-bar">
             <span>TECH_STACK.EXE</span>
             <div className="win98-title-buttons">
@@ -316,7 +325,7 @@ function Projects() {
           </div>
         </div>
 
-        {/* Middle Big Window: Clickable Project Card */}
+        {/* Middle Big Window: Clickable Project Card (Foreground) */}
         <div className="win98-window project-main-window">
           <div className="win98-title-bar">
             <span>PROJECT_VIEWER.EXE [{currentProject.id} / 04]</span>
@@ -358,17 +367,14 @@ function Projects() {
               </div>
 
               <div className="card-bottom-info">
-                <div className="card-arrow-circle">
-                  <span>↓</span>
-                </div>
                 <span className="card-subtitle-text">{currentProject.subtitle}</span>
               </div>
             </a>
           </div>
         </div>
 
-        {/* Right Window: Description & Details */}
-        <div className="win98-window project-side-window">
+        {/* Right Window: Description & Details (Peeking from behind) */}
+        <div className="win98-window project-side-window details-side-window">
           <div className="win98-title-bar">
             <span>DETAILS.TXT</span>
             <div className="win98-title-buttons">
@@ -411,26 +417,444 @@ function Projects() {
   );
 }
 
+const techStackData = {
+  "Languages": {
+    name: "Languages",
+    description: "Core programming languages for low-level systems, data pipelines, algorithms, and full-stack web applications.",
+    items: [
+      { name: "C", file: "c.txt", size: "32 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "Low-level systems programming, embedded firmware, pointers, memory allocation, and custom microkernel foundations." },
+      { name: "C++", file: "cpp.txt", size: "48 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg", desc: "Object-oriented systems, physics problem simulators, performance-critical modules, and algorithmic problem-solving." },
+      { name: "Python", file: "python.txt", size: "64 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", desc: "Data processing, text embeddings retrieval pipelines, scientific simulation engines, and backend APIs with Django." },
+      { name: "JavaScript", file: "javascript.txt", size: "56 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg", desc: "Modern dynamic scripting for client-side interactivity, responsive React components, and asynchronous Node.js backends." },
+      { name: "Java", file: "java.txt", size: "72 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg", desc: "Object-oriented design patterns, enterprise microservices architectures with Spring Boot, and JVM application engineering." }
+    ]
+  },
+  "Frontend & Graphics": {
+    name: "Frontend & Graphics",
+    description: "Interactive visual interfaces, WebGL rendering pipelines, physics simulations, and modern responsive styling.",
+    items: [
+      { name: "React", file: "react.js", size: "88 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg", desc: "Modern component-based UI engineering with hooks, SPA routing, state management, and real-time WebSocket communication." },
+      { name: "TailwindCSS", file: "tailwind.css", size: "42 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg", desc: "Utility-first modern responsive CSS styling with custom theme palettes, flexbox grids, and fluid layouts." },
+      { name: "WebGL", file: "webgl.glsl", size: "60 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/opengl/opengl-original.svg", desc: "Low-level hardware-accelerated 2D and 3D graphics rendering directly inside browser canvas contexts with custom shaders." },
+      { name: "Canvas API", file: "canvas.js", size: "36 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg", desc: "Direct 2D bitmap pixel drawing, custom procedural animations, and interactive graphic rendering in HTML5 canvas." },
+      { name: "p5.js", file: "p5.js", size: "52 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/p5js/p5js-original.svg", desc: "Creative coding and algorithmic generative graphic sketches for interactive visual experimentation." },
+      { name: "Matter.js", file: "matter.js", size: "68 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg", desc: "2D rigid body physics simulation engine for interactive web physics experiments, collision detection, and particle mechanics." },
+      { name: "VPython", file: "vpython.py", size: "44 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", desc: "3D visual physics modeling and simulations for computational problem-solving and kinematic mechanics." },
+      { name: "VLGL", file: "vlgl.c", size: "38 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "Lightweight embedded graphics library rendering customized for small microcontroller display modules." }
+    ]
+  },
+  "Backend": {
+    name: "Backend",
+    description: "Server-side architectures, RESTful APIs, real-time communication flows, and business logic.",
+    items: [
+      { name: "Node.js", file: "node.js", size: "57 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg", desc: "Asynchronous event-driven JavaScript runtime built on Chrome's V8 engine. Handles high-concurrency real-time WebSocket servers." },
+      { name: "Express.js", file: "express.js", size: "35 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg", desc: "Fast, minimalist web framework for building Node.js REST APIs, routing pipelines, authentication middlewares, and services." },
+      { name: "Django", file: "django.py", size: "90 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/django/django-plain.svg", desc: "High-level Python web framework encouraging clean, rapid development with ORM, automated admin panels, and built-in security." },
+      { name: "Spring Boot", file: "spring.java", size: "110 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg", desc: "Enterprise production-ready Java framework for robust standalone microservices, dependency injection, and scalable backends." }
+    ]
+  },
+  "Databases": {
+    name: "Databases",
+    description: "Relational and NoSQL persistent storage, schema optimization, and query performance.",
+    items: [
+      { name: "PostgreSQL", file: "postgres.sql", size: "75 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg", desc: "Powerful open-source object-relational SQL database with advanced indexing, ACID compliance, and JSON capabilities." },
+      { name: "MySQL", file: "mysql.sql", size: "65 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg", desc: "High-performance ACID-compliant relational database management for transactional systems and structured relational schemas." },
+      { name: "MongoDB", file: "mongodb.json", size: "58 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg", desc: "Flexible document-oriented NoSQL database optimized for JSON-like schema designs, fast aggregations, and horizontal scaling." }
+    ]
+  },
+  "Hardware & Embedded": {
+    name: "Hardware & Embedded",
+    description: "Microcontroller programming, hardware communication buses, IoT systems, and VLSI circuit concepts.",
+    items: [
+      { name: "Raspberry Pi", file: "raspi.cfg", size: "45 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/raspberrypi/raspberrypi-original.svg", desc: "Single-board computer Linux environment used as local edge gateways, smart monitoring hubs, and sensor processing hubs." },
+      { name: "ESP32", file: "esp32.c", size: "62 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/embeddedc/embeddedc-original.svg", desc: "Dual-core Wi-Fi/Bluetooth SoC used for smart monitoring projects, MQTT telemetry pipelines, and low-power sensor nodes." },
+      { name: "MicroPython", file: "micropython.py", size: "40 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", desc: "Lean Python 3 implementation tailored to run directly on microcontrollers like Raspberry Pi Pico for rapid prototyping." },
+      { name: "SPI", file: "spi_driver.h", size: "24 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "Serial Peripheral Interface synchronous serial communication protocol for high-speed sensor and display communication." },
+      { name: "GPIO", file: "gpio_pins.h", size: "18 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "General-Purpose Input/Output pin control for sensor polling, hardware interrupts, relays, and digital telemetry." },
+      { name: "VLSI", file: "vlsi_chip.v", size: "85 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg", desc: "Very Large Scale Integration digital design concepts, silicon layouts, combinational/sequential logic, and hardware minors." },
+      { name: "Custom Microkernels", file: "kernel.asm", size: "95 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg", desc: "Architecting minimal microkernels with low-level process scheduling, memory isolation, and lightweight IPC." }
+    ]
+  },
+  "Tools & Deployment": {
+    name: "Tools & Deployment",
+    description: "Version control, containerization environments, and Linux developer toolchains.",
+    items: [
+      { name: "Git", file: "git.exe", size: "42 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg", desc: "Distributed version control system for tracking source code changes, branch workflows, and commit history." },
+      { name: "GitHub", file: "github.com", size: "50 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg", desc: "Cloud collaboration platform for CI/CD workflows, open-source repositories, issue tracking, and automated releases." },
+      { name: "Docker", file: "dockerfile", size: "68 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg", desc: "Containerization platform to build, ship, and run distributed multi-service applications reliably across environments." },
+      { name: "Linux Workflows", file: "bash.sh", size: "38 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg", desc: "POSIX shell scripting, command-line utilities, service daemons, environment orchestration, and development workflows." }
+    ]
+  },
+  "Bonus Areas": {
+    name: "Bonus Areas",
+    description: "Advanced multidisciplinary engineering domains and emerging technologies.",
+    items: [
+      { name: "IoT Architecture", file: "iot_arch.md", size: "54 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/embeddedc/embeddedc-original.svg", desc: "End-to-end device-to-cloud telemetry pipelines, MQTT message brokers, sensor networks, and edge intelligence." },
+      { name: "Web3 Concepts", file: "web3_protocol.sol", size: "65 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/solidity/solidity-original.svg", desc: "Decentralized protocols, smart contract architecture, recurring subscriptions, and cryptographic emergency kill-switches." },
+      { name: "Competitive Programming", file: "cp_algorithms.cpp", size: "80 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg", desc: "Data structures and algorithm optimization practiced across LeetCode and CodeChef for fast problem-solving." },
+      { name: "Text Embeddings", file: "embeddings_pipeline.py", size: "72 KB", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg", desc: "High-dimensional vector representations of text utilized for semantic similarity search and intelligent retrieval pipelines." }
+    ]
+  }
+};
+
 function TechStack() {
+  const categoryKeys = Object.keys(techStackData);
+  const [activeCategory, setActiveCategory] = useState("Backend");
+  const [selectedItem, setSelectedItem] = useState(techStackData["Backend"].items[0]);
+  const [history, setHistory] = useState(["Backend"]);
+  const [historyIndex, setHistoryIndex] = useState(0);
+
+  const navigateToCategory = (cat) => {
+    if (cat === activeCategory) return;
+    const newHistory = history.slice(0, historyIndex + 1);
+    newHistory.push(cat);
+    setHistory(newHistory);
+    setHistoryIndex(newHistory.length - 1);
+    setActiveCategory(cat);
+    setSelectedItem(techStackData[cat].items[0]);
+  };
+
+  const handleBack = () => {
+    if (historyIndex > 0) {
+      const newIdx = historyIndex - 1;
+      setHistoryIndex(newIdx);
+      const cat = history[newIdx];
+      setActiveCategory(cat);
+      setSelectedItem(techStackData[cat].items[0]);
+    }
+  };
+
+  const handleForward = () => {
+    if (historyIndex < history.length - 1) {
+      const newIdx = historyIndex + 1;
+      setHistoryIndex(newIdx);
+      const cat = history[newIdx];
+      setActiveCategory(cat);
+      setSelectedItem(techStackData[cat].items[0]);
+    }
+  };
+
+  const handleUp = () => {
+    navigateToCategory("Languages");
+  };
+
+  const handleHome = () => {
+    navigateToCategory("Backend");
+  };
+
+  const currentCategoryData = techStackData[activeCategory] || techStackData["Backend"];
+
   return (
-    <div className="win98-window">
-      <div className="win98-title-bar">
-        <span>TECH_STACK.EXE</span>
-        <div className="win98-title-buttons">
-          <button className="win98-title-btn">
-            <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
-          </button>
-          <button className="win98-title-btn">
-            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
-          </button>
-          <button className="win98-title-btn">
-            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
-          </button>
+    <div className="techstack-page">
+      {/* Top Header */}
+      <div className="techstack-header">
+        <div className="techstack-title-row">
+          <img 
+            src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" 
+            alt="Computer" 
+            className="techstack-header-img" 
+          />
+          <h1>Tech Stack</h1>
         </div>
+        <p className="techstack-subtitle">Explore the technologies I work with</p>
       </div>
-      <div className="win98-content">
-        <h2>My Tech Stack</h2>
-        <p>Tech stack coming soon...</p>
+
+      {/* Main 2-Column Explorer Grid */}
+      <div className="techstack-desktop-grid">
+        {/* Left Column: Explorer + How to Explore Card */}
+        <div className="techstack-left-col">
+          {/* Main Tech Stack Explorer Window */}
+          <div className="win98-window techstack-main-window">
+            <div className="win98-title-bar">
+              <div className="win98-title-left">
+                <img 
+                  src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" 
+                  alt="" 
+                  className="win98-title-img" 
+                />
+                <span>Tech Stack</span>
+              </div>
+              <div className="win98-title-buttons">
+                <button className="win98-title-btn">
+                  <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+                </button>
+                <button className="win98-title-btn">
+                  <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+                </button>
+                <button className="win98-title-btn">
+                  <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Menu Bar */}
+            <div className="win98-menubar">
+              <span>File</span>
+              <span>Edit</span>
+              <span>View</span>
+              <span>Help</span>
+            </div>
+
+            {/* Toolbar Controls */}
+            <div className="win98-toolbar">
+              <button 
+                className={`win98-tool-btn ${historyIndex === 0 ? 'disabled' : ''}`}
+                onClick={handleBack}
+                disabled={historyIndex === 0}
+                title="Back"
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="black"><path d="M11 2 L4 8 L11 14 V2 Z" /></svg>
+                <span>Back</span>
+              </button>
+              <button 
+                className={`win98-tool-btn ${historyIndex >= history.length - 1 ? 'disabled' : ''}`}
+                onClick={handleForward}
+                disabled={historyIndex >= history.length - 1}
+                title="Forward"
+              >
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="black"><path d="M5 2 L12 8 L5 14 V2 Z" /></svg>
+                <span>Forward</span>
+              </button>
+              <button className="win98-tool-btn" onClick={handleUp} title="Up">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_up-0.png" alt="" className="tool-img" />
+                <span>Up</span>
+              </button>
+              <button className="win98-tool-btn" onClick={handleHome} title="Home">
+                <img src="https://win98icons.alexmeub.com/icons/png/msagent_computer-0.png" alt="" className="tool-img" />
+                <span>Home</span>
+              </button>
+              <button className="win98-tool-btn" onClick={() => setSelectedItem(currentCategoryData.items[0])} title="Refresh">
+                <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-4.png" alt="" className="tool-img" />
+                <span>Refresh</span>
+              </button>
+            </div>
+
+            {/* Address Bar */}
+            <div className="win98-address-bar-row">
+              <span className="address-label">Address</span>
+              <div className="address-input-box">
+                <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" className="address-folder-img" />
+                <span className="address-path">C:\TechStack\{activeCategory}</span>
+              </div>
+            </div>
+
+            {/* Explorer Split Content Pane */}
+            <div className="explorer-split-container">
+              {/* Folders Tree View */}
+              <div className="explorer-tree-view">
+                <div className="tree-header">
+                  <span>Folders</span>
+                  <span className="tree-close-x">✕</span>
+                </div>
+                <div className="tree-body">
+                  <div className="tree-root-item">
+                    <span className="tree-box-marker">-</span>
+                    <img src="https://win98icons.alexmeub.com/icons/png/directory_desktop-4.png" alt="" className="tree-folder-img" />
+                    <span className="tree-label-root">Tech Stack</span>
+                  </div>
+                  <div className="tree-children-list">
+                    {categoryKeys.map((catKey) => {
+                      const isSelected = catKey === activeCategory;
+                      return (
+                        <div
+                          key={catKey}
+                          className={`tree-child-item ${isSelected ? 'selected' : ''}`}
+                          onClick={() => navigateToCategory(catKey)}
+                        >
+                          <span className="tree-box-marker">{isSelected ? '-' : '+'}</span>
+                          <img 
+                            src={isSelected 
+                              ? "https://win98icons.alexmeub.com/icons/png/directory_open-4.png" 
+                              : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"} 
+                            alt="" 
+                            className="tree-folder-img" 
+                          />
+                          <span className="tree-label">{catKey}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {/* Folders Grid View */}
+              <div className="explorer-grid-view">
+                <div className="folders-grid">
+                  {categoryKeys.map((catKey) => {
+                    const isSelected = catKey === activeCategory;
+                    return (
+                      <div
+                        key={catKey}
+                        className={`folder-grid-item ${isSelected ? 'active-folder' : ''}`}
+                        onClick={() => navigateToCategory(catKey)}
+                      >
+                        <img 
+                          src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" 
+                          alt="Folder" 
+                          className="folder-icon-img" 
+                        />
+                        <span className="folder-grid-label">{catKey}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* Status Bar */}
+            <div className="win98-statusbar">
+              <div className="statusbar-pane">{categoryKeys.length} object(s)</div>
+            </div>
+          </div>
+
+          {/* How to Explore Info Card */}
+          <div className="how-to-explore-card">
+            <div className="how-to-header">
+              <img src="https://win98icons.alexmeub.com/icons/png/help_book_cool-0.png" alt="Help" className="how-to-img" />
+              <strong>How to explore</strong>
+            </div>
+            <div className="how-to-item">
+              <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" className="how-to-bullet-img" />
+              <span>Click on any folder to view technologies inside.</span>
+            </div>
+            <div className="how-to-item">
+              <img src="https://win98icons.alexmeub.com/icons/png/notepad_file-0.png" alt="" className="how-to-bullet-img" />
+              <span>Click on any file to see more about the technology.</span>
+            </div>
+            <div className="how-to-item">
+              <img src="https://win98icons.alexmeub.com/icons/png/computer-0.png" alt="" className="how-to-bullet-img" />
+              <span>Use the navigation buttons to go back or up.</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Active Folder Contents Window + Detail Preview Window */}
+        <div className="techstack-right-col">
+          {/* Top Right: Folder Contents Window */}
+          <div className="win98-window folder-contents-window">
+            <div className="win98-title-bar">
+              <div className="win98-title-left">
+                <img 
+                  src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_cool-4.png" 
+                  alt="" 
+                  className="win98-title-img" 
+                />
+                <span>{activeCategory}</span>
+              </div>
+              <div className="win98-title-buttons">
+                <button className="win98-title-btn">
+                  <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+                </button>
+                <button className="win98-title-btn">
+                  <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+                </button>
+                <button className="win98-title-btn">
+                  <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                </button>
+              </div>
+            </div>
+
+            <div className="win98-menubar">
+              <span>File</span>
+              <span>Edit</span>
+              <span>View</span>
+              <span>Help</span>
+            </div>
+
+            <div className="folder-files-content">
+              <div className="files-grid">
+                {currentCategoryData.items.map((item) => {
+                  const isFileSelected = selectedItem && selectedItem.name === item.name;
+                  return (
+                    <div
+                      key={item.name}
+                      className={`file-grid-item ${isFileSelected ? 'selected-file' : ''}`}
+                      onClick={() => setSelectedItem(item)}
+                      title={`Click to view ${item.name}`}
+                    >
+                      <img 
+                        src="https://win98icons.alexmeub.com/icons/png/notepad_file-0.png" 
+                        alt="File" 
+                        className="file-icon-img" 
+                      />
+                      <span className="file-grid-label">{item.file}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="win98-statusbar">
+              <div className="statusbar-pane">{currentCategoryData.items.length} object(s)</div>
+            </div>
+          </div>
+
+          {/* Bottom Right: File Details / Preview Window in Win95 Component Properties Style */}
+          {selectedItem && (
+            <div className="win98-window file-details-window">
+              <div className="win98-title-bar">
+                <div className="win98-title-left">
+                  <img 
+                    src="https://win98icons.alexmeub.com/icons/png/notepad_file-0.png" 
+                    alt="" 
+                    className="win98-title-img" 
+                  />
+                  <span>{selectedItem.file}</span>
+                </div>
+                <div className="win98-title-buttons">
+                  <button className="win98-title-btn">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+                  </button>
+                  <button className="win98-title-btn">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+                  </button>
+                  <button className="win98-title-btn">
+                    <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div className="win98-menubar">
+                <span>File</span>
+                <span>Edit</span>
+                <span>View</span>
+                <span>Help</span>
+              </div>
+
+              <div className="file-preview-body">
+                <div className="win95-preview-card">
+                  <div className="win95-preview-header">
+                    <div className="win95-icon-recess">
+                      <img 
+                        src={selectedItem.logo} 
+                        alt={selectedItem.name} 
+                        className="win95-tech-logo"
+                        onError={(e) => {
+                          e.target.src = "https://win98icons.alexmeub.com/icons/png/application_hourglass-0.png";
+                        }}
+                      />
+                    </div>
+                    <div className="win95-header-text">
+                      <h2 className="win95-tech-title">{selectedItem.name}</h2>
+                      <span className="win95-tech-file">Filename: {selectedItem.file} &bull; Size: {selectedItem.size}</span>
+                    </div>
+                  </div>
+
+                  <fieldset className="win95-fieldset">
+                    <legend className="win95-legend">Component Details</legend>
+                    <p className="win95-tech-desc">{selectedItem.desc}</p>
+                  </fieldset>
+                </div>
+              </div>
+
+              <div className="win98-statusbar tech-detail-statusbar">
+                <div className="statusbar-pane">Type: Technology</div>
+                <div className="statusbar-pane">Size: {selectedItem.size}</div>
+                <div className="statusbar-pane">Date Modified: Today</div>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
