@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
+
 import { useState, useRef, useEffect } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
 import './App.css';
@@ -171,8 +172,10 @@ function Home() {
             {/* Inner Left Column */}
             <div className="inner-left-col">
               {/* Me Window */}
-              <span className="myspace-header-title" style={{ fontFamily: '"Brush Script MT", "Lucida Handwriting", cursive', fontSize: '5em', textDecoration: 'underline', color: '#ff33ff', backgroundColor: 'transparent' }}> About me </span>
+              <span className="myspace-header-title" style={{ fontFamily: '"Brush Script MT", "Lucida Handwriting", cursive', fontSize: '2.6em', lineHeight: '1.1', textDecoration: 'underline', color: 'var(--accent-neon-pink)', backgroundColor: 'transparent', display: 'inline-block', marginBottom: '8px' }}> About me </span>
               <div className="win98-window">
+
+
                 <div className="myspace-header-title">me.jpg</div>
                 <div className="win98-content myspace-me-info" style={{ padding: 0 }}>
                   <img src="./src/assets/digicamfx-original-2026-08-15T10-55-28.jpg" alt="me" className="myspace-pic" />
@@ -924,28 +927,29 @@ function App() {
           </div>
 
           <nav className="nav-buttons">
-            <Link to="/" className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" alt="Home" style={{ width: '16px', marginRight: '5px' }} />
-              Home
-            </Link>
-            <Link to="/projects" className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_cool-4.png" alt="Projects" style={{ width: '16px', marginRight: '5px' }} />
-              My Projects
-            </Link>
-            <Link to="/techstack" className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="https://win98icons.alexmeub.com/icons/png/chm-2.png" alt="Tech Stack" style={{ width: '16px', marginRight: '5px' }} />
-              My Techstack
-            </Link>
-            <a href="/resume.pdf" download className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="Resume" style={{ width: '16px', marginRight: '5px' }} />
-              Resume
+            <NavLink to="/" end className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
+              <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" alt="" className="win98-nav-icon" />
+              <span>Home</span>
+            </NavLink>
+            <NavLink to="/projects" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
+              <img src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_cool-4.png" alt="" className="win98-nav-icon" />
+              <span>My Projects</span>
+            </NavLink>
+            <NavLink to="/techstack" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
+              <img src="https://win98icons.alexmeub.com/icons/png/chm-2.png" alt="" className="win98-nav-icon" />
+              <span>My Techstack</span>
+            </NavLink>
+            <a href="/resume.pdf" download className="win98-btn">
+              <img src="https://win98icons.alexmeub.com/icons/png/notepad-0.png" alt="" className="win98-nav-icon" />
+              <span>Resume</span>
             </a>
-            <Link to="/contact" className="win98-btn" style={{ display: 'flex', alignItems: 'center' }}>
-              <img src="https://win98icons.alexmeub.com/icons/png/message_envelope_open-0.png" alt="Contact" style={{ width: '16px', marginRight: '5px' }} />
-              Contact
-            </Link>
+            <NavLink to="/contact" className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
+              <img src="https://win98icons.alexmeub.com/icons/png/message_envelope_open-0.png" alt="" className="win98-nav-icon" />
+              <span>Contact</span>
+            </NavLink>
           </nav>
         </header>
+
 
         {/* Main Content Area */}
         <main style={{ marginTop: '20px' }}>
