@@ -1,10 +1,101 @@
 import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useMemo } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
 import './App.css';
 
+function TerminalWidget() {
+  const [commandIndex, setCommandIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+
+  const commandList = useMemo(() => [
+    { cmd: "whoami", res: "sanjana // software developer" },
+    { cmd: "skills --core", res: "react • python • c++ • node.js • iot" },
+    { cmd: "projects --ls", res: "4 modules [sentinel, bleepbloop, simuphysics, smartdesk]" },
+    { cmd: "github --status", res: "connected // github.com/sanjanavenkatesh05" },
+    { cmd: "contact --ping", res: "cyber@pink.net [ready]" }
+  ], []);
+
+
+
+
+  useEffect(() => {
+    let currentCmd = commandList[commandIndex];
+    let currentText = "";
+    let charIdx = 0;
+    let timeoutId;
+
+    const typeChar = () => {
+      if (charIdx < currentCmd.cmd.length) {
+        currentText += currentCmd.cmd[charIdx];
+        setDisplayedText(currentText);
+        charIdx++;
+        timeoutId = setTimeout(typeChar, 75);
+      } else {
+        setIsTyping(false);
+        timeoutId = setTimeout(() => {
+          setIsTyping(true);
+          setDisplayedText("");
+          setCommandIndex((prev) => (prev + 1) % commandList.length);
+        }, 3200);
+      }
+    };
+
+    timeoutId = setTimeout(typeChar, 350);
+    return () => clearTimeout(timeoutId);
+  }, [commandIndex, commandList]);
+
+  const currentCmd = commandList[commandIndex];
+
+  return (
+    <div className="win98-window terminal-window">
+      <div className="win98-title-bar">
+        <div className="win98-title-left">
+          <img
+            src="https://win98icons.alexmeub.com/icons/png/console_prompt-0.png"
+            alt=""
+            className="win98-title-img"
+          />
+          <span>COMMAND.COM</span>
+        </div>
+        <div className="win98-title-buttons">
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+          </button>
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+          </button>
+          <button className="win98-title-btn">
+            <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+          </button>
+        </div>
+      </div>
+      <div className="win98-content terminal-content">
+        <div className="terminal-log">
+          <div className="term-line term-header">CYBER-DOS 98.4 [Version 4.10]</div>
+          <div className="term-line term-prompt">
+            <span className="term-path">C:\SANJANA&gt;</span> {displayedText}
+            {isTyping && <span className="retro-cursor"></span>}
+          </div>
+          {!isTyping && (
+            <div className="term-line term-response">
+              <span className="term-arrow">&gt;&gt;</span> {currentCmd.res}
+              <span className="retro-cursor"></span>
+            </div>
+          )}
+        </div>
+      </div>
+      <div className="win98-statusbar sidebar-statusbar">
+        <div className="statusbar-pane"><span className="status-dot">●</span> TTY: COM1</div>
+        <div className="statusbar-pane">STATUS: OK</div>
+      </div>
+    </div>
+  );
+}
+
 function MusicPlayer() {
+
   const [isPlaying, setIsPlaying] = useState(true);
   const audioRef = useRef(null);
 
@@ -44,13 +135,21 @@ function MusicPlayer() {
         <div className="music-logo">
           <img src="https://win98icons.alexmeub.com/icons/png/cd_audio_cd_a-4.png" alt="CD" style={{ width: '16px', height: '16px' }} />
         </div>
-        <div className="music-display" style={{ padding: '0 5px', display: 'flex', alignItems: 'center' }}>
+        <div className="music-display" style={{ padding: '0 6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
           {isPlaying ? (
-            <marquee scrollamount="4">▶ PLAYING: Takeshi Abo - LEASE</marquee>
+            <>
+              <span className="eq-visualizer" title="Playing">
+                <span className="eq-bar bar-1"></span>
+                <span className="eq-bar bar-2"></span>
+                <span className="eq-bar bar-3"></span>
+              </span>
+              <marquee scrollamount="4">▶ PLAYING: Takeshi Abo - LEASE</marquee>
+            </>
           ) : (
-            "■ STOPPED"
+            <span>■ STOPPED</span>
           )}
         </div>
+
         <button className="music-btn" onClick={togglePlay}>
           {isPlaying ? '⏸' : '▶'}
         </button>
@@ -84,24 +183,28 @@ function Home() {
           <div className="win98-content quick-links-content">
             <div className="link-item">
               <span className="logo-placeholder">in</span>
-              <a href="#" className="win98-btn">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/sanjana-venkatesh-899251212/" target="_blank" rel="noreferrer" className="win98-btn">LinkedIn</a>
             </div>
             <div className="link-item">
               <span className="logo-placeholder">{'<>'}</span>
-              <a href="#" className="win98-btn">GitHub</a>
+              <a href="https://github.com/sanjanavenkatesh05" target="_blank" rel="noreferrer" className="win98-btn">GitHub</a>
             </div>
             <div className="link-item">
               <span className="logo-placeholder">ig</span>
-              <a href="#" className="win98-btn">Instagram</a>
+              <a href="https://www.instagram.com/venkateshsanjana5/" target="_blank" rel="noreferrer" className="win98-btn">Instagram</a>
             </div>
             <div className="link-item">
               <span className="logo-placeholder">lc</span>
-              <a href="#" className="win98-btn">LeetCode</a>
+              <a href="https://leetcode.com/u/sanjanavenkatesh05/" target="_blank" rel="noreferrer" className="win98-btn">LeetCode</a>
             </div>
             <div className="link-item">
               <span className="logo-placeholder">cc</span>
-              <a href="#" className="win98-btn">CodeChef</a>
+              <a href="https://www.codechef.com/users/vsanjana_05" target="_blank" rel="noreferrer" className="win98-btn">CodeChef</a>
             </div>
+          </div>
+          <div className="win98-statusbar sidebar-statusbar">
+            <div className="statusbar-pane">5 SHORTCUTS</div>
+            <div className="statusbar-pane"><span className="status-dot">●</span> 8080/TCP</div>
           </div>
         </div>
 
@@ -125,27 +228,38 @@ function Home() {
             <div className="repo-item">
               <span className="repo-title">
                 <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
-                physics-sim-engine
+                hercycle-ai
               </span>
-              <a href="https://github.com/placeholder/physics-sim-engine" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/physics-sim</a>
+              <a href="https://github.com/khushi897920-lang/hercycle-ai" target="_blank" rel="noreferrer" className="repo-link">github.com/khushi897920-lang/hercycle-ai</a>
             </div>
             <div className="repo-item">
               <span className="repo-title">
                 <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
-                decentralized-sub-manager
+                sentinel
               </span>
-              <a href="https://github.com/placeholder/decentralized-sub-manager" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/sub-manager</a>
+              <a href="https://github.com/anshul23102/sentinel" target="_blank" rel="noreferrer" className="repo-link">github.com/anshul23102/sentinel</a>
             </div>
             <div className="repo-item">
               <span className="repo-title">
                 <img src="https://win98icons.alexmeub.com/icons/png/directory_closed-4.png" alt="" style={{ width: '14px', height: '14px', marginRight: '4px', verticalAlign: 'text-bottom' }} />
-                pico-smart-monitor
+                PasoChat
               </span>
-              <a href="https://github.com/placeholder/pico-smart-monitor" target="_blank" rel="noreferrer" className="repo-link">github.com/sanjana/pico-monitor</a>
+              <a href="https://github.com/CodePlaygroundHub/PasoChat" target="_blank" rel="noreferrer" className="repo-link">github.com/CodePlaygroundHub/PasoChat</a>
             </div>
           </div>
+          <div className="win98-statusbar sidebar-statusbar">
+            <div className="statusbar-pane">3 REPOSITORIES</div>
+            <div className="statusbar-pane"><span className="status-dot">●</span> GIT: SYNCED</div>
+          </div>
         </div>
+
+
+
+        {/* Terminal Widget */}
+        <TerminalWidget />
       </div>
+
+
 
 
 
@@ -172,15 +286,40 @@ function Home() {
             {/* Inner Left Column */}
             <div className="inner-left-col">
               {/* Me Window */}
-              <span className="myspace-header-title" style={{ fontFamily: '"Brush Script MT", "Lucida Handwriting", cursive', fontSize: '2.6em', lineHeight: '1.1', textDecoration: 'underline', color: 'var(--accent-neon-pink)', backgroundColor: 'transparent', display: 'inline-block', marginBottom: '8px' }}> About me </span>
-              <div className="win98-window">
-
-
-                <div className="myspace-header-title">me.jpg</div>
-                <div className="win98-content myspace-me-info" style={{ padding: 0 }}>
-                  <img src="./src/assets/digicamfx-original-2026-08-15T10-55-28.jpg" alt="me" className="myspace-pic" />
+              <span className="myspace-header-title" style={{ fontFamily: '"Magnolia Script", "Brush Script MT", "Lucida Handwriting", cursive', fontSize: '3em', lineHeight: '1.1', textDecoration: 'underline', color: 'var(--accent-neon-pink)', backgroundColor: 'transparent', display: 'inline-block', marginBottom: '8px' }}>Sanjana Venkatesh </span>
+              <div className="win98-window photo-viewer-window">
+                <div className="win98-title-bar">
+                  <div className="win98-title-left">
+                    <img
+                      src="https://win98icons.alexmeub.com/icons/png/kodak_imaging_file-1.png"
+                      alt=""
+                      className="win98-title-img"
+                    />
+                    <span>IMAGE_VIEWER.EXE - [me.jpg]</span>
+                  </div>
+                  <div className="win98-title-buttons">
+                    <button className="win98-title-btn">
+                      <svg width="8" height="8" viewBox="0 0 8 8"><rect x="0" y="6" width="8" height="2" fill="black" /></svg>
+                    </button>
+                    <button className="win98-title-btn">
+                      <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 H8 V8 H0 Z M1,2 V7 H7 V2 Z" fill="black" /></svg>
+                    </button>
+                    <button className="win98-title-btn">
+                      <svg width="8" height="8" viewBox="0 0 8 8"><path d="M0,0 L2,0 L4,3 L6,0 L8,0 L5,4 L8,8 L6,8 L4,5 L2,8 L0,8 L3,4 Z" fill="black" /></svg>
+                    </button>
+                  </div>
+                </div>
+                <div className="win98-content photo-viewer-content">
+                  <div className="photo-frame-recess">
+                    <img src="./src/assets/digicamfx-original-2026-08-15T10-55-28.jpg" alt="me" className="myspace-pic" />
+                  </div>
+                  <div className="photo-meta-bar">
+                    <span className="photo-meta-left">JPEG Image (100% Zoom)</span>
+                    <span className="photo-meta-right">● ONLINE</span>
+                  </div>
                 </div>
               </div>
+
 
 
 
@@ -250,59 +389,199 @@ function Home() {
             </div>
 
           </div>
+          <div className="win98-statusbar home-statusbar">
+            <div className="statusbar-pane status-pane-main"><span className="status-dot">●</span> SYSTEM: ONLINE</div>
+            <div className="statusbar-pane">USER: SANJANA</div>
+            <div className="statusbar-pane">UPTIME: 99.9%</div>
+            <div className="statusbar-pane"><span className="status-dot">●</span> NET: CONNECTED</div>
+          </div>
         </div>
       </div>
     </div>
-
   );
 }
 
 const projectsData = [
+
   {
     id: "01",
-    name: "PasoChat",
-    displayTitle: "PASO",
-    subtitle: "REAL-TIME COMMUNICATION",
-    category: "Full Stack & WebSockets",
-    tech: ["Node.js", "Express", "MongoDB", "WebSockets", "JavaScript"],
-    description: "A real-time chat platform focused on backend engineering, communication flows, persistent conversations, and scalable server-side architecture.",
-    link: "https://github.com/placeholder/pasochat",
-    color: "#3b82f6"
+    name: "Sentinel Bootloader Simulation",
+    displayTitle: "SENTINEL",
+    subtitle: "BOOTLOADER & LOW-LEVEL SIMULATION",
+    category: "Systems & Bootloader Simulation",
+    tech: ["C/C++", "x86 Assembly", "React", "WebAssembly", "JavaScript"],
+    description: "An interactive bootloader and low-level system simulation showcasing the boot sequence, memory registers, kernel initialization, and operating system foundations.",
+    link: "https://sentinel-bootloader-simulation.vercel.app/",
+    repoLink: "https://github.com/sanjanavenkatesh05/sentinel-bootloader-simulation",
+    color: "#ffffff"
   },
   {
     id: "02",
-    name: "PhysicsSim",
-    displayTitle: "PHYSICS",
-    subtitle: "SIMULATION & EMBEDDINGS",
-    category: "Simulation & AI Pipeline",
-    tech: ["Python", "Django", "NumPy", "Text Embeddings", "React"],
-    description: "A custom physics problem simulator engineered with automated retrieval pipelines utilizing text embeddings for intelligent step-by-step solutions.",
-    link: "https://github.com/placeholder/physics-sim",
-    color: "#ff33ff"
+    name: "BleepBloop",
+    displayTitle: "BLEEPBLOOP",
+    subtitle: "REAL-TIME CHAT & SPRING WEBSOCKETS",
+    category: "Full Stack & WebSockets",
+    tech: ["Spring Boot", "React 19", "WebSockets (STOMP)", "PostgreSQL", "Spring Security", "Docker", "TailwindCSS"],
+    description: "A real-time web chat application engineered with Spring Boot and React 19. Features full-duplex messaging via STOMP/SockJS WebSockets, user authentication, public key management, and PostgreSQL persistence.",
+    link: "https://github.com/sanjanavenkatesh05/BleepBlop",
+    repoLink: "https://github.com/sanjanavenkatesh05/BleepBlop",
+    color: "#ffffff"
   },
   {
     id: "03",
-    name: "PicoSmartMonitor",
-    displayTitle: "PICO.IOT",
-    subtitle: "EMBEDDED HARDWARE SYSTEM",
-    category: "Embedded & Microcontrollers",
-    tech: ["C/C++", "MicroPython", "Raspberry Pi Pico", "MQTT", "Sensors"],
-    description: "An end-to-end IoT smart monitoring system built on Raspberry Pi Pico microcontroller with real-time telemetry, sensor polling, and cloud alerting.",
-    link: "https://github.com/placeholder/pico-monitor",
-    color: "#00ffcc"
+    name: "SimuPhysics",
+    displayTitle: "SIMUPHYSICS",
+    subtitle: "AI-POWERED 2D PHYSICS SIMULATOR",
+    category: "AI & Interactive 2D Simulation",
+    tech: ["Node.js", "Express", "Matter.js", "Gemini API", "JavaScript", "Render"],
+    description: "An educational physics platform converting natural-language prompts into real-time interactive 2D simulations. Features Gemini AI parameter extraction, Matter.js physics engine rendering, and interactive analytical explanations.",
+    link: "https://simuphysics-final.onrender.com/",
+    repoLink: "https://github.com/sanjanavenkatesh05/SimuPhysics-final",
+    color: "#ffffff"
   },
   {
     id: "04",
-    name: "SubManager",
-    displayTitle: "SUB.WEB3",
-    subtitle: "DECENTRALIZED PROTOCOL",
-    category: "Web3 & Smart Contracts",
-    tech: ["Solidity", "Ethers.js", "React", "PostgreSQL", "Tailwind"],
-    description: "A decentralized subscription manager designed with autonomous recurring payments and a cryptographic emergency kill-switch for automated security.",
-    link: "https://github.com/placeholder/sub-manager",
-    color: "#ffcc00"
+    name: "SmartDesk",
+    displayTitle: "SMARTDESK",
+    subtitle: "ESP32 IOT EMBEDDED DASHBOARD",
+    category: "Embedded C++ & IoT Hardware",
+    tech: ["C/C++", "ESP32", "Adafruit GFX / ST7735", "WiFiClientSecure", "GraphQL", "Capacitive Touch"],
+    description: "An autonomous, multi-page IoT workstation dashboard engineered in C++ for the ESP32 with SPI TFT display. Features direct LeetCode GraphQL polling over SSL, GitHub/Weather stats, capacitive touch navigation, and particle physics celebration effects.",
+    link: "https://github.com/sanjanavenkatesh05/smartDesk",
+    repoLink: "https://github.com/sanjanavenkatesh05/smartDesk",
+    color: "#ffffff"
   }
 ];
+
+function ProjectAnimationVisualizer({ project }) {
+  if (project.id === "01") {
+    // Sentinel: Bootloader BIOS & Memory Hex Register Visualizer
+    return (
+      <div className="anim-visualizer-container sentinel-visualizer">
+        <div className="sentinel-bios-header">
+          <span className="status-dot">●</span> SENTINEL BIOS v1.0.4 - [BOOT: 0x7C00]
+        </div>
+        <div className="sentinel-hex-stream">
+          <div className="hex-row"><span className="hex-addr">0x7C00</span> <span className="hex-bytes">FA 31 C0 8E D8 8E C0 8E</span> <span className="hex-status">OK</span></div>
+          <div className="hex-row"><span className="hex-addr">0x7C08</span> <span className="hex-bytes">BC 00 7C FB B8 00 00 CD</span> <span className="hex-status">OK</span></div>
+          <div className="hex-row active-row"><span className="hex-addr">0x8000</span> <span className="hex-bytes">EA 00 00 08 00 66 B8 10</span> <span className="hex-status pulsing">STAGE_2</span></div>
+        </div>
+        <div className="sentinel-reg-bar">
+          <span>EAX: 0x00007C00</span>
+          <span>CS: 0x08</span>
+          <span>MODE: PROTECTED</span>
+        </div>
+        <div className="sentinel-boot-progress">
+          <div className="sentinel-boot-bar"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (project.id === "02") {
+    // BleepBloop: Spring Boot + React 19 WebSocket STOMP Chat Simulation
+    return (
+      <div className="anim-visualizer-container bleepbloop-visualizer">
+        <div className="bleep-socket-header">
+          <span className="status-dot">●</span> WS_BROKER: /topic/public [STOMP :8081]
+        </div>
+        <div className="bleep-chat-stream">
+          <div className="bleep-bubble incoming">
+            <span className="bubble-user">peer@client:</span>
+            <span className="bubble-msg">CONNECT ws://localhost:8081/ws</span>
+          </div>
+          <div className="bleep-bubble sys-msg">
+            <span className="bubble-sys">[STOMP_CONNECTED]</span>
+            <span className="bubble-msg">auth: Bearer • key_exchange: OK</span>
+          </div>
+          <div className="bleep-bubble outgoing">
+            <span className="bubble-user">sanjana:</span>
+            <span className="bubble-msg">Subscribed to /queue/messages ⚡</span>
+          </div>
+          <div className="bleep-typing-row">
+            <span className="bubble-user">peer@client</span>
+            <span className="bleep-typing-dots"><span></span><span></span><span></span></span>
+          </div>
+        </div>
+        <div className="bleep-bottom-bar">
+          <span>PGSQL: 5432 [ACTIVE]</span>
+          <span>USERS: 2 ONLINE</span>
+          <span>STOMP: 101 OK</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (project.id === "03") {
+    // SimuPhysics: 2D Physics Engine (Matter.js) + Gemini AI Trajectory Simulation
+    return (
+      <div className="anim-visualizer-container simuphysics-visualizer">
+        <div className="simu-header">
+          <span className="status-dot">●</span> GEMINI_AI + MATTER.JS [2D ENGINE]
+        </div>
+        <div className="simu-canvas-wrap">
+          <svg viewBox="0 0 300 95" className="simu-svg-canvas">
+            {/* Ground */}
+            <line x1="10" y1="85" x2="290" y2="85" className="simu-ground-line" />
+            {/* Parabolic Trajectory Arc */}
+            <path d="M 25 85 Q 140 10 255 85" className="simu-parabola-path" />
+            {/* Launch velocity arrow */}
+            <line x1="25" y1="85" x2="65" y2="52" className="simu-vector-arrow" />
+            {/* Target collision box */}
+            <rect x="245" y="70" width="16" height="15" className="simu-target-box" />
+            {/* Moving projectile body */}
+            <circle cx="25" cy="85" r="5" className="simu-projectile-ball" />
+            {/* Angle notation */}
+            <text x="42" y="80" className="simu-angle-txt">θ=45°</text>
+          </svg>
+        </div>
+        <div className="simu-bottom-bar">
+          <span>v₀ = 28 m/s</span>
+          <span>g = 9.81 m/s²</span>
+          <span>PROMPT: /parabola</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (project.id === "04") {
+    // SmartDesk: ESP32 + SPI TFT 160x128 LeetCode GraphQL & IoT Dashboard Simulation
+    return (
+      <div className="anim-visualizer-container smartdesk-visualizer">
+        <div className="smartdesk-tft-header">
+          <span className="status-dot">●</span> ESP32-WROOM [160x128 SPI TFT]
+        </div>
+        <div className="smartdesk-tft-screen">
+          <div className="tft-metric-row">
+            <span className="tft-label">LEETCODE:</span>
+            <span className="tft-val solved-val">248 SOLVED</span>
+            <span className="tft-badge-acc">ACCEPTED +1</span>
+          </div>
+          <div className="tft-particle-burst">
+            <span className="spark spark-1">★</span>
+            <span className="spark spark-2">✦</span>
+            <span className="spark spark-3">★</span>
+            <span className="spark spark-4">✦</span>
+          </div>
+          <div className="tft-metric-row">
+            <span className="tft-label">WEATHER:</span>
+            <span className="tft-val">26°C SUNNY</span>
+            <span className="tft-label">GITHUB:</span>
+            <span className="tft-val">14d STREAK</span>
+          </div>
+        </div>
+        <div className="smartdesk-bottom-bar">
+          <span>TOUCH: GPIO27 [PG 1/4]</span>
+          <span>NTP: SYNCED</span>
+          <span>SSL: 443 OK</span>
+        </div>
+      </div>
+    );
+  }
+
+
+  return null;
+}
 
 function Projects() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -321,10 +600,10 @@ function Projects() {
       <div className="win98-window outer-app-window">
         <div className="win98-title-bar">
           <div className="win98-title-left">
-            <img 
-              src="https://win98icons.alexmeub.com/icons/png/briefcase-2.png" 
-              alt="" 
-              className="win98-title-img" 
+            <img
+              src="https://win98icons.alexmeub.com/icons/png/briefcase-2.png"
+              alt=""
+              className="win98-title-img"
             />
             <span>PROJECTS.EXE</span>
           </div>
@@ -388,28 +667,26 @@ function Projects() {
                   title={`Open ${currentProject.name} (External Link)`}
                 >
                   <div className="view-project-btn">
-                    VIEW PROJECT ↗
+                    {currentProject.link.includes('vercel.app') || currentProject.link.includes('onrender.com') ? 'LAUNCH APPLICATION ↗' : 'VIEW REPOSITORY ↗'}
                   </div>
 
-                  <div className="card-wireframe-bg">
-                    <svg viewBox="0 0 400 400" className="wireframe-svg">
-                      <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(255, 51, 255, 0.2)" strokeWidth="1.5" />
-                      <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(255, 51, 255, 0.15)" strokeWidth="1" strokeDasharray="5 5" />
-                      <polygon points="200,30 370,200 200,370 30,200" fill="none" stroke="rgba(255, 51, 255, 0.3)" strokeWidth="1.5" />
-                      <polygon points="200,60 340,200 200,340 60,200" fill="none" stroke="rgba(255, 51, 255, 0.15)" strokeWidth="1" />
-                    </svg>
+                  <div className="project-display-header">
+                    <div className="card-center-title" style={{ color: currentProject.color }}>
+                      {currentProject.displayTitle}
+                    </div>
+                    <span className="card-subtitle-text">{currentProject.subtitle}</span>
                   </div>
 
-                  <div className="card-center-title" style={{ color: currentProject.color }}>
-                    {currentProject.displayTitle}
-                  </div>
+                  {/* Dynamic Project-Specific Retro Animation */}
+                  <ProjectAnimationVisualizer project={currentProject} />
 
                   <div className="card-bottom-info">
-                    <span className="card-subtitle-text">{currentProject.subtitle}</span>
+                    <span className="card-launch-status"><span className="status-dot">●</span> CLICK TO LAUNCH LIVE APPLICATION ↗</span>
                   </div>
                 </a>
               </div>
             </div>
+
 
             {/* Right Window: Description & Details (Peeking from behind) */}
             <div className="win98-window project-side-window details-side-window">
@@ -428,9 +705,18 @@ function Projects() {
                 <div className="project-category-tag">
                   <span className="edu-label">Type:</span> {currentProject.category}
                 </div>
+                {currentProject.repoLink && (
+                  <div style={{ marginTop: '8px', fontSize: '0.85rem' }}>
+                    <span className="edu-label">Source:</span>{' '}
+                    <a href={currentProject.repoLink} target="_blank" rel="noreferrer" className="repo-link">
+                      {currentProject.repoLink.replace('https://', '')}
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
           </div>
+
 
           {/* Circular Loop Navigation Controls */}
           <div className="projects-carousel-controls">
@@ -451,9 +737,15 @@ function Projects() {
               →
             </button>
           </div>
+          <div className="win98-statusbar projects-statusbar">
+            <div className="statusbar-pane status-pane-main"><span className="status-dot">●</span> PROJECT_ID: {currentProject.id} / 04</div>
+            <div className="statusbar-pane">CATEGORY: {currentProject.category}</div>
+            <div className="statusbar-pane">STATUS: READY</div>
+          </div>
         </div>
       </div>
     </div>
+
   );
 }
 
@@ -589,10 +881,10 @@ function TechStack() {
       <div className="win98-window outer-app-window">
         <div className="win98-title-bar">
           <div className="win98-title-left">
-            <img 
-              src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" 
-              alt="" 
-              className="win98-title-img" 
+            <img
+              src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png"
+              alt=""
+              className="win98-title-img"
             />
             <span>TECH_STACK.EXE</span>
           </div>
@@ -613,10 +905,10 @@ function TechStack() {
           {/* Top Header */}
           <div className="techstack-header">
             <div className="techstack-title-row">
-              <img 
-                src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" 
-                alt="Computer" 
-                className="techstack-header-img" 
+              <img
+                src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png"
+                alt="Computer"
+                className="techstack-header-img"
               />
               <h1>Tech Stack</h1>
             </div>
@@ -631,10 +923,10 @@ function TechStack() {
               <div className="win98-window techstack-main-window">
                 <div className="win98-title-bar">
                   <div className="win98-title-left">
-                    <img 
-                      src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_small-4.png" 
-                      alt="" 
-                      className="win98-title-img" 
+                    <img
+                      src="https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs_small-4.png"
+                      alt=""
+                      className="win98-title-img"
                     />
                     <span>EXPLORER.EXE - C:\TechStack\{activeCategory}</span>
                   </div>
@@ -661,7 +953,7 @@ function TechStack() {
 
                 {/* Toolbar Controls */}
                 <div className="win98-toolbar">
-                  <button 
+                  <button
                     className={`win98-tool-btn ${historyIndex === 0 ? 'disabled' : ''}`}
                     onClick={handleBack}
                     disabled={historyIndex === 0}
@@ -670,7 +962,7 @@ function TechStack() {
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="black"><path d="M11 2 L4 8 L11 14 V2 Z" /></svg>
                     <span>Back</span>
                   </button>
-                  <button 
+                  <button
                     className={`win98-tool-btn ${historyIndex >= history.length - 1 ? 'disabled' : ''}`}
                     onClick={handleForward}
                     disabled={historyIndex >= history.length - 1}
@@ -720,18 +1012,18 @@ function TechStack() {
                         {categoryKeys.map((catKey) => {
                           const isSelected = catKey === activeCategory;
                           return (
-                            <div 
-                              key={catKey} 
+                            <div
+                              key={catKey}
                               className={`tree-child-item ${isSelected ? 'selected' : ''}`}
                               onClick={() => navigateToCategory(catKey)}
                             >
                               <span className="tree-expand-icon">{isSelected ? '▼' : '►'}</span>
-                              <img 
-                                src={isSelected 
-                                  ? "https://win98icons.alexmeub.com/icons/png/directory_open-4.png" 
-                                  : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"} 
-                                alt="" 
-                                className="tree-folder-img" 
+                              <img
+                                src={isSelected
+                                  ? "https://win98icons.alexmeub.com/icons/png/directory_open-4.png"
+                                  : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"}
+                                alt=""
+                                className="tree-folder-img"
                               />
                               <span className="tree-label">{catKey}</span>
                             </div>
@@ -747,17 +1039,17 @@ function TechStack() {
                       {categoryKeys.map((catKey) => {
                         const isActive = catKey === activeCategory;
                         return (
-                          <div 
+                          <div
                             key={catKey}
                             className={`folder-grid-item ${isActive ? 'active-folder' : ''}`}
                             onClick={() => navigateToCategory(catKey)}
                           >
-                            <img 
-                              src={isActive 
-                                ? "https://win98icons.alexmeub.com/icons/png/directory_open_cool-4.png" 
-                                : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"} 
-                              alt="Folder" 
-                              className="folder-icon-img" 
+                            <img
+                              src={isActive
+                                ? "https://win98icons.alexmeub.com/icons/png/directory_open_cool-4.png"
+                                : "https://win98icons.alexmeub.com/icons/png/directory_closed-4.png"}
+                              alt="Folder"
+                              className="folder-icon-img"
                             />
                             <span className="folder-grid-label">{catKey}</span>
                           </div>
@@ -813,15 +1105,15 @@ function TechStack() {
                     {currentCategoryData.items.map((item) => {
                       const isSelected = selectedItem && selectedItem.name === item.name;
                       return (
-                        <div 
+                        <div
                           key={item.name}
                           className={`file-grid-item ${isSelected ? 'selected-file' : ''}`}
                           onClick={() => setSelectedItem(item)}
                         >
-                          <img 
-                            src="https://win98icons.alexmeub.com/icons/png/notepad_file-2.png" 
-                            alt="File" 
-                            className="file-icon-img" 
+                          <img
+                            src="https://win98icons.alexmeub.com/icons/png/notepad_file-2.png"
+                            alt="File"
+                            className="file-icon-img"
                           />
                           <span className="file-grid-label">{item.file}</span>
                         </div>
@@ -856,9 +1148,9 @@ function TechStack() {
                     <div className="win95-preview-card">
                       <div className="win95-preview-header">
                         <div className="win95-icon-recess">
-                          <img 
-                            src={selectedItem.logo} 
-                            alt={selectedItem.name} 
+                          <img
+                            src={selectedItem.logo}
+                            alt={selectedItem.name}
                             className="win95-tech-logo"
                             onError={(e) => {
                               e.target.src = "https://win98icons.alexmeub.com/icons/png/application_hourglass-0.png";
@@ -906,9 +1198,10 @@ function Contact() {
       </div>
       <div className="win98-content">
         <h2>Hit me up!</h2>
-        <p>Email me at cyber@pink.net</p>
+        <p>Email me at <a href="mailto:cyber@pink.net">cyber@pink.net</a><span className="retro-cursor"></span></p>
       </div>
     </div>
+
   );
 }
 
@@ -927,6 +1220,8 @@ function App() {
           </div>
 
           <nav className="nav-buttons">
+
+
             <NavLink to="/" end className={({ isActive }) => `win98-btn ${isActive ? 'active' : ''}`}>
               <img src="https://win98icons.alexmeub.com/icons/png/computer_explorer_cool-0.png" alt="" className="win98-nav-icon" />
               <span>Home</span>
