@@ -6,16 +6,16 @@
   --bg-content: #000000;
   
   --text-primary: #f0f0f5;       /* High-contrast crisp off-white for body text */
-  --text-secondary: #f472b6;     /* Lighter pink for secondary metadata, labels, tags */
-  --text-heading: #ff66cc;       /* Neon pink for headings and title elements */
-  --text-shadow: #990099;
+  --text-secondary: #d4a3b3;     /* Muted pink for secondary metadata, labels, tags */
+  --text-heading: #c48b9f;       /* Neutral pink for headings and title elements */
+  --text-shadow: #5c3a46;
   
-  --accent-neon-pink: #ff33cc;   /* Primary neon pink for interactive elements, highlights */
-  --accent-pink-bright: #ff66cc;
-  --accent-pink-dark: #6b003a;   /* Outer window title bar */
-  --accent-pink-mid: #c0176b;    /* Inner window title bar */
-  --border-pink-light: #ff99ff;
-  --border-pink-dark: #4d004d;
+  --accent-neon-pink: #b87a8f;   /* Muted pink for interactive elements, highlights */
+  --accent-pink-bright: #c48b9f;
+  --accent-pink-dark: #3d262f;   /* Outer window title bar */
+  --accent-pink-mid: #6e4655;    /* Inner window title bar */
+  --border-pink-light: #d9b3c0;
+  --border-pink-dark: #2e1d24;
   
   --link-yellow: #ffcc00;        /* Reserved for hyperlinks */
   --link-yellow-hover: #fff066;

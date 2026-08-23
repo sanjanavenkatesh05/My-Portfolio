@@ -418,7 +418,6 @@ function Home() {
 
       {/* Main Content */}
       <div className="right-column">
-        <MusicPlayer />
         <div className="win98-window main-content-window">
           <div className="win98-title-bar">
             <span>HOME.EXE</span>
@@ -1818,6 +1817,7 @@ function App() {
 
         {/* Main Content Area */}
         <main style={{ marginTop: '20px' }}>
+          <MusicPlayer />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
