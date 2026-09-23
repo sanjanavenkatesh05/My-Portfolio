@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link, NavLink, useNavigate, use
 
 import { useState, useRef, useEffect, useMemo } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
-import resumeFile from './assets/SanjanaVenkatesh_SDE.pdf.pdf';
+import resumeFile from './assets/Sanjana_V_SDE.pdf.pdf';
 import profilePhoto from './assets/digicamfx-original-2026-08-15T10-55-28.jpg';
 import './App.css';
 
