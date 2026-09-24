@@ -2,8 +2,8 @@
 
 :root {
   --bg-deep: #0b001a;
-  --bg-window: #110022;
-  --bg-content: #000000;
+  --bg-window: rgba(18, 0, 36, 0.50);
+  --bg-content: rgba(6, 0, 14, 0.42);
   
   --text-primary: #f0f0f5;       /* High-contrast crisp off-white for body text */
   --text-secondary: #d4a3b3;     /* Muted pink for secondary metadata, labels, tags */
@@ -62,8 +62,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #080112;
-  /* Deep cyber dark base */
+  background-color: #050c19;
+  /* Deep aquarium water base — p5 canvas paints over this */
   color: var(--text-primary);
   /* High-contrast, comfortable body text */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, 'MS Sans Serif', sans-serif;
@@ -71,10 +71,7 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image:
-    linear-gradient(to right, rgba(255, 42, 160, 0.13) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 42, 160, 0.13) 1px, transparent 1px);
-  background-size: 28px 28px;
+  /* Grid removed — aquarium canvas is the background now */
 }
 
 
@@ -90,9 +87,11 @@ p:last-child {
   margin-bottom: 0;
 }
 
-/* Windows 98 Style Cyber Pink Box - Base */
+/* Windows 98 Style Cyber Pink Box - Base (translucent for aquarium) */
 .win98-window {
-  background-color: var(--bg-window);
+  background-color: rgba(18, 0, 36, 0.50);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-top: 2px solid var(--border-pink-light);
   border-left: 2px solid var(--border-pink-light);
   border-right: 2px solid #990099;
@@ -118,7 +117,7 @@ p:last-child {
 /* Primary Content Windows: Maximum visual prominence & focal priority */
 .main-content-window,
 .outer-app-window {
-  box-shadow: 4px 4px 0px #000, 0 12px 32px rgba(0, 0, 0, 0.9), inset 1.5px 1.5px 0px var(--accent-neon-pink), inset -1.5px -1.5px 0px var(--border-pink-dark);
+  box-shadow: 4px 4px 0px #000, 0 12px 32px rgba(0, 0, 0, 0.7), inset 1.5px 1.5px 0px var(--accent-neon-pink), inset -1.5px -1.5px 0px var(--border-pink-dark);
   border-top: 2.5px solid var(--border-pink-light);
   border-left: 2.5px solid var(--border-pink-light);
   border-right: 2.5px solid #990099;
@@ -136,7 +135,9 @@ p:last-child {
 
 .win98-content {
   padding: 20px 22px;
-  background-color: var(--bg-content);
+  background-color: rgba(6, 0, 14, 0.42);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid var(--border-pink-dark);
   color: var(--text-primary);
   min-height: 200px;
@@ -152,12 +153,14 @@ p:last-child {
   justify-content: space-between;
   align-items: center;
   padding: 6px 14px;
-  background-color: #120024;
+  background-color: rgba(18, 0, 36, 0.52);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-top: 2px solid var(--border-pink-light);
   border-left: 2px solid var(--border-pink-light);
   border-right: 2px solid #5a0033;
   border-bottom: 2px solid #5a0033;
-  box-shadow: 2px 2px 0px #000, 0 0 16px rgba(255, 51, 204, 0.22);
+  box-shadow: 2px 2px 0px #000, 0 0 16px rgba(255, 51, 204, 0.15);
 }
 
 .mobile-hamburger-btn {
@@ -268,7 +271,9 @@ p:last-child {
   left: 0;
   width: 380px;
   max-width: 90vw;
-  background: #0d0018;
+  background: rgba(13, 0, 24, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-top: 2px solid var(--border-pink-light);
   border-left: 2px solid var(--border-pink-light);
   border-right: 2px solid #5a0033;
@@ -585,6 +590,8 @@ p:last-child {
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
+  z-index: 1;
 }
 
 h1,
@@ -688,7 +695,9 @@ a:hover {
 
 .music-player-window {
   margin-top: 0;
-  background-color: #120022;
+  background-color: rgba(18, 0, 34, 0.50);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-top: 1.5px solid #d46ca0;
   border-left: 1.5px solid #d46ca0;
   border-right: 1.5px solid #5a0033;
@@ -701,7 +710,7 @@ a:hover {
 
 
 .music-player-title {
-  background: #000;
+  background: rgba(0, 0, 0, 0.45);
   color: var(--text-secondary);
   padding: 2.5px 6px;
   font-size: 11.5px;
@@ -718,7 +727,7 @@ a:hover {
   align-items: center;
   gap: 15px;
   padding: 8px 10px;
-  background-color: #0d001a;
+  background-color: rgba(13, 0, 26, 0.44);
   border: 1px solid #770044;
   margin-top: 4px;
 }
@@ -750,7 +759,7 @@ a:hover {
 }
 
 .music-display {
-  background: #000;
+  background: rgba(0, 0, 0, 0.50);
   color: var(--status-green);
   font-family: monospace;
   padding: 4px 8px;
@@ -782,7 +791,9 @@ a:hover {
   width: 100%;
   margin: 0;
   box-sizing: border-box;
-  background-color: #0d0018;
+  background-color: rgba(15, 0, 26, 0.50);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-top: 1.5px solid #d46ca0;
   border-left: 1.5px solid #d46ca0;
   border-right: 1.5px solid #5a0033;
@@ -793,7 +804,7 @@ a:hover {
 .quick-links-sidebar > .win98-title-bar,
 .open-source-window > .win98-title-bar,
 .terminal-window > .win98-title-bar {
-  background: #7a1543;
+  background: rgba(122, 21, 67, 0.85);
   padding: 3px 8px;
   font-size: 12.5px;
   font-weight: bold;
@@ -803,13 +814,17 @@ a:hover {
 
 .quick-links-sidebar > .win98-content,
 .open-source-window > .win98-content {
-  background-color: #06000c;
+  background-color: rgba(6, 0, 12, 0.42);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   padding: 16px 14px;
   min-height: auto;
 }
 
 .terminal-content {
-  background-color: #000000 !important;
+  background-color: rgba(0, 0, 0, 0.52) !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   padding: 12px 10px !important;
   min-height: auto;
   border: 1px inset #3a0028;
@@ -994,7 +1009,9 @@ a:hover {
 
 .inner-myspace-layout .win98-window {
   margin: 0;
-  background-color: #0d0018;
+  background-color: rgba(15, 0, 28, 0.46);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
   border-top: 1.5px solid var(--border-pink-light);
   border-left: 1.5px solid var(--border-pink-light);
   border-right: 1.5px solid #6b003a;
@@ -1003,7 +1020,9 @@ a:hover {
 }
 
 .inner-myspace-layout .win98-window .win98-content {
-  background-color: #000000;
+  background-color: rgba(6, 0, 14, 0.38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   padding: 16px 20px;
 }
 
@@ -1071,7 +1090,8 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  background-color: #06000c;
+  background-color: rgba(6, 0, 12, 0.40);
+  backdrop-filter: blur(6px);
 }
 
 .photo-frame-recess {
@@ -1080,7 +1100,7 @@ a:hover {
   border-right: 2px solid var(--border-pink-light);
   border-bottom: 2px solid var(--border-pink-light);
   box-shadow: inset 1px 1px 2px #000000;
-  background: #000000;
+  background: rgba(0, 0, 0, 0.35);
   overflow: hidden;
   position: relative;
   max-height: 295px;
@@ -1289,7 +1309,9 @@ ul.star-list li::marker {
 
 .outer-app-content {
   padding: 16px;
-  background-color: #000000;
+  background-color: rgba(6, 0, 14, 0.44);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   box-sizing: border-box;
 }
 
@@ -1299,7 +1321,7 @@ ul.star-list li::marker {
   align-items: center;
   gap: 25px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 10px 10px;
   box-sizing: border-box;
@@ -1320,7 +1342,7 @@ ul.star-list li::marker {
   z-index: 5;
   flex: 0 0 460px;
   max-width: 480px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 28px rgba(0, 229, 255, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 28px rgba(0, 229, 255, 0.25);
   transform: scale(1.03);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1330,7 +1352,8 @@ ul.star-list li::marker {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(6px);
 }
 
 .project-display-card {
@@ -1338,7 +1361,8 @@ ul.star-list li::marker {
   width: 100%;
   aspect-ratio: 1 / 1;
   max-width: 440px;
-  background: #000000;
+  background: rgba(2, 10, 20, 0.50);
+  backdrop-filter: blur(6px);
   border: 2px solid #00e5ff;
   border-radius: 4px;
   display: flex;
@@ -2291,7 +2315,9 @@ ul.star-list li::marker {
 .explorer-split-container {
   display: flex;
   min-height: 280px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-top: 1.5px solid #808080;
   border-left: 1.5px solid #808080;
   border-right: 1.5px solid #ffffff;
@@ -2303,7 +2329,9 @@ ul.star-list li::marker {
 .explorer-tree-view {
   flex: 0 0 175px;
   border-right: 2px solid #808080;
-  background: #ffffff;
+  background: rgba(245, 245, 245, 0.80);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   display: flex;
   flex-direction: column;
 }
@@ -2392,7 +2420,9 @@ ul.star-list li::marker {
 .explorer-grid-view {
   flex: 1;
   padding: 16px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   overflow-y: auto;
 }
 
@@ -3588,3 +3618,109 @@ ul.star-list li::marker {
     padding: 8px 10px;
   }
 }
+
+
+
+/* ===================================================================
+   AQUARIUM BACKGROUND — Feed Fish Button & Canvas Overrides
+   =================================================================== */
+
+/* The p5 canvas element itself */
+#aquarium-canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  display: block !important;
+}
+
+/* Feed Fish button — right side, below the header */
+#feed-fish-btn {
+  position: fixed;
+  top: 52px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 18px;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+  font-size: 12.5px;
+  font-weight: bold;
+  letter-spacing: 0.6px;
+  color: #ffd6e8;
+  background: rgba(20, 0, 40, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 2px solid #e090c0;
+  border-left: 2px solid #e090c0;
+  border-right: 2px solid #6a0044;
+  border-bottom: 2px solid #6a0044;
+  box-shadow: 2px 2px 0px #000, 0 0 20px rgba(255, 80, 180, 0.15);
+  cursor: pointer;
+  pointer-events: all;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+}
+
+#feed-fish-btn:hover {
+  background: rgba(40, 0, 60, 0.92);
+  box-shadow: 2px 2px 0px #000, 0 0 30px rgba(255, 80, 180, 0.35);
+  transform: scale(1.04);
+}
+
+#feed-fish-btn:active {
+  border-top: 2px solid #6a0044;
+  border-left: 2px solid #6a0044;
+  border-right: 2px solid #e090c0;
+  border-bottom: 2px solid #e090c0;
+  transform: scale(0.97);
+}
+
+.feed-icon {
+  font-size: 16px;
+  display: inline-block;
+  animation: fishWiggle 2s ease-in-out infinite;
+}
+
+@keyframes fishWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-8deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(8deg); }
+}
+
+/* Ensure the title bar also gets a slight translucency */
+.win98-title-bar {
+  background: rgba(110, 70, 85, 0.85);
+}
+
+.outer-app-window > .win98-title-bar,
+.main-content-window > .win98-title-bar {
+  background: rgba(61, 38, 47, 0.88);
+}
+
+/* Project display card backgrounds */
+.project-display-card {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Ensure status bars are translucent */
+.win98-statusbar {
+  background-color: rgba(17, 0, 34, 0.7) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Resume modal should stay opaque */
+.resume-modal-window.win98-window {
+  background-color: rgba(17, 0, 34, 0.95);
+}
+
+.resume-modal-overlay {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+

@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 130" width="180" height="130">
+  <defs>
+    <!-- Cute Royal-to-Sky Blue Gradient -->
+    <linearGradient id="cuteTangBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4da6ff"/>
+      <stop offset="35%" stop-color="#1a75ff"/>
+      <stop offset="80%" stop-color="#0047d4"/>
+      <stop offset="100%" stop-color="#002b80"/>
+    </linearGradient>
+
+    <!-- Sunny Yellow Tail Gradient -->
+    <linearGradient id="cuteYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff733"/>
+      <stop offset="60%" stop-color="#ffcc00"/>
+      <stop offset="100%" stop-color="#e69500"/>
+    </linearGradient>
+
+    <!-- Rosy Cheek Blush -->
+    <radialGradient id="tangBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3385" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ff3385" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Big Cute Blue/Violet Iris -->
+    <radialGradient id="cuteTangIris" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="45%" stop-color="#2563eb"/>
+      <stop offset="80%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </radialGradient>
+  </defs>
+
+  <!-- CAUDAL (TAIL) FIN (Cute Rounded Sunny Yellow Wedge) -->
+  <g>
+    <path d="M 132 64 L 172 45 C 176 54, 176 74, 172 83 L 132 64 Z" fill="url(#cuteYellow)" stroke="#cc8800" stroke-width="1.2"/>
+    <!-- Black upper and lower cute borders -->
+    <path d="M 130 62 L 173 43 C 175 45, 174 48, 171 50 L 136 64 Z" fill="#111111"/>
+    <path d="M 130 66 L 173 85 C 175 83, 174 80, 171 78 L 136 64 Z" fill="#111111"/>
+    <!-- Subtle ray -->
+    <path d="M 138 64 L 170 64" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- DORSAL FIN (Soft rounded crest with black and cyan trim) -->
+  <path d="M 44 38 C 65 24, 100 24, 130 38 C 126 44, 110 44, 85 42 C 60 40, 48 38, 44 38 Z" fill="#1a75ff"/>
+  <path d="M 46 36 C 68 22, 102 22, 132 36" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 48 34 C 70 20, 102 20, 130 34" fill="none" stroke="#67e8f9" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- ANAL FIN -->
+  <path d="M 64 88 C 88 98, 115 94, 130 80 C 126 76, 110 80, 84 84 Z" fill="#1a75ff"/>
+  <path d="M 62 89 C 88 100, 116 96, 132 81" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 64 91 C 88 102, 116 98, 130 83" fill="none" stroke="#67e8f9" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- CHUBBY PLUMP BODY -->
+  <path d="M 18 64 
+           C 18 48, 34 34, 56 28 
+           C 82 22, 114 26, 132 40 
+           C 142 48, 145 58, 142 66 
+           C 142 74, 136 82, 126 88 
+           C 102 98, 68 98, 44 90 
+           C 28 84, 18 76, 18 64 Z" 
+        fill="url(#cuteTangBody)" stroke="#002b80" stroke-width="1.5"/>
+
+  <!-- CUTE BLACK "PALETTE" SHAPE (Gentle rounded loop) -->
+  <path d="M 36 50 
+           C 40 40, 56 32, 75 30 
+           C 102 28, 126 34, 136 46 
+           C 142 53, 141 64, 134 70 
+           C 126 76, 108 75, 103 70 
+           C 98 65, 102 56, 114 54 
+           C 122 52, 128 56, 130 62 
+           C 130 65, 127 67, 123 67 
+           C 118 67, 116 63, 118 60 
+           C 119 57, 122 56, 124 56 
+           C 120 56, 114 60, 112 65 
+           C 115 71, 126 71, 133 66 
+           C 138 60, 137 51, 131 45 
+           C 120 36, 96 35, 73 37 
+           C 54 39, 41 45, 36 50 Z" 
+        fill="#111827"/>
+
+  <!-- PECTORAL FIN (Cute Bright Yellow Paddle) -->
+  <g>
+    <path d="M 48 64 C 58 56, 72 58, 80 66 C 84 74, 76 82, 66 82 C 56 82, 48 74, 48 64 Z" 
+          fill="url(#cuteYellow)" stroke="#ca8a04" stroke-width="1.5"/>
+    <path d="M 52 66 Q 64 68 72 74" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.8"/>
+  </g>
+
+  <!-- ROSY CHEEK BLUSH -->
+  <ellipse cx="36" cy="68" rx="8" ry="5.5" fill="url(#tangBlush)"/>
+
+  <!-- CUTE HAPPY SMILE -->
+  <path d="M 18 63 C 16 65, 16 67, 19 68 C 23 69, 26 66, 28 64" fill="none" stroke="#001a4d" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 27 63 C 28 64, 29 66, 28 67" fill="none" stroke="#001a4d" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- BIG ADORABLE ANIME EYE -->
+  <g>
+    <circle cx="32" cy="48" r="10" fill="#030712"/>
+    <circle cx="32" cy="48" r="8.8" fill="url(#cuteTangIris)"/>
+    <circle cx="33" cy="48" r="5.6" fill="#020617"/>
+
+    <!-- Double Sparkle Glints -->
+    <circle cx="29.8" cy="44.8" r="3.2" fill="#ffffff"/>
+    <circle cx="34.6" cy="51.2" r="1.5" fill="#ffffff"/>
+    <circle cx="28.5" cy="49.5" r="0.9" fill="#ffffff" opacity="0.9"/>
+
+    <!-- Cute Eyelash Curve -->
+    <path d="M 23 46 C 26 39, 36 39, 41 44" fill="none" stroke="#020617" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

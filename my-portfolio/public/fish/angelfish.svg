@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 135" width="180" height="135">
+  <defs>
+    <!-- Cute Golden Yellow Body -->
+    <linearGradient id="cuteAngelBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff04d"/>
+      <stop offset="40%" stop-color="#ffd500"/>
+      <stop offset="85%" stop-color="#ffb300"/>
+      <stop offset="100%" stop-color="#e68a00"/>
+    </linearGradient>
+
+    <!-- Sky Blue / Turquoise Stripe -->
+    <linearGradient id="cuteStripeBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="60%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+
+    <!-- Rosy Cheek Blush -->
+    <radialGradient id="angelBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3385" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ff3385" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Big Sparkling Golden Eye -->
+    <radialGradient id="cuteAngelIris" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="45%" stop-color="#ca8a04"/>
+      <stop offset="80%" stop-color="#713f12"/>
+      <stop offset="100%" stop-color="#1c1917"/>
+    </radialGradient>
+  </defs>
+
+  <!-- CAUDAL (TAIL) FIN (Cute Sunny Fan) -->
+  <g>
+    <path d="M 134 68 C 146 52, 166 50, 172 58 C 176 64, 176 74, 172 80 C 166 88, 146 86, 134 70 Z" 
+          fill="#ffea00" stroke="#ca8a04" stroke-width="1.2"/>
+    <path d="M 136 68 L 170 60" stroke="#ffffff" stroke-width="0.8" fill="none"/>
+    <path d="M 136 68 L 172 68" stroke="#ffffff" stroke-width="0.8" fill="none"/>
+    <path d="M 136 68 L 170 76" stroke="#ffffff" stroke-width="0.8" fill="none"/>
+    <path d="M 170 58 C 174 64, 174 74, 170 80" fill="none" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- DORSAL FIN (Cute Rounded Sail) -->
+  <path d="M 52 38 C 68 20, 98 16, 128 26 C 138 32, 142 44, 136 54 C 126 46, 105 38, 78 38 Z" 
+        fill="url(#cuteAngelBody)" stroke="#ca8a04" stroke-width="1.2"/>
+  <path d="M 54 36 C 70 18, 100 14, 130 24 C 140 30, 142 42, 136 52" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 56 34 C 72 16, 100 12, 130 22" fill="none" stroke="#bae6fd" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- ANAL FIN -->
+  <path d="M 74 94 C 96 110, 120 106, 134 88 C 128 82, 114 82, 96 86 Z" 
+        fill="url(#cuteAngelBody)" stroke="#ca8a04" stroke-width="1.2"/>
+  <path d="M 76 96 C 98 112, 122 108, 135 90" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- CHUBBY ROUND BODY -->
+  <path d="M 18 66 
+           C 18 48, 34 34, 58 28 
+           C 86 20, 118 26, 134 44 
+           C 144 54, 144 68, 138 76 
+           C 128 88, 108 96, 78 98 
+           C 46 98, 28 86, 18 66 Z" 
+        fill="url(#cuteAngelBody)" stroke="#a16207" stroke-width="1.5"/>
+
+  <!-- CUTE VIBRANT SKY-BLUE & WHITE BARS -->
+  <!-- Bar 1 -->
+  <path d="M 58 30 C 56 48, 54 70, 60 94" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 58 30 C 56 48, 54 70, 60 94" fill="none" stroke="url(#cuteStripeBlue)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Bar 2 -->
+  <path d="M 78 26 C 78 48, 76 72, 82 96" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 78 26 C 78 48, 76 72, 82 96" fill="none" stroke="url(#cuteStripeBlue)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Bar 3 -->
+  <path d="M 98 26 C 100 48, 98 70, 104 94" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round"/>
+  <path d="M 98 26 C 100 48, 98 70, 104 94" fill="none" stroke="url(#cuteStripeBlue)" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Bar 4 (Tail base) -->
+  <path d="M 118 32 C 122 50, 120 68, 125 86" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M 118 32 C 122 50, 120 68, 125 86" fill="none" stroke="url(#cuteStripeBlue)" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Pectoral Fin -->
+  <g>
+    <path d="M 52 64 C 60 58, 72 60, 78 68 C 80 76, 72 82, 62 82 C 54 82, 50 74, 52 64 Z" 
+          fill="#fff04d" stroke="#ca8a04" stroke-width="1.2"/>
+    <path d="M 56 66 Q 66 68 72 74" stroke="#ffffff" stroke-width="0.8" fill="none"/>
+  </g>
+
+  <!-- Cute Ventral Feeler -->
+  <path d="M 56 88 C 54 104, 50 118, 44 126" fill="none" stroke="#ffd500" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M 56 88 C 54 104, 50 118, 44 126" fill="none" stroke="#38bdf8" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- ROSY CHEEK BLUSH -->
+  <ellipse cx="38" cy="68" rx="8" ry="5.5" fill="url(#angelBlush)"/>
+
+  <!-- CUTE HAPPY MOUTH -->
+  <path d="M 18 65 C 16 67, 16 69, 19 70 C 23 71, 26 68, 28 66" fill="none" stroke="#78350f" stroke-width="2" stroke-linecap="round"/>
+  <path d="M 27 65 C 28 66, 29 68, 28 69" fill="none" stroke="#78350f" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- GIANT ADORABLE KAWAII EYE -->
+  <g>
+    <circle cx="34" cy="50" r="10" fill="#1c1917"/>
+    <circle cx="34" cy="50" r="8.8" fill="url(#cuteAngelIris)"/>
+    <circle cx="35" cy="50" r="5.6" fill="#0c0a09"/>
+
+    <!-- Double Sparkle Glints -->
+    <circle cx="31.8" cy="46.8" r="3.2" fill="#ffffff"/>
+    <circle cx="36.6" cy="53.2" r="1.5" fill="#ffffff"/>
+    <circle cx="30.5" cy="51.5" r="0.9" fill="#ffffff" opacity="0.9"/>
+
+    <path d="M 25 48 C 28 41, 38 41, 43 46" fill="none" stroke="#1c1917" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

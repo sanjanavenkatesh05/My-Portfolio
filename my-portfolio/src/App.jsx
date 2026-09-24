@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useMemo } from 'react';
 import songFile from './assets/LEASE by Takeshi Abo but slightly bitcrushed for nostalgia - (64 Kbps).mp3';
 import resumeFile from './assets/Sanjana_V_SDE.pdf.pdf';
 import profilePhoto from './assets/digicamfx-original-2026-08-15T10-55-28.jpg';
+import Aquarium from './Aquarium';
 import './App.css';
 
 /* Native Pixel-Perfect Windows 98 SVG Icons (100% Offline & Reliable) */
@@ -1802,6 +1803,8 @@ function App() {
 
   return (
     <Router>
+      {/* Full-Screen Aquarium Background */}
+      <Aquarium />
       <div className="page-container">
         {/* Header Elements */}
         <header className="header-container">

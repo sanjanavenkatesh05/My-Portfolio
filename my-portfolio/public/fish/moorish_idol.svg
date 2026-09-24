@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 145" width="190" height="145">
+  <defs>
+    <!-- Cute Moorish Yellow -->
+    <linearGradient id="cuteMoorishYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff566"/>
+      <stop offset="50%" stop-color="#ffdc00"/>
+      <stop offset="100%" stop-color="#ffa600"/>
+    </linearGradient>
+
+    <!-- Rosy Cheek Blush -->
+    <radialGradient id="moorishBlush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3385" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ff3385" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Cute Amber Eye -->
+    <radialGradient id="cuteMoorishIris" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#fed7aa"/>
+      <stop offset="45%" stop-color="#ea580c"/>
+      <stop offset="80%" stop-color="#7c2d12"/>
+      <stop offset="100%" stop-color="#18181b"/>
+    </radialGradient>
+  </defs>
+
+  <!-- CAUDAL (TAIL) FIN (Cute Forked Crescent) -->
+  <g>
+    <path d="M 142 78 L 176 60 C 174 70, 174 86, 176 96 L 142 78 Z" fill="#18181b"/>
+    <path d="M 175 62 C 171 72, 171 84, 175 94" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- PELVIC FINS (Cute Black Drops) -->
+  <path d="M 64 104 C 58 118, 50 130, 42 136 C 48 128, 56 116, 68 100 Z" fill="#18181b"/>
+
+  <!-- ANAL FIN -->
+  <path d="M 94 104 C 118 120, 130 112, 142 90 C 130 90, 112 94, 94 104 Z" fill="#18181b"/>
+  <path d="M 96 106 C 118 122, 130 114, 142 92" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+
+  <!-- CUTE DORSAL STREAMER (Arching Little Banner) -->
+  <g>
+    <path d="M 76 46 
+             C 74 28, 80 12, 100 5 
+             C 125 -2, 154 6, 182 22 
+             C 150 12, 120 6, 98 12 
+             C 84 16, 80 30, 80 46 Z" 
+          fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+    <!-- Yellow base of dorsal -->
+    <path d="M 76 46 C 84 36, 102 38, 126 52 C 138 60, 144 72, 142 78 C 128 70, 106 60, 80 52 Z" fill="url(#cuteMoorishYellow)"/>
+    <path d="M 126 52 C 138 60, 144 72, 142 78" fill="none" stroke="#18181b" stroke-width="2"/>
+    <path d="M 127 53 C 139 61, 145 73, 143 79" fill="none" stroke="#ffffff" stroke-width="1"/>
+  </g>
+
+  <!-- CHUBBY ROUND BODY (Cute Triangular Silhouette) -->
+  <path d="M 24 76 
+           C 24 72, 38 64, 58 48 
+           C 68 40, 76 40, 80 44 
+           C 100 52, 128 62, 142 76 
+           C 144 80, 142 84, 138 88 
+           C 122 102, 100 110, 80 106 
+           C 62 102, 44 90, 32 80 
+           C 26 78, 24 77, 24 76 Z" 
+        fill="#f8fafc" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- SUNNY YELLOW SADDLE -->
+  <path d="M 76 46 C 94 52, 116 60, 126 72 L 124 96 C 106 104, 86 102, 76 92 Z" fill="url(#cuteMoorishYellow)"/>
+
+  <!-- CUTE BOLD BLACK BARS -->
+  <!-- Front Bar -->
+  <path d="M 38 68 
+           C 46 58, 56 50, 64 46 
+           L 74 48 
+           C 66 60, 64 80, 70 104 
+           L 58 102 
+           C 52 92, 48 80, 38 74 Z" 
+        fill="#18181b"/>
+
+  <!-- Rear Bar -->
+  <path d="M 120 66 
+           C 128 72, 136 74, 142 78 
+           C 144 82, 142 86, 138 90 
+           C 130 96, 122 100, 114 102 
+           L 110 96 
+           C 118 86, 118 76, 120 66 Z" 
+        fill="#18181b"/>
+  <path d="M 110 64 C 112 76, 110 88, 104 96" fill="none" stroke="#ffffff" stroke-width="1.8"/>
+
+  <!-- CUTE TUBULAR SNOUT WITH ORANGE ACCENT -->
+  <path d="M 24 76 C 18 76, 12 77, 8 78 C 12 80, 18 80, 24 78 Z" fill="#ffffff" stroke="#334155" stroke-width="1"/>
+  <!-- Orange cute nose button -->
+  <path d="M 14 77 C 18 74, 22 74, 26 76" fill="none" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Pectoral Fin -->
+  <g>
+    <path d="M 58 74 C 66 68, 76 70, 80 78 C 82 84, 74 90, 66 90 C 60 90, 56 82, 58 74 Z" 
+          fill="#ffdc00" stroke="#ca8a04" stroke-width="1"/>
+    <path d="M 62 76 Q 70 78 76 82" stroke="#ffffff" stroke-width="0.8" fill="none"/>
+  </g>
+
+  <!-- ROSY CHEEK BLUSH -->
+  <ellipse cx="44" cy="74" rx="7" ry="5" fill="url(#moorishBlush)"/>
+
+  <!-- CUTE SMILE -->
+  <path d="M 10 78 C 8 79, 8 80, 10 81" fill="none" stroke="#18181b" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- BIG SHINY ANIME EYE -->
+  <g>
+    <circle cx="42" cy="62" r="9.5" fill="#09090b"/>
+    <circle cx="42" cy="62" r="8.2" fill="url(#cuteMoorishIris)"/>
+    <circle cx="43" cy="62" r="5.2" fill="#09090b"/>
+
+    <!-- Double Sparkle Glints -->
+    <circle cx="39.8" cy="58.8" r="3" fill="#ffffff"/>
+    <circle cx="44.5" cy="65" r="1.4" fill="#ffffff"/>
+    <circle cx="38.5" cy="63.5" r="0.8" fill="#ffffff" opacity="0.9"/>
+
+    <path d="M 33 60 C 36 53, 46 53, 51 58" fill="none" stroke="#09090b" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>
